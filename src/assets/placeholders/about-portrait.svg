@@ -1,0 +1,10 @@
+<svg width="760" height="920" viewBox="0 0 760 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="760" height="920" rx="44" fill="#F6F1EA"/>
+  <rect x="34" y="34" width="692" height="852" rx="28" fill="#FFFCF8"/>
+  <ellipse cx="383" cy="382" rx="168" ry="214" fill="#D1C0BA"/>
+  <path d="M250 719C250 611.895 336.895 525 444 525V525C444 632.105 357.105 719 250 719V719Z" fill="#111111"/>
+  <path d="M307 242C307 184.01 354.01 137 412 137H420C478.99 137 526 184.01 526 242V242H307V242Z" fill="#111111"/>
+  <path d="M176 768H584" stroke="#111111" stroke-opacity="0.16" stroke-width="2"/>
+  <text x="84" y="128" fill="#111111" fill-opacity="0.8" font-family="Georgia, serif" font-size="34" letter-spacing="0.16em">FABIANA</text>
+  <text x="86" y="820" fill="#111111" fill-opacity="0.52" font-family="Arial, sans-serif" font-size="19" letter-spacing="0.32em">SPACE FOR FUTURE PHOTO</text>
+</svg>

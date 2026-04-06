@@ -1,0 +1,89 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #111111;
+  background: #f6f1ea;
+  font-family: 'Manrope', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.84), transparent 34%),
+    radial-gradient(circle at 85% 10%, rgba(220, 199, 192, 0.22), transparent 24%),
+    linear-gradient(180deg, #f7f3ee 0%, #f1ebe3 48%, #efe6dc 100%);
+  color: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 42%, transparent 100%);
+}
+
+::selection {
+  background: #111111;
+  color: #f5f3ef;
+}
+
+@layer components {
+  .section-shell {
+    @apply relative overflow-hidden;
+  }
+
+  .editorial-kicker {
+    @apply text-[11px] uppercase tracking-[0.42em] text-taupe;
+  }
+
+  .glass-panel {
+    @apply border border-white/50 bg-white/45 backdrop-blur-xl;
+  }
+
+  .magazine-frame {
+    @apply border border-ink/10 bg-white/70 shadow-card backdrop-blur-sm;
+  }
+
+  .hover-lift {
+    @apply transition duration-500 ease-out hover:-translate-y-1.5 hover:shadow-card;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(40px);
+    pointer-events: none;
+  }
+}
