@@ -4,8 +4,8 @@ import { Button } from './Button';
 export function HeroSection() {
   return (
     <section className="section-shell pt-8 md:pt-10">
-      <div className="orb left-[-120px] top-16 h-72 w-72 bg-lilac/25 animate-pulseSoft" />
-      <div className="orb right-[-120px] top-20 h-80 w-80 bg-wine/15 animate-drift" />
+      <div className="orb left-[-120px] top-16 h-72 w-72 bg-lilac/35 animate-pulseSoft" />
+      <div className="orb right-[-120px] top-20 h-80 w-80 bg-wine/20 animate-drift" />
       <div className="absolute inset-0 bg-grain opacity-80" aria-hidden="true" />
 
       <div className="mx-auto grid max-w-7xl gap-14 px-6 pb-24 pt-14 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-32 lg:pt-20">
@@ -28,7 +28,7 @@ export function HeroSection() {
 
           <div className="mt-8 flex flex-wrap gap-2.5" aria-label="Recorrido sugerido">
             {hero.journey.map((step, index) => (
-              <span key={step} className="rounded-full border border-plum/20 bg-white/70 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-ink/60 shadow-lavender backdrop-blur-sm">
+              <span key={step} className="rounded-full border border-plum/30 bg-lavenderMist/90 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-ink/60 shadow-lavender backdrop-blur-sm">
                 {String(index + 1).padStart(2, '0')} · {step}
               </span>
             ))}
@@ -43,7 +43,7 @@ export function HeroSection() {
 
           <div className="mt-12 grid max-w-2xl gap-4 border-t border-plum/25 pt-6 md:grid-cols-3">
             {hero.highlights.map((item, index) => (
-              <div key={item} className="reveal-on-scroll space-y-2 rounded-[1.25rem] p-1 transition duration-500 hover:bg-white/70" style={{ '--reveal-delay': `${index * 80}ms` }}>
+              <div key={item} className="reveal-on-scroll space-y-2 rounded-[1.25rem] p-1 transition duration-500 hover:bg-lavenderMist/80" style={{ '--reveal-delay': `${index * 80}ms` }}>
                 <span className="text-[10px] uppercase tracking-[0.32em] text-plum">FabuRose</span>
                 <p className="text-sm leading-6 text-ink/70">{item}</p>
               </div>

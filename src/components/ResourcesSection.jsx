@@ -12,7 +12,7 @@ export function ResourcesSection() {
           title="PDFs, guías y piezas descargables con alma editorial"
           description="Una boutique digital para descargar guías, guardar rituales y convertir la inspiración en una práctica real. Cada pieza está pensada como un pequeño objeto editorial."
         />
-        <div className="max-w-md rounded-[1.7rem] border border-plum/30 bg-[linear-gradient(135deg,#F6F4FB,#ede7f7)] p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
+        <div className="max-w-md rounded-[1.7rem] border border-plum/30 bg-[linear-gradient(135deg,#F7F3FF,#EDE7F7)] p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
           <p className="text-[10px] uppercase tracking-[0.32em] text-plum">Recorrido sugerido</p>
           <p className="mt-3">Empieza por el recurso que más resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
         </div>
@@ -26,14 +26,14 @@ export function ResourcesSection() {
             style={{ '--reveal-delay': `${index * 110}ms` }}
           >
             <div className={`grid gap-6 ${index === 0 ? 'lg:grid-cols-[0.95fr_1.05fr] lg:items-center' : ''}`}>
-              <div className="relative overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#F6F4FB,#ede7f7)]">
+              <div className="relative overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#F7F3FF,#EDE7F7)]">
                 <img
                   src={resource.image}
                   alt={`Portada del recurso ${resource.title}`}
                   className={`w-full object-cover transition duration-700 group-hover:scale-[1.035] ${index === 0 ? 'h-[28rem]' : 'h-72'}`}
                 />
                 <div className="absolute inset-x-4 top-4 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-white/50 bg-white/75 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-ink/70 backdrop-blur-md">
+                  <span className="rounded-full border border-white/50 bg-lavenderMist/80 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-ink/70 backdrop-blur-md">
                     {resource.meta}
                   </span>
                   <span className="rounded-full border border-white/40 bg-wine px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">

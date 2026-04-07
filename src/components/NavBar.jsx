@@ -15,7 +15,7 @@ export function NavBar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-plum/25 bg-white/70 backdrop-blur-xl transition duration-500">
+    <header className="sticky top-0 z-40 border-b border-plum/30 bg-lavenderMist/88 backdrop-blur-xl transition duration-500">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:px-10">
         <Link to="/" onClick={handleBrandClick} className="group flex cursor-pointer items-center gap-3 text-deepPlum focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-plum bg-plum text-[10px] text-white shadow-lavender uppercase tracking-[0.3em] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-deepPlum/55 group-hover:bg-deepPlum">
@@ -32,7 +32,7 @@ export function NavBar() {
                 key={item.href}
                 href={`/${item.href}`}
                 aria-current={isActive ? 'page' : undefined}
-                className={`relative text-[11px] uppercase tracking-[0.3em] transition duration-500 after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-plum after:transition-all after:duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum ${isActive ? 'text-plum after:w-full' : 'text-ink/70 after:w-0 hover:after:w-full'}`}
+                className={`relative text-[11px] uppercase tracking-[0.3em] transition duration-500 after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-plum after:transition-all after:duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum ${isActive ? 'text-plum after:w-full' : 'text-deepPlum/70 after:w-0 hover:after:w-full'}`}
               >
                 {item.label}
               </a>
@@ -50,7 +50,7 @@ export function NavBar() {
           ) : (
             <>
               <Link className="nav-action" to="/login">Entrar</Link>
-              <Link className="rounded-full border border-plum/25 bg-white/70 px-4 py-2 text-plum transition duration-500 hover:-translate-y-0.5 hover:border-plum/45 hover:bg-lavenderMist hover:text-plum hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25" to="/signup">Crear cuenta</Link>
+              <Link className="rounded-full border border-plum/25 bg-lavenderMist/80 px-4 py-2 text-plum transition duration-500 hover:-translate-y-0.5 hover:border-plum/45 hover:bg-lavenderMist hover:text-plum hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25" to="/signup">Crear cuenta</Link>
             </>
           )}
         </div>

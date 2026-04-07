@@ -6,7 +6,7 @@
 
 :root {
   color: #111111;
-  background: #F6F4FB;
+  background: #F7F3FF;
   font-family: 'Manrope', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,10 +21,10 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.86), transparent 28%),
-    radial-gradient(circle at 84% 12%, rgba(124, 107, 196, 0.30), transparent 30%),
-    radial-gradient(circle at 12% 78%, rgba(110, 47, 69, 0.10), transparent 32%),
-    linear-gradient(180deg, #f6f4fb 0%, #efe9f8 46%, #e9e2f4 100%);
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.78), transparent 28%),
+    radial-gradient(circle at 82% 12%, rgba(124, 107, 196, 0.38), transparent 34%),
+    radial-gradient(circle at 12% 78%, rgba(110, 47, 69, 0.16), transparent 34%),
+    linear-gradient(180deg, #f7f3ff 0%, #ede7f7 44%, #dfd6ef 100%);
   color: #111111;
 }
 
@@ -81,11 +81,11 @@ body::before {
   }
 
   .glass-panel {
-    @apply border border-plum/25 bg-white/55 backdrop-blur-xl;
+    @apply border border-plum/30 bg-lavenderMist/65 backdrop-blur-xl;
   }
 
   .magazine-frame {
-    @apply border border-plum/25 bg-lavenderMist/90 shadow-lavender backdrop-blur-sm;
+    @apply border border-plum/30 bg-lavenderMist/90 shadow-lavender backdrop-blur-sm;
   }
 
   .hover-lift {
@@ -93,7 +93,7 @@ body::before {
   }
 
   .product-card {
-    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-plum/50 hover:bg-white/90 hover:shadow-lavender;
+    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-plum/50 hover:bg-lavenderMist hover:shadow-lavender;
   }
 
   .nav-action {

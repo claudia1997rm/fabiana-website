@@ -5,19 +5,21 @@ export default {
     extend: {
       colors: {
         ink: '#111111',
-        cloud: '#f6f1ea',
-        pearl: '#ece4db',
-        mist: '#d9cec3',
-        taupe: '#8c7c6d',
-        blush: '#dcc7c0',
-        sand: '#c9b39f',
-        midnight: '#161317',
-        smoke: '#6a635c',
-        gold: '#b3936b',
+        cloud: '#F7F3FF',
+        pearl: '#EDE7F7',
+        mist: '#D9CFEF',
+        taupe: '#6D5BA6',
+        blush: '#C9B9EA',
+        sand: '#B7A0DA',
+        midnight: '#2A2141',
+        smoke: '#5B5176',
+        gold: '#8A4A60',
         lavender: '#F6F4FB',
         lilac: '#7C6BC4',
         plum: '#6D5BA6',
         deepPlum: '#4C3F91',
+        wine: '#6E2F45',
+        wineSoft: '#8A4A60',
         lavenderMist: '#F6F4FB',
       },
       fontFamily: {
@@ -26,18 +28,18 @@ export default {
         sans: ['"Manrope"', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 22px 70px rgba(17, 17, 17, 0.08)',
+        soft: '0 22px 70px rgba(76, 63, 145, 0.10)',
         glow: '0 20px 52px rgba(109, 91, 166, 0.24)',
-        card: '0 26px 60px rgba(17, 17, 17, 0.10)',
+        card: '0 26px 60px rgba(76, 63, 145, 0.14)',
         lavender: '0 20px 50px rgba(109, 91, 166, 0.24)',
       },
       backgroundImage: {
         grain:
-          'radial-gradient(circle at 20% 20%, rgba(220, 199, 192, 0.22), transparent 28%), radial-gradient(circle at 80% 0%, rgba(124, 107, 196, 0.24), transparent 24%), radial-gradient(circle at 50% 100%, rgba(17, 17, 17, 0.08), transparent 34%)',
+          'radial-gradient(circle at 20% 20%, rgba(124, 107, 196, 0.24), transparent 28%), radial-gradient(circle at 80% 0%, rgba(109, 91, 166, 0.28), transparent 24%), radial-gradient(circle at 50% 100%, rgba(110, 47, 69, 0.10), transparent 34%)',
         halo:
           'radial-gradient(circle at center, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.24) 35%, transparent 70%)',
         aurora:
-          'linear-gradient(135deg, rgba(255,255,255,0.72), rgba(236,228,219,0.78) 36%, rgba(246,244,251,0.92) 66%, rgba(201,179,159,0.18) 100%)',
+          'linear-gradient(135deg, rgba(255,255,255,0.72), rgba(247,243,255,0.88) 34%, rgba(237,231,247,0.96) 68%, rgba(109,91,166,0.20) 100%)',
       },
       keyframes: {
         float: {
