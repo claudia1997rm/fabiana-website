@@ -5,7 +5,7 @@ import { SectionHeading } from './SectionHeading';
 
 export function JournalSection() {
   return (
-    <section id="journal" className="section-shell bg-[linear-gradient(135deg,#4C3F91,#6E2F45)] text-cloud">
+    <section id="journal" className="section-shell bg-[linear-gradient(135deg,#2B174F_0%,#5B2FD6_48%,#7B163C_100%)] text-cloud">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(246,244,251,0.16),transparent_24%)]" />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 lg:py-32">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">

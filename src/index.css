@@ -6,7 +6,7 @@
 
 :root {
   color: #111111;
-  background: #F7F3FF;
+  background: #F5F0FF;
   font-family: 'Manrope', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,10 +21,10 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.78), transparent 28%),
-    radial-gradient(circle at 82% 12%, rgba(124, 107, 196, 0.38), transparent 34%),
-    radial-gradient(circle at 12% 78%, rgba(110, 47, 69, 0.16), transparent 34%),
-    linear-gradient(180deg, #f7f3ff 0%, #ede7f7 44%, #dfd6ef 100%);
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 26%),
+    radial-gradient(circle at 82% 12%, rgba(122, 79, 242, 0.44), transparent 35%),
+    radial-gradient(circle at 12% 78%, rgba(123, 22, 60, 0.22), transparent 34%),
+    linear-gradient(180deg, #f5f0ff 0%, #e7dcff 44%, #d7c9f5 100%);
   color: #111111;
 }
 
@@ -49,19 +49,19 @@ body::before {
   pointer-events: none;
   opacity: 0.28;
   background-image:
-    linear-gradient(rgba(109, 91, 166, 0.065) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(109, 91, 166, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(91, 47, 214, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 47, 214, 0.07) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(circle at center, black 42%, transparent 100%);
 }
 
 ::selection {
-  background: #6D5BA6;
+  background: #5B2FD6;
   color: #f5f3ef;
 }
 
 :focus-visible {
-  outline: 2px solid rgba(109, 91, 166, 0.42);
+  outline: 2px solid rgba(91, 47, 214, 0.46);
   outline-offset: 4px;
 }
 
@@ -81,27 +81,27 @@ body::before {
   }
 
   .glass-panel {
-    @apply border border-plum/30 bg-lavenderMist/65 backdrop-blur-xl;
+    @apply border border-plum/35 bg-lavenderMist/75 backdrop-blur-xl;
   }
 
   .magazine-frame {
-    @apply border border-plum/30 bg-lavenderMist/90 shadow-lavender backdrop-blur-sm;
+    @apply border border-plum/35 bg-lavenderMist/90 shadow-lavender backdrop-blur-sm;
   }
 
   .hover-lift {
-    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:border-plum/40 hover:shadow-lavender;
+    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:border-plum/55 hover:shadow-lavender;
   }
 
   .product-card {
-    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-plum/50 hover:bg-lavenderMist hover:shadow-lavender;
+    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-plum/60 hover:bg-lavenderMist hover:shadow-lavender;
   }
 
   .nav-action {
-    @apply inline-flex rounded-full px-3 py-2 text-ink/70 transition duration-500 hover:-translate-y-0.5 hover:bg-plum hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/30;
+    @apply inline-flex rounded-full px-3 py-2 text-cloud/80 transition duration-500 hover:-translate-y-0.5 hover:bg-lilac hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/30;
   }
 
   .soft-link {
-    @apply relative text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/60 transition duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum;
+    @apply relative text-[11px] font-semibold uppercase tracking-[0.28em] text-deepPlum/65 transition duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum;
   }
 
   .soft-link::after {

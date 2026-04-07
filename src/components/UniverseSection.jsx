@@ -4,8 +4,8 @@ import { SectionHeading } from './SectionHeading';
 
 export function UniverseSection() {
   return (
-    <section id="universo" className="section-shell border-y border-plum/25 bg-[linear-gradient(135deg,rgba(247,243,255,0.95),rgba(109,91,166,0.24))]">
-      <div className="orb left-[-90px] top-24 h-64 w-64 bg-lilac/30" />
+    <section id="universo" className="section-shell border-y border-plum/25 bg-[linear-gradient(135deg,rgba(245,240,255,0.92),rgba(91,47,214,0.34))]">
+      <div className="orb left-[-90px] top-24 h-64 w-64 bg-lilac/45" />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 lg:py-28">
         <SectionHeading
           eyebrow="Universo Fabiana"
@@ -21,10 +21,10 @@ export function UniverseSection() {
                 key={category.name}
                 to={category.path}
                 aria-label={category.cta}
-                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[2rem] border border-ink/10 p-7 transition duration-700 hover:border-plum/25 hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:p-8 ${featured ? 'bg-plum text-white lg:row-span-2' : 'bg-lavenderMist/85 text-ink'}`}
+                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[2rem] border border-ink/10 p-7 transition duration-700 hover:border-plum/25 hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:p-8 ${featured ? 'bg-[linear-gradient(135deg,#5B2FD6,#7B163C)] text-white lg:row-span-2' : 'bg-lavenderMist/90 text-ink'}`}
                 style={{ '--reveal-delay': `${index * 75}ms` }}
               >
-                <div className={`absolute right-0 top-0 h-28 w-28 rounded-full blur-3xl transition duration-700 group-hover:scale-125 ${featured ? 'bg-lilac/30' : 'bg-lavenderMist/65'}`} />
+                <div className={`absolute right-0 top-0 h-28 w-28 rounded-full blur-3xl transition duration-700 group-hover:scale-125 ${featured ? 'bg-lilac/45' : 'bg-lavenderMist/65'}`} />
                 <p className={`text-[10px] uppercase tracking-[0.32em] ${featured ? 'text-white/80' : 'text-plum'}`}>
                   {category.accent}
                 </p>

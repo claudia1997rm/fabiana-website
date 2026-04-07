@@ -12,7 +12,7 @@ export function ResourcesSection() {
           title="PDFs, guías y piezas descargables con alma editorial"
           description="Una boutique digital para descargar guías, guardar rituales y convertir la inspiración en una práctica real. Cada pieza está pensada como un pequeño objeto editorial."
         />
-        <div className="max-w-md rounded-[1.7rem] border border-plum/30 bg-[linear-gradient(135deg,#F7F3FF,#EDE7F7)] p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
+        <div className="max-w-md rounded-[1.7rem] border border-plum/35 bg-[linear-gradient(135deg,#F5F0FF,#DCCCFF)] p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
           <p className="text-[10px] uppercase tracking-[0.32em] text-plum">Recorrido sugerido</p>
           <p className="mt-3">Empieza por el recurso que más resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
         </div>
@@ -26,7 +26,7 @@ export function ResourcesSection() {
             style={{ '--reveal-delay': `${index * 110}ms` }}
           >
             <div className={`grid gap-6 ${index === 0 ? 'lg:grid-cols-[0.95fr_1.05fr] lg:items-center' : ''}`}>
-              <div className="relative overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#F7F3FF,#EDE7F7)]">
+              <div className="relative overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#F5F0FF,#DCCCFF)]">
                 <img
                   src={resource.image}
                   alt={`Portada del recurso ${resource.title}`}
@@ -36,7 +36,7 @@ export function ResourcesSection() {
                   <span className="rounded-full border border-white/50 bg-lavenderMist/80 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-ink/70 backdrop-blur-md">
                     {resource.meta}
                   </span>
-                  <span className="rounded-full border border-white/40 bg-wine px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
+                  <span className="rounded-full border border-white/40 bg-[linear-gradient(135deg,#5B2FD6,#7B163C)] px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
                     {resource.edition}
                   </span>
                 </div>

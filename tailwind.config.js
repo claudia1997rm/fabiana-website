@@ -5,22 +5,22 @@ export default {
     extend: {
       colors: {
         ink: '#111111',
-        cloud: '#F7F3FF',
-        pearl: '#EDE7F7',
-        mist: '#D9CFEF',
-        taupe: '#6D5BA6',
-        blush: '#C9B9EA',
-        sand: '#B7A0DA',
-        midnight: '#2A2141',
-        smoke: '#5B5176',
-        gold: '#8A4A60',
-        lavender: '#F6F4FB',
-        lilac: '#7C6BC4',
-        plum: '#6D5BA6',
-        deepPlum: '#4C3F91',
-        wine: '#6E2F45',
-        wineSoft: '#8A4A60',
-        lavenderMist: '#F6F4FB',
+        cloud: '#F5F0FF',
+        pearl: '#E7DCFF',
+        mist: '#C7B6FF',
+        taupe: '#6A4BC3',
+        blush: '#D9C7FF',
+        sand: '#A58DF0',
+        midnight: '#211337',
+        smoke: '#4E416E',
+        gold: '#A13B5A',
+        lavender: '#F5F0FF',
+        lilac: '#7A4FF2',
+        plum: '#5B2FD6',
+        deepPlum: '#2B174F',
+        wine: '#7B163C',
+        wineSoft: '#A13B5A',
+        lavenderMist: '#F5F0FF',
       },
       fontFamily: {
         display: ['"Marcellus"', 'serif'],
@@ -28,18 +28,18 @@ export default {
         sans: ['"Manrope"', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 22px 70px rgba(76, 63, 145, 0.10)',
-        glow: '0 20px 52px rgba(109, 91, 166, 0.24)',
-        card: '0 26px 60px rgba(76, 63, 145, 0.14)',
-        lavender: '0 20px 50px rgba(109, 91, 166, 0.24)',
+        soft: '0 22px 70px rgba(43, 23, 79, 0.12)',
+        glow: '0 22px 58px rgba(91, 47, 214, 0.26)',
+        card: '0 26px 60px rgba(43, 23, 79, 0.16)',
+        lavender: '0 20px 54px rgba(91, 47, 214, 0.24)',
       },
       backgroundImage: {
         grain:
-          'radial-gradient(circle at 20% 20%, rgba(124, 107, 196, 0.24), transparent 28%), radial-gradient(circle at 80% 0%, rgba(109, 91, 166, 0.28), transparent 24%), radial-gradient(circle at 50% 100%, rgba(110, 47, 69, 0.10), transparent 34%)',
+          'radial-gradient(circle at 20% 20%, rgba(122, 79, 242, 0.28), transparent 28%), radial-gradient(circle at 80% 0%, rgba(91, 47, 214, 0.34), transparent 24%), radial-gradient(circle at 50% 100%, rgba(123, 22, 60, 0.14), transparent 34%)',
         halo:
           'radial-gradient(circle at center, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.24) 35%, transparent 70%)',
         aurora:
-          'linear-gradient(135deg, rgba(255,255,255,0.72), rgba(247,243,255,0.88) 34%, rgba(237,231,247,0.96) 68%, rgba(109,91,166,0.20) 100%)',
+          'linear-gradient(135deg, rgba(255,255,255,0.72), rgba(245,240,255,0.90) 34%, rgba(231,220,255,0.96) 68%, rgba(91,47,214,0.26) 100%)',
       },
       keyframes: {
         float: {

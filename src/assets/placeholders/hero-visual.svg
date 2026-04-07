@@ -1,12 +1,12 @@
 <svg width="800" height="920" viewBox="0 0 800 920" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="920" rx="44" fill="#F3EFE9"/>
-  <rect x="28" y="28" width="744" height="864" rx="28" fill="#FCFBF9"/>
-  <circle cx="597" cy="214" r="114" fill="#D8C5C0"/>
-  <circle cx="201" cy="683" r="144" fill="#E9E1D8"/>
-  <path d="M181 722C181 553.579 317.579 417 486 417V417C486 585.421 349.421 722 181 722V722Z" fill="#111111"/>
-  <path d="M549.064 232.968C549.064 307.805 488.402 368.468 413.564 368.468C338.727 368.468 278.064 307.805 278.064 232.968C278.064 158.13 338.727 97.468 413.564 97.468C488.402 97.468 549.064 158.13 549.064 232.968Z" stroke="#111111" stroke-opacity="0.15" stroke-width="2"/>
-  <path d="M114 182H272" stroke="#111111" stroke-opacity="0.2" stroke-width="2"/>
-  <path d="M536 778H688" stroke="#111111" stroke-opacity="0.2" stroke-width="2"/>
-  <text x="92" y="130" fill="#111111" fill-opacity="0.8" font-family="Georgia, serif" font-size="38" letter-spacing="0.18em">FABUROSE</text>
-  <text x="88" y="814" fill="#111111" fill-opacity="0.55" font-family="Arial, sans-serif" font-size="20" letter-spacing="0.34em">EDITORIAL PRESENCE</text>
+  <rect width="800" height="920" rx="44" fill="#2B174F"/>
+  <rect x="28" y="28" width="744" height="864" rx="28" fill="#F5F0FF"/>
+  <circle cx="597" cy="214" r="114" fill="#7A4FF2"/>
+  <circle cx="201" cy="683" r="144" fill="#DCCCFF"/>
+  <path d="M181 722C181 553.579 317.579 417 486 417V417C486 585.421 349.421 722 181 722V722Z" fill="#7B163C"/>
+  <path d="M549.064 232.968C549.064 307.805 488.402 368.468 413.564 368.468C338.727 368.468 278.064 307.805 278.064 232.968C278.064 158.13 338.727 97.468 413.564 97.468C488.402 97.468 549.064 158.13 549.064 232.968Z" stroke="#5B2FD6" stroke-opacity="0.26" stroke-width="2"/>
+  <path d="M114 182H272" stroke="#5B2FD6" stroke-opacity="0.34" stroke-width="2"/>
+  <path d="M536 778H688" stroke="#5B2FD6" stroke-opacity="0.34" stroke-width="2"/>
+  <text x="92" y="130" fill="#2B174F" fill-opacity="0.92" font-family="Georgia, serif" font-size="38" letter-spacing="0.18em">FABUROSE</text>
+  <text x="88" y="814" fill="#6D5BA6" fill-opacity="0.74" font-family="Arial, sans-serif" font-size="20" letter-spacing="0.34em">EDITORIAL PRESENCE</text>
 </svg>
