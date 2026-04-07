@@ -1,13 +1,13 @@
-export function SupabaseSetupNotice() {
+﻿export function SupabaseSetupNotice() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-24 md:px-10">
       <div className="magazine-frame rounded-[2rem] p-8 md:p-10">
-        <p className="editorial-kicker">Supabase setup required</p>
+        <p className="editorial-kicker">Configuración de Supabase pendiente</p>
         <h1 className="mt-5 font-display text-5xl leading-none tracking-[-0.03em] text-ink">
-          Connect Supabase to unlock accounts and admin features.
+          Conecta Supabase para activar cuentas y funciones de administración.
         </h1>
         <p className="mt-6 leading-8 text-ink/68">
-          Add VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY to your local .env file and Vercel project settings, then run the SQL in supabase/schema.sql.
+          Añade VITE_SUPABASE_URL y VITE_SUPABASE_PUBLISHABLE_KEY a tu archivo .env local y a las variables del proyecto en Vercel. Después ejecuta el SQL de supabase/schema.sql.
         </p>
       </div>
     </section>

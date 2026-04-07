@@ -30,14 +30,14 @@ export function NavBar() {
         <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.28em]">
           {user ? (
             <>
-              {isAdmin ? <Link className="hidden text-ink/70 transition hover:text-ink md:inline" to="/admin">Admin</Link> : null}
-              <Link className="text-ink/70 transition hover:text-ink" to="/profile">Profile</Link>
-              <button className="hidden text-ink/70 transition hover:text-ink md:inline" onClick={signOut}>Log out</button>
+              {isAdmin ? <Link className="hidden text-ink/70 transition hover:text-ink md:inline" to="/admin">Panel</Link> : null}
+              <Link className="text-ink/70 transition hover:text-ink" to="/profile">Perfil</Link>
+              <button className="hidden text-ink/70 transition hover:text-ink md:inline" onClick={signOut}>Salir</button>
             </>
           ) : (
             <>
-              <Link className="text-ink/70 transition hover:text-ink" to="/login">Login</Link>
-              <Link className="rounded-full border border-ink/15 bg-white/60 px-4 py-2 text-ink transition hover:border-ink/35" to="/signup">Sign up</Link>
+              <Link className="text-ink/70 transition hover:text-ink" to="/login">Entrar</Link>
+              <Link className="rounded-full border border-ink/15 bg-white/60 px-4 py-2 text-ink transition hover:border-ink/35" to="/signup">Crear cuenta</Link>
             </>
           )}
         </div>

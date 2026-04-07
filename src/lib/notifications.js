@@ -14,8 +14,8 @@ export function getNotificationPreferences(profile) {
 
 export function describeNotificationArchitecture() {
   return [
-    'Email notifications are modeled through profiles.newsletter_email_opt_in, with compatibility for legacy newsletter columns.',
-    'When new content is published, a Supabase Edge Function can query opted-in profiles and call an email provider.',
-    'Push notifications can be added later with a push_subscriptions table and a push channel alongside email.',
+    'Las notificaciones por correo se modelan con profiles.newsletter_email_opt_in, manteniendo compatibilidad con columnas antiguas de suscripción.',
+    'Cuando se publique nuevo contenido, una Edge Function de Supabase podrá consultar los perfiles suscritos y llamar a un proveedor de correo.',
+    'Las notificaciones push se podrán añadir más adelante con una tabla push_subscriptions y un canal push junto al correo.',
   ];
 }

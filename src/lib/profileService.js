@@ -8,7 +8,7 @@ export async function getMyProfile(user) {
 
   if (error) {
     throw new Error(
-      `${error.message}. Run supabase/reset-profiles-auth.sql in Supabase SQL Editor to install the safe profile RPC.`,
+      `${error.message}. Ejecuta supabase/reset-profiles-auth.sql en el SQL Editor de Supabase para instalar el RPC seguro de perfil.`,
     );
   }
 
@@ -24,7 +24,7 @@ export async function updateMyProfile({ fullName, newsletter }, user) {
 
   if (error) {
     throw new Error(
-      `${error.message}. Run supabase/reset-profiles-auth.sql in Supabase SQL Editor to install the safe profile RPC.`,
+      `${error.message}. Ejecuta supabase/reset-profiles-auth.sql en el SQL Editor de Supabase para instalar el RPC seguro de perfil.`,
     );
   }
 

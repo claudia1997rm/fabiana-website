@@ -1,4 +1,4 @@
-﻿import { hero } from '../data/siteData';
+import { hero } from '../data/siteData';
 import { Button } from './Button';
 
 export function HeroSection() {
@@ -57,7 +57,7 @@ export function HeroSection() {
             </div>
 
             <div className="magazine-frame absolute -bottom-6 -left-4 max-w-[15rem] rounded-[1.6rem] p-5 md:-left-10">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-taupe">Editor's Note</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-taupe">Nota editorial</p>
               <p className="mt-3 font-serif text-xl leading-6 text-ink">{hero.microNote}</p>
             </div>
           </div>

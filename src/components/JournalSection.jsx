@@ -10,9 +10,9 @@ export function JournalSection() {
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 lg:py-32">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Journal"
+            eyebrow="Diario"
             title="Textos para mirar la vida con más belleza y significado"
-            description="Una sección editorial pensada para crecer como revista digital, blog premium o archivo vivo de ideas, rituales y estilo personal."
+            description="Una sección editorial pensada para crecer como revista digital, blog de alta gama o archivo vivo de ideas, rituales y estilo personal."
             theme="dark"
           />
           <Button href="#newsletter" variant="secondary">

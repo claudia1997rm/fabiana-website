@@ -1,4 +1,4 @@
-﻿import { newsletter } from '../data/siteData';
+import { newsletter } from '../data/siteData';
 import { SectionHeading } from './SectionHeading';
 
 export function NewsletterSection() {
@@ -10,7 +10,7 @@ export function NewsletterSection() {
         <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
           <div>
             <SectionHeading
-              eyebrow="Newsletter"
+              eyebrow="Carta"
               title={newsletter.title}
               description={newsletter.description}
             />
