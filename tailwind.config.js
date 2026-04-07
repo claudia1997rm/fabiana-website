@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
@@ -16,7 +16,7 @@ export default {
         gold: '#b3936b',
       },
       fontFamily: {
-        display: ['"Bodoni Moda"', 'serif'],
+        display: ['"Marcellus"', 'serif'],
         serif: ['"Cormorant Garamond"', 'serif'],
         sans: ['"Manrope"', 'sans-serif'],
       },
