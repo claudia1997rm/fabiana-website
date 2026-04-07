@@ -4,8 +4,8 @@ import { SectionHeading } from './SectionHeading';
 
 export function UniverseSection() {
   return (
-    <section id="universo" className="section-shell border-y border-ink/10 bg-white/45">
-      <div className="orb left-[-90px] top-24 h-64 w-64 bg-blush/30" />
+    <section id="universo" className="section-shell border-y border-lavender/20 bg-white/45">
+      <div className="orb left-[-90px] top-24 h-64 w-64 bg-lavender/25" />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 lg:py-28">
         <SectionHeading
           eyebrow="Universo Fabiana"
@@ -21,11 +21,11 @@ export function UniverseSection() {
                 key={category.name}
                 to={category.path}
                 aria-label={category.cta}
-                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[2rem] border border-ink/10 p-7 transition duration-700 hover:border-ink/20 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:p-8 ${featured ? 'bg-ink text-cloud lg:row-span-2' : 'bg-cloud/90 text-ink'}`}
+                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[2rem] border border-ink/10 p-7 transition duration-700 hover:border-plum/25 hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:p-8 ${featured ? 'bg-ink text-cloud lg:row-span-2' : 'bg-cloud/90 text-ink'}`}
                 style={{ '--reveal-delay': `${index * 75}ms` }}
               >
-                <div className={`absolute right-0 top-0 h-28 w-28 rounded-full blur-3xl transition duration-700 group-hover:scale-125 ${featured ? 'bg-blush/25' : 'bg-pearl/60'}`} />
-                <p className={`text-[10px] uppercase tracking-[0.32em] ${featured ? 'text-blush' : 'text-taupe'}`}>
+                <div className={`absolute right-0 top-0 h-28 w-28 rounded-full blur-3xl transition duration-700 group-hover:scale-125 ${featured ? 'bg-lavender/25' : 'bg-lavenderMist/65'}`} />
+                <p className={`text-[10px] uppercase tracking-[0.32em] ${featured ? 'text-lavender' : 'text-plum/70'}`}>
                   {category.accent}
                 </p>
                 <div className="mt-8 flex items-start justify-between gap-4">
@@ -44,7 +44,7 @@ export function UniverseSection() {
                     Explorar
                   </span>
                   <span className={`h-px flex-1 origin-left transition duration-700 group-hover:scale-x-90 ${featured ? 'bg-white/15' : 'bg-ink/10'}`} />
-                  <span className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-1 ${featured ? 'border-white/15 text-cloud/70 group-hover:bg-white/10' : 'border-ink/10 text-ink/55 group-hover:bg-white'}`}>
+                  <span className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-1 ${featured ? 'border-lavender/25 text-lavender group-hover:bg-lavender/10' : 'border-lavender/30 text-plum/60 group-hover:bg-lavenderMist'}`}>
                     →
                   </span>
                 </div>

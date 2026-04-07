@@ -22,7 +22,7 @@ body {
   min-width: 320px;
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.84), transparent 34%),
-    radial-gradient(circle at 85% 10%, rgba(220, 199, 192, 0.22), transparent 24%),
+    radial-gradient(circle at 85% 10%, rgba(196, 181, 253, 0.16), transparent 24%),
     linear-gradient(180deg, #f7f3ee 0%, #f1ebe3 48%, #efe6dc 100%);
   color: #111111;
 }
@@ -55,12 +55,12 @@ body::before {
 }
 
 ::selection {
-  background: #111111;
+  background: #6D5BA6;
   color: #f5f3ef;
 }
 
 :focus-visible {
-  outline: 2px solid rgba(17, 17, 17, 0.28);
+  outline: 2px solid rgba(109, 91, 166, 0.42);
   outline-offset: 4px;
 }
 
@@ -70,7 +70,7 @@ body::before {
   }
 
   .editorial-kicker {
-    @apply text-[11px] uppercase tracking-[0.42em] text-taupe;
+    @apply text-[11px] uppercase tracking-[0.42em] text-plum/75;
   }
 
   .hero-title {
@@ -84,23 +84,23 @@ body::before {
   }
 
   .magazine-frame {
-    @apply border border-ink/10 bg-white/70 shadow-card backdrop-blur-sm;
+    @apply border border-lavender/20 bg-white/70 shadow-card backdrop-blur-sm;
   }
 
   .hover-lift {
-    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:shadow-card;
+    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:shadow-lavender;
   }
 
   .product-card {
-    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-ink/20 hover:bg-white/80 hover:shadow-card;
+    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-plum/25 hover:bg-white/80 hover:shadow-lavender;
   }
 
   .nav-action {
-    @apply inline-flex rounded-full px-3 py-2 text-ink/70 transition duration-500 hover:-translate-y-0.5 hover:bg-white/70 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20;
+    @apply inline-flex rounded-full px-3 py-2 text-ink/70 transition duration-500 hover:-translate-y-0.5 hover:bg-lavenderMist/70 hover:text-plum focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25;
   }
 
   .soft-link {
-    @apply relative text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/60 transition duration-500 hover:text-ink focus-visible:outline-none focus-visible:text-ink;
+    @apply relative text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/60 transition duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum;
   }
 
   .soft-link::after {

@@ -25,7 +25,7 @@ export function JournalSection() {
             <a
               key={post.title}
               href={`/journal/${slugify(post.title)}`}
-              className="reveal-on-scroll group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] transition duration-700 hover:-translate-y-2 hover:border-white/20 hover:bg-white/[0.09] hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-4 focus-visible:ring-offset-midnight"
+              className="reveal-on-scroll group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] transition duration-700 hover:-translate-y-2 hover:border-white/20 hover:bg-white/[0.09] hover:shadow-violetGlow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-4 focus-visible:ring-offset-midnight"
               style={{ '--reveal-delay': `${index * 100}ms` }}
             >
               <div className="overflow-hidden">
