@@ -43,18 +43,43 @@ img {
 }
 
 
-body::after {
-  content: '';
+
+
+.brand-atmosphere {
   position: fixed;
-  right: -10rem;
-  top: 7rem;
-  width: min(52rem, 78vw);
-  aspect-ratio: 1;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
-  opacity: 0.16;
+  overflow: hidden;
+}
+
+.brand-atmosphere__rose {
+  position: absolute;
+  right: clamp(-14rem, -12vw, -4rem);
+  top: clamp(5rem, 13vh, 11rem);
+  width: min(58rem, 86vw);
+  aspect-ratio: 1;
+  opacity: 0.23;
   background: url('/brand-background.svg') center / contain no-repeat;
   mix-blend-mode: multiply;
-  z-index: -1;
+  transform: translate3d(var(--brand-shift-x, 0), var(--brand-shift-y, 0), 0) rotate(var(--brand-rotate, 0deg));
+  transition: opacity 600ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.brand-atmosphere__monogram {
+  position: absolute;
+  left: clamp(-2rem, 5vw, 5rem);
+  bottom: clamp(5rem, 10vh, 9rem);
+  font-family: 'Marcellus', serif;
+  font-size: clamp(8rem, 22vw, 24rem);
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+  color: rgba(47, 41, 64, 0.055);
+  transform: translate3d(var(--brand-shift-x-soft, 0), var(--brand-shift-y-soft, 0), 0);
+  transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+  will-change: transform;
 }
 body::before {
   content: '';
