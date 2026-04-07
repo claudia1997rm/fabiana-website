@@ -199,5 +199,60 @@ create policy "Admins can update content files" on storage.objects for update us
 drop policy if exists "Admins can delete content files" on storage.objects;
 create policy "Admins can delete content files" on storage.objects for delete using (bucket_id in ('images', 'pdfs') and public.is_admin());
 
+
+-- Safe profile RPCs used by the frontend. These bypass broken direct RLS reads while only returning/updating the current user.
+create or replace function public.get_my_profile()
+returns table (
+  id uuid,
+  email text,
+  full_name text,
+  role text,
+  newsletter_email_opt_in boolean,
+  updated_at timestamptz
+)
+language sql
+stable
+security definer
+set search_path = public
+as $
+  select
+    p.id,
+    p.email,
+    p.full_name,
+    lower(trim(p.role)) as role,
+    coalesce(p.newsletter_email_opt_in, false) as newsletter_email_opt_in,
+    p.updated_at
+  from public.profiles p
+  where p.id = auth.uid();
+$;
+
+create or replace function public.update_my_profile(
+  new_full_name text,
+  new_newsletter_email_opt_in boolean
+)
+returns table (
+  id uuid,
+  email text,
+  full_name text,
+  role text,
+  newsletter_email_opt_in boolean,
+  updated_at timestamptz
+)
+language plpgsql
+security definer
+set search_path = public
+as $
+begin
+  update public.profiles
+  set
+    full_name = new_full_name,
+    newsletter_email_opt_in = coalesce(new_newsletter_email_opt_in, false),
+    updated_at = now()
+  where profiles.id = auth.uid();
+
+  return query
+  select * from public.get_my_profile();
+end;
+$;
 -- After signing up Fabiana's account, promote it to admin by email:
 -- update public.profiles set role = 'admin' where email = 'fabiana@example.com';

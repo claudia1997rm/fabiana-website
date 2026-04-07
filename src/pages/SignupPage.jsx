@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../context/AuthContext';
-import { buildProfileUpdatePayload } from '../lib/profileAdapter';
 import { SupabaseSetupNotice } from './SupabaseSetupNotice';
 
 export function SignupPage() {
@@ -31,18 +30,6 @@ export function SignupPage() {
         },
       },
     });
-
-    if (!error && data.user) {
-      const { error: profileError } = await supabase.from('profiles').upsert({
-        id: data.user.id,
-        email,
-        ...buildProfileUpdatePayload({ fullName, newsletter }),
-      });
-
-      if (profileError) {
-        console.warn('Profile upsert skipped or failed. The database trigger should create the profile.', profileError.message);
-      }
-    }
 
     setSubmitting(false);
     setStatus(error ? error.message : 'Account created. Check your email if confirmation is enabled.');

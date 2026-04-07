@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { normalizeProfile } from '../lib/profileAdapter';
+import { getMyProfile } from '../lib/profileService';
 import { isSupabaseConfigured, supabase } from '../lib/supabaseClient';
 
 const AuthContext = createContext(null);
@@ -23,24 +24,18 @@ export function AuthProvider({ children }) {
     setProfileLoading(true);
     setProfileError(null);
 
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user.id)
-      .maybeSingle();
-
-    setProfileLoading(false);
-
-    if (error) {
-      console.error('Could not load profile from public.profiles', error);
+    try {
+      const normalizedProfile = await getMyProfile(user);
+      setProfile(normalizedProfile);
+      return normalizedProfile;
+    } catch (error) {
+      console.error('Could not load profile through get_my_profile RPC', error);
       setProfile(normalizeProfile(null, user));
       setProfileError(error);
       return null;
+    } finally {
+      setProfileLoading(false);
     }
-
-    const normalizedProfile = normalizeProfile(data, user);
-    setProfile(normalizedProfile);
-    return normalizedProfile;
   }
 
   async function refreshProfile() {

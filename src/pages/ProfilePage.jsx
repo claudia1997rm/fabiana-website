@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { buildProfileUpdatePayload, getNewsletterOptIn } from '../lib/profileAdapter';
-import { supabase } from '../lib/supabaseClient';
+import { getNewsletterOptIn } from '../lib/profileAdapter';
+import { updateMyProfile } from '../lib/profileService';
 import { describeNotificationArchitecture, getNotificationPreferences } from '../lib/notifications';
 
 export function ProfilePage() {
@@ -21,17 +21,13 @@ export function ProfilePage() {
 
   async function handleSave(event) {
     event.preventDefault();
-    const { error } = await supabase
-      .from('profiles')
-      .update(buildProfileUpdatePayload({ fullName, newsletter }))
-      .eq('id', user.id);
-
-    if (error) {
+    try {
+      await updateMyProfile({ fullName, newsletter }, user);
+      await refreshProfile();
+    } catch (error) {
       setStatus(error.message);
       return;
     }
-
-    await refreshProfile();
     setStatus('Profile updated.');
   }
 
@@ -69,7 +65,7 @@ export function ProfilePage() {
           {status ? <p className="mt-4 text-sm text-ink/65">{status}</p> : null}
           <div className="mt-8 border-t border-ink/10 pt-6">
             <p className="text-sm font-semibold text-ink">Notification architecture</p>
-            <p className="mt-2 text-sm text-ink/60">Email: {preferences.email ? 'enabled' : 'disabled'} · Push: prepared for later</p>
+            <p className="mt-2 text-sm text-ink/60">Email: {preferences.email ? 'enabled' : 'disabled'} Â· Push: prepared for later</p>
             {describeNotificationArchitecture().map((item) => (
               <p key={item} className="mt-2 text-sm leading-6 text-ink/55">{item}</p>
             ))}
