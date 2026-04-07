@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { categoryPages } from '../data/siteData';
 import { buildAstrologySummary } from '../lib/astrology';
-import { listPublishedPhotos } from '../lib/contentService';
+import { deletePhoto, listPublishedPhotos } from '../lib/contentService';
 
 function ComingSoonGrid({ items }) {
   return (
@@ -22,14 +23,33 @@ function ComingSoonGrid({ items }) {
 }
 
 function PhotographyGallery() {
+  const { isAdmin } = useAuth();
   const [photos, setPhotos] = useState([]);
   const [status, setStatus] = useState('');
 
-  useEffect(() => {
-    listPublishedPhotos()
+  async function refreshPhotos() {
+    return listPublishedPhotos()
       .then((items) => setPhotos(items))
       .catch((error) => setStatus(error.message));
+  }
+
+  useEffect(() => {
+    refreshPhotos();
   }, []);
+
+  async function handleDeletePhoto(photo) {
+    const confirmed = window.confirm(`Quieres borrar la fotografia "${photo.title}"? Esta accion no se puede deshacer.`);
+    if (!confirmed) return;
+
+    setStatus('');
+    try {
+      await deletePhoto(photo);
+      await refreshPhotos();
+      setStatus('Fotografia borrada.');
+    } catch (error) {
+      setStatus(error.message);
+    }
+  }
 
   return (
     <section className="mt-12 border-t border-ink/10 pt-10">
@@ -45,6 +65,13 @@ function PhotographyGallery() {
         </p>
       </div>
 
+      {isAdmin ? (
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link to="/admin#admin-fotografia" className="rounded-full border border-plum bg-plum px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-cloud shadow-lavender transition duration-500 hover:-translate-y-1 hover:bg-deepPlum">Subir fotografia</Link>
+          <Link to="/admin#archivo-fotografias" className="rounded-full border border-plum/20 bg-lavenderMist/90 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-plum transition duration-500 hover:-translate-y-0.5 hover:bg-white">Gestionar en admin</Link>
+        </div>
+      ) : null}
+
       {status ? <p className="mt-6 rounded-[1.2rem] bg-white/70 p-4 text-sm text-ink/70 shadow-soft">{status}</p> : null}
 
       {photos.length ? (
@@ -58,6 +85,12 @@ function PhotographyGallery() {
               <div className="relative overflow-hidden rounded-[1.55rem] bg-deepPlum/10">
                 <img src={photo.image} alt={photo.title} className="w-full object-cover transition duration-1000 group-hover:scale-[1.035]" />
                 {photo.featured ? <span className="absolute left-4 top-4 rounded-full border border-white/30 bg-deepPlum/70 px-3 py-1.5 text-[10px] uppercase tracking-[0.24em] text-cloud backdrop-blur-md">Destacada</span> : null}
+                {isAdmin ? (
+                  <div className="absolute inset-x-3 bottom-3 flex flex-wrap gap-2 rounded-[1.2rem] border border-white/25 bg-deepPlum/70 p-2 backdrop-blur-md">
+                    <Link to="/admin#archivo-fotografias" className="flex-1 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.2em] text-cloud transition hover:bg-white hover:text-deepPlum">Editar</Link>
+                    <button type="button" onClick={() => handleDeletePhoto(photo)} className="flex-1 rounded-full border border-white/20 bg-white px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.2em] text-wine transition hover:bg-wine hover:text-white">Borrar</button>
+                  </div>
+                ) : null}
               </div>
               <div className="px-2 py-5">
                 <p className="text-[10px] uppercase tracking-[0.32em] text-plum">Fotografia editorial</p>
