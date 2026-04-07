@@ -22,9 +22,8 @@ body {
   min-width: 320px;
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.82), transparent 32%),
-    radial-gradient(circle at 86% 8%, rgba(196, 181, 253, 0.38), transparent 30%),
-    radial-gradient(circle at 10% 72%, rgba(109, 91, 166, 0.12), transparent 34%),
-    linear-gradient(180deg, #f8f4f1 0%, #f1ebf8 44%, #e9e5f5 100%);
+    radial-gradient(circle at 86% 8%, rgba(124, 107, 196, 0.18), transparent 28%),
+    linear-gradient(180deg, #f8f4f1 0%, #f4eff8 48%, #f6f4fb 100%);
   color: #111111;
 }
 
@@ -49,8 +48,8 @@ body::before {
   pointer-events: none;
   opacity: 0.22;
   background-image:
-    linear-gradient(rgba(109, 91, 166, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(109, 91, 166, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(109, 91, 166, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 91, 166, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(circle at center, black 42%, transparent 100%);
 }
@@ -81,19 +80,19 @@ body::before {
   }
 
   .glass-panel {
-    @apply border border-lavender/35 bg-lavenderMist/45 backdrop-blur-xl;
+    @apply border border-plum/20 bg-lavenderMist/70 backdrop-blur-xl;
   }
 
   .magazine-frame {
-    @apply border border-lavender/35 bg-white/75 shadow-lavender backdrop-blur-sm;
+    @apply border border-plum/20 bg-white/80 shadow-lavender backdrop-blur-sm;
   }
 
   .hover-lift {
-    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:border-plum/35 hover:shadow-violetGlow;
+    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:border-plum/30 hover:shadow-lavender;
   }
 
   .product-card {
-    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-plum/40 hover:bg-lavenderMist/80 hover:shadow-violetGlow;
+    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-plum/35 hover:bg-lavenderMist/80 hover:shadow-lavender;
   }
 
   .nav-action {

@@ -3,7 +3,7 @@ import { statement } from '../data/siteData';
 export function EditorialStatement() {
   return (
     <section className="section-shell mx-auto max-w-7xl px-6 pb-8 md:px-10 md:pb-16">
-      <div className="reveal-on-scroll magazine-frame rounded-[2.25rem] px-6 py-10 transition duration-700 hover:-translate-y-1 hover:shadow-violetGlow md:px-10 lg:px-14 lg:py-14">
+      <div className="reveal-on-scroll magazine-frame rounded-[2.25rem] px-6 py-10 transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:px-10 lg:px-14 lg:py-14">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="editorial-kicker">Firma editorial</p>

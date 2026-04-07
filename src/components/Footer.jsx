@@ -2,7 +2,7 @@ import { footer, integrationNotes } from '../data/siteData';
 
 export function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-pearl/85">
+    <footer className="border-t border-plum/20 bg-lavenderMist/85">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:px-10 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:py-16">
         <div>
           <p className="font-display text-5xl leading-none tracking-[0.04em] text-ink">FabuRose</p>
@@ -15,7 +15,7 @@ export function Footer() {
               <a
                 key={social.label}
                 href={social.href}
-                className="w-fit text-sm text-ink/72 transition duration-300 hover:translate-x-1 hover:text-ink"
+                className="w-fit text-sm text-ink/72 transition duration-300 hover:translate-x-1 hover:text-plum"
               >
                 {social.label}
               </a>

@@ -12,7 +12,7 @@ export function ResourcesSection() {
           title="PDFs, guías y piezas descargables con alma editorial"
           description="Una boutique digital para descargar guías, guardar rituales y convertir la inspiración en una práctica real. Cada pieza está pensada como un pequeño objeto editorial."
         />
-        <div className="max-w-md rounded-[1.7rem] border border-lavender/35 bg-lavenderMist/70 p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
+        <div className="max-w-md rounded-[1.7rem] border border-plum/20 bg-lavenderMist/80 p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
           <p className="text-[10px] uppercase tracking-[0.32em] text-plum/75">Recorrido sugerido</p>
           <p className="mt-3">Empieza por el recurso que más resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
         </div>
@@ -36,7 +36,7 @@ export function ResourcesSection() {
                   <span className="rounded-full border border-white/50 bg-white/75 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-ink/70 backdrop-blur-md">
                     {resource.meta}
                   </span>
-                  <span className="rounded-full border border-white/40 bg-plum/90 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
+                  <span className="rounded-full border border-white/40 bg-plum px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
                     {resource.edition}
                   </span>
                 </div>
@@ -51,7 +51,7 @@ export function ResourcesSection() {
                   {resource.title}
                 </h3>
                 <p className="mt-5 flex-1 leading-7 text-ink/70">{resource.description}</p>
-                <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-lavender/35 pt-6">
+                <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-plum/20 pt-6">
                   <Button href={`/resources/${slugify(resource.title)}`} variant={index === 0 ? 'primary' : 'secondary'}>
                     {resource.cta}
                   </Button>

@@ -4,8 +4,8 @@ import { Button } from './Button';
 export function HeroSection() {
   return (
     <section className="section-shell pt-8 md:pt-10">
-      <div className="orb left-[-120px] top-16 h-72 w-72 bg-lavender/55 animate-pulseSoft" />
-      <div className="orb right-[-120px] top-20 h-80 w-80 bg-plum/20 animate-drift" />
+      <div className="orb left-[-120px] top-16 h-72 w-72 bg-lavender/30 animate-pulseSoft" />
+      <div className="orb right-[-120px] top-20 h-80 w-80 bg-lilac/20 animate-drift" />
       <div className="absolute inset-0 bg-grain opacity-80" aria-hidden="true" />
 
       <div className="mx-auto grid max-w-7xl gap-14 px-6 pb-24 pt-14 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-32 lg:pt-20">
@@ -20,7 +20,7 @@ export function HeroSection() {
             {hero.title}
           </h1>
 
-          <p className="mt-6 max-w-2xl font-serif text-2xl italic leading-tight text-ink/78 md:text-[2rem]">
+          <p className="mt-6 max-w-2xl font-serif text-2xl italic leading-tight text-ink/80 md:text-[2rem]">
             {hero.lead}
           </p>
 
@@ -41,7 +41,7 @@ export function HeroSection() {
             </Button>
           </div>
 
-          <div className="mt-12 grid max-w-2xl gap-4 border-t border-lavender/30 pt-6 md:grid-cols-3">
+          <div className="mt-12 grid max-w-2xl gap-4 border-t border-plum/20 pt-6 md:grid-cols-3">
             {hero.highlights.map((item, index) => (
               <div key={item} className="reveal-on-scroll space-y-2 rounded-[1.25rem] p-1 transition duration-500 hover:bg-lavenderMist/80" style={{ '--reveal-delay': `${index * 80}ms` }}>
                 <span className="text-[10px] uppercase tracking-[0.32em] text-plum/75">FabuRose</span>
@@ -52,7 +52,7 @@ export function HeroSection() {
         </div>
 
         <div className="relative flex justify-center lg:justify-end">
-          <div className="absolute -left-8 top-6 hidden h-40 w-40 rounded-full border border-lavender/25 md:block" />
+          <div className="absolute -left-8 top-6 hidden h-40 w-40 rounded-full border border-plum/20 md:block" />
           <div className="absolute right-0 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-plum/20 to-transparent lg:block" />
 
           <div className="relative z-10 w-full max-w-[32rem]">
