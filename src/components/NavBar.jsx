@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { navigation } from '../data/siteData';
+import { BrandLogo } from './BrandLogo';
 
 export function NavBar() {
   const { user, isAdmin, signOut } = useAuth();
@@ -18,9 +19,8 @@ export function NavBar() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-deepPlum/95 backdrop-blur-xl transition duration-500">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:px-10">
         <Link to="/" onClick={handleBrandClick} className="group flex cursor-pointer items-center gap-3 text-cloud focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-lilac text-[10px] text-white shadow-lavender uppercase tracking-[0.3em] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-white/25 group-hover:bg-wine">
-            FR
-          </span>
+          <BrandLogo />
+
           <span className="font-display text-[1.8rem] tracking-[0.08em] transition duration-500 group-hover:tracking-[0.1em]">FabuRose</span>
         </Link>
 
