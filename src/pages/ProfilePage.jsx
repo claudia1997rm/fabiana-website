@@ -1,24 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { buildProfileUpdatePayload, getNewsletterOptIn } from '../lib/profileAdapter';
 import { supabase } from '../lib/supabaseClient';
 import { describeNotificationArchitecture, getNotificationPreferences } from '../lib/notifications';
 
 export function ProfilePage() {
-  const { user, profile, refreshProfile, signOut, isAdmin } = useAuth();
+  const { user, profile, profileError, profileLoading, refreshProfile, signOut } = useAuth();
   const [fullName, setFullName] = useState(profile?.full_name || '');
-  const [newsletter, setNewsletter] = useState(Boolean(profile?.newsletter_email_opt_in));
+  const [newsletter, setNewsletter] = useState(getNewsletterOptIn(profile));
   const [status, setStatus] = useState('');
 
   useEffect(() => {
+    refreshProfile();
+  }, []);
+
+  useEffect(() => {
     setFullName(profile?.full_name || '');
-    setNewsletter(Boolean(profile?.newsletter_email_opt_in));
+    setNewsletter(getNewsletterOptIn(profile));
   }, [profile]);
 
   async function handleSave(event) {
     event.preventDefault();
     const { error } = await supabase
       .from('profiles')
-      .update({ full_name: fullName, newsletter_email_opt_in: newsletter })
+      .update(buildProfileUpdatePayload({ fullName, newsletter }))
       .eq('id', user.id);
 
     if (error) {
@@ -31,6 +36,7 @@ export function ProfilePage() {
   }
 
   const preferences = getNotificationPreferences(profile);
+  const roleLabel = profile?.role || 'profile not loaded';
 
   return (
     <section className="mx-auto max-w-5xl px-6 py-24 md:px-10">
@@ -38,8 +44,13 @@ export function ProfilePage() {
         <div className="magazine-frame rounded-[2rem] p-8">
           <p className="editorial-kicker">Profile</p>
           <h1 className="mt-4 font-display text-5xl leading-none tracking-[-0.03em] text-ink">Your space</h1>
-          <p className="mt-5 leading-7 text-ink/65">Signed in as {user.email}. Role: {isAdmin ? 'admin' : 'user'}.</p>
-          <button onClick={signOut} className="mt-8 rounded-full border border-ink/15 bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-ink transition hover:border-ink/40">
+          <p className="mt-5 leading-7 text-ink/65">Signed in as {user.email}.</p>
+          <p className="mt-2 leading-7 text-ink/65">Role from public.profiles: {profileLoading ? 'loading...' : roleLabel}.</p>
+          {profileError ? <p className="mt-4 rounded-[1rem] bg-white/70 p-4 text-sm leading-6 text-ink/70">Profile query error: {profileError.message}</p> : null}
+          <button onClick={refreshProfile} className="mt-8 rounded-full border border-ink/15 bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-ink transition hover:border-ink/40">
+            Refresh profile
+          </button>
+          <button onClick={signOut} className="ml-3 mt-8 rounded-full border border-ink/15 bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-ink transition hover:border-ink/40">
             Log out
           </button>
         </div>

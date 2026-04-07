@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../context/AuthContext';
+import { buildProfileUpdatePayload } from '../lib/profileAdapter';
 import { SupabaseSetupNotice } from './SupabaseSetupNotice';
 
 export function SignupPage() {
@@ -32,12 +33,15 @@ export function SignupPage() {
     });
 
     if (!error && data.user) {
-      await supabase.from('profiles').upsert({
+      const { error: profileError } = await supabase.from('profiles').upsert({
         id: data.user.id,
         email,
-        full_name: fullName,
-        newsletter_email_opt_in: newsletter,
+        ...buildProfileUpdatePayload({ fullName, newsletter }),
       });
+
+      if (profileError) {
+        console.warn('Profile upsert skipped or failed. The database trigger should create the profile.', profileError.message);
+      }
     }
 
     setSubmitting(false);

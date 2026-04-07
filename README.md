@@ -64,8 +64,8 @@ The Supabase schema creates:
 
 The SQL creates two public buckets:
 
-- `content-covers`: cover images for posts and resources.
-- `resource-pdfs`: uploaded PDF files.
+- `images`: public cover images for posts and resources.
+- `pdfs`: public downloadable PDF files.
 
 Admin uploads are organized by folder and user id, for example:
 
@@ -123,3 +123,6 @@ This repo includes `vercel.json`:
 ```
 
 The rewrite supports direct visits to SPA routes such as `/profile`, `/admin`, `/resources/:slug` and `/journal/:slug`.
+## Full Supabase automation guide
+
+See SUPABASE_SETUP.md for CLI commands, manual fallback steps, Vercel environment variables and the production testing checklist.

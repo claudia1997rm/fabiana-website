@@ -1,40 +1,51 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { normalizeProfile } from '../lib/profileAdapter';
 import { isSupabaseConfigured, supabase } from '../lib/supabaseClient';
 
 const AuthContext = createContext(null);
 
-const defaultProfile = {
-  id: null,
-  full_name: '',
-  role: 'user',
-  newsletter_email_opt_in: false,
-};
+const defaultProfile = normalizeProfile(null, null);
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(defaultProfile);
   const [loading, setLoading] = useState(true);
+  const [profileLoading, setProfileLoading] = useState(false);
+  const [profileError, setProfileError] = useState(null);
 
-  async function fetchProfile(userId) {
-    if (!supabase || !userId) {
+  async function fetchProfile(user = session?.user) {
+    if (!supabase || !user?.id) {
       setProfile(defaultProfile);
+      setProfileError(null);
       return null;
     }
 
-    const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single();
+    setProfileLoading(true);
+    setProfileError(null);
+
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    setProfileLoading(false);
 
     if (error) {
-      console.warn('Could not load profile', error.message);
-      setProfile({ ...defaultProfile, id: userId });
+      console.error('Could not load profile from public.profiles', error);
+      setProfile(normalizeProfile(null, user));
+      setProfileError(error);
       return null;
     }
 
-    setProfile(data || { ...defaultProfile, id: userId });
-    return data;
+    const normalizedProfile = normalizeProfile(data, user);
+    setProfile(normalizedProfile);
+    return normalizedProfile;
   }
 
   async function refreshProfile() {
-    return fetchProfile(session?.user?.id);
+    const { data } = await supabase.auth.getUser();
+    return fetchProfile(data.user || session?.user);
   }
 
   useEffect(() => {
@@ -48,18 +59,19 @@ export function AuthProvider({ children }) {
     supabase.auth.getSession().then(async ({ data }) => {
       if (!mounted) return;
       setSession(data.session);
-      if (data.session?.user?.id) {
-        await fetchProfile(data.session.user.id);
+      if (data.session?.user) {
+        await fetchProfile(data.session.user);
       }
       setLoading(false);
     });
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, nextSession) => {
       setSession(nextSession);
-      if (nextSession?.user?.id) {
-        fetchProfile(nextSession.user.id);
+      if (nextSession?.user) {
+        fetchProfile(nextSession.user);
       } else {
         setProfile(defaultProfile);
+        setProfileError(null);
       }
     });
 
@@ -74,20 +86,25 @@ export function AuthProvider({ children }) {
     await supabase.auth.signOut();
     setSession(null);
     setProfile(defaultProfile);
+    setProfileError(null);
   }
+
+  const isAdmin = profile?.role === 'admin' && !profileError;
 
   const value = useMemo(
     () => ({
       isConfigured: isSupabaseConfigured,
       loading,
+      profileLoading,
+      profileError,
       session,
       user: session?.user || null,
       profile,
-      isAdmin: profile?.role === 'admin',
+      isAdmin,
       refreshProfile,
       signOut,
     }),
-    [loading, session, profile],
+    [loading, profileLoading, profileError, session, profile, isAdmin],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

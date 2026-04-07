@@ -1,6 +1,6 @@
 export const STORAGE_BUCKETS = {
-  covers: 'content-covers',
-  pdfs: 'resource-pdfs',
+  covers: 'images',
+  pdfs: 'pdfs',
 };
 
 export function sanitizeFileName(fileName) {
