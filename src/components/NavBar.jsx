@@ -24,7 +24,7 @@ export function NavBar() {
           <span className="font-display text-[1.8rem] tracking-[0.08em] transition duration-500 group-hover:tracking-[0.1em]">FabuRose</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="NavegaciÃ³n principal">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Navegacion principal">
           {navigation.map((item) => {
             const isActive = activeHref === item.href;
             return (

@@ -26,6 +26,10 @@ function mapPost(post) {
   return post?.cover_image_path ? { ...post, image: getPublicUrl(STORAGE_BUCKETS.covers, post.cover_image_path) } : post;
 }
 
+function mapPhoto(photo) {
+  return photo?.image_path ? { ...photo, image: getPublicUrl(STORAGE_BUCKETS.covers, photo.image_path) } : photo;
+}
+
 export async function listPublishedResources() {
   if (!supabase) return mockResources.map((resource) => ({ ...resource, slug: slugify(resource.title) }));
   const { data, error } = await supabase.from('resources').select('*, categories(name, slug)').eq('status', 'published').order('published_at', { ascending: false });
@@ -60,6 +64,13 @@ export async function getPostBySlug(slug) {
   return mapPost(data);
 }
 
+export async function listPublishedPhotos() {
+  if (!supabase) return [];
+  const { data, error } = await supabase.from('photo_entries').select('*').eq('status', 'published').order('published_at', { ascending: false });
+  if (error) throw error;
+  return data.map(mapPhoto);
+}
+
 export async function listCategories() {
   if (!supabase) return [];
   const { data, error } = await supabase.from('categories').select('*').order('name');
@@ -77,6 +88,12 @@ export async function listAdminPosts() {
   const { data, error } = await supabase.from('posts').select('*, categories(name, slug)').order('updated_at', { ascending: false });
   if (error) throw error;
   return data;
+}
+
+export async function listAdminPhotos() {
+  const { data, error } = await supabase.from('photo_entries').select('*').order('updated_at', { ascending: false });
+  if (error) throw error;
+  return data.map(mapPhoto);
 }
 
 export async function uploadContentFile({ bucket, folder, file, ownerId }) {
@@ -115,6 +132,16 @@ export async function savePost(payload) {
   const query = record.id
     ? supabase.from('posts').update(record).eq('id', record.id).select().single()
     : supabase.from('posts').insert(record).select().single();
+  const { data, error } = await query;
+  if (error) throw error;
+  return data;
+}
+
+export async function savePhoto(payload) {
+  const { image, ...record } = payload;
+  const query = record.id
+    ? supabase.from('photo_entries').update(record).eq('id', record.id).select().single()
+    : supabase.from('photo_entries').insert(record).select().single();
   const { data, error } = await query;
   if (error) throw error;
   return data;

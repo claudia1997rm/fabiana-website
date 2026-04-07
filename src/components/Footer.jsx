@@ -15,7 +15,7 @@ export function Footer() {
               <a
                 key={social.label}
                 href={social.href}
-                className="w-fit text-sm text-ink/72 transition duration-300 hover:translate-x-1 hover:text-plum"
+                className="w-fit text-sm text-ink/70 transition duration-300 hover:translate-x-1 hover:text-plum"
               >
                 {social.label}
               </a>
