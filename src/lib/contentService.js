@@ -103,6 +103,12 @@ export async function uploadContentFile({ bucket, folder, file, ownerId }) {
   return data.path;
 }
 
+export async function deleteContentFile({ bucket, path }) {
+  if (!path) return;
+  const { error } = await supabase.storage.from(bucket).remove([path]);
+  if (error) throw error;
+}
+
 export async function createCategory(payload) {
   const slug = payload.slug || slugify(payload.name);
   const { data, error } = await supabase.from('categories').insert({ ...payload, slug }).select().single();
@@ -145,4 +151,12 @@ export async function savePhoto(payload) {
   const { data, error } = await query;
   if (error) throw error;
   return data;
+}
+
+export async function deletePhoto(photo) {
+  if (photo.image_path) {
+    await deleteContentFile({ bucket: STORAGE_BUCKETS.covers, path: photo.image_path });
+  }
+  const { error } = await supabase.from('photo_entries').delete().eq('id', photo.id);
+  if (error) throw error;
 }
