@@ -48,9 +48,9 @@ function AdminAlert({ message }) {
   );
 }
 
-function PanelCard({ eyebrow, title, description, children, className = '' }) {
+function PanelCard({ eyebrow, title, description, children, className = '', id }) {
   return (
-    <section className={`magazine-frame rounded-[1.8rem] p-5 transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:rounded-[2.1rem] md:p-7 ${className}`}>
+    <section id={id} className={`magazine-frame rounded-[1.8rem] p-5 transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:rounded-[2.1rem] md:p-7 ${className}`}>
       <div className="border-b border-plum/20 pb-5">
         <p className="editorial-kicker">{eyebrow}</p>
         {title ? <h2 className="mt-3 font-display text-4xl leading-none tracking-[-0.04em] text-ink md:text-5xl">{title}</h2> : null}
@@ -214,6 +214,10 @@ export function AdminDashboardPage() {
             <p className="editorial-kicker">Administracion FabuRose</p>
             <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[0.92] tracking-[-0.05em] text-ink sm:text-6xl md:text-7xl">Estudio editorial de contenido</h1>
             <p className="mt-5 max-w-2xl text-base leading-8 text-ink/70">Crea, cura y publica recursos, fotografias y articulos desde un espacio pensado como una mesa editorial: claro, suave y con foco.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="#admin-fotografia" className={primaryButtonClass}>Subir fotografia</a>
+              <a href="#archivo-fotografias" className={secondaryButtonClass}>Gestionar fotografias</a>
+            </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             {stats.map((item) => (
@@ -254,7 +258,7 @@ export function AdminDashboardPage() {
         </PanelCard>
       </div>
 
-      <PanelCard eyebrow="Nueva fotografia" title={photo.id ? 'Editar pieza visual' : 'Galeria editorial'} description="Sube imagenes con descripcion para alimentar la pagina de Fotografia con un formato moderno, aesthetic y animado." className="mt-6 overflow-hidden">
+      <PanelCard id="admin-fotografia" eyebrow="Nueva fotografia" title={photo.id ? 'Editar pieza visual' : 'Galeria editorial'} description="Sube imagenes con descripcion para alimentar la pagina de Fotografia con un formato moderno, aesthetic y animado." className="mt-6 overflow-hidden">
         <form onSubmit={handleSavePhoto} className="grid gap-7 lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
           <div className="relative min-h-72 overflow-hidden rounded-[1.7rem] border border-plum/20 bg-[linear-gradient(135deg,#2A2235,#5B4A78)] p-6 text-cloud shadow-card">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,253,248,0.20),transparent_32%)]" />
@@ -303,8 +307,9 @@ export function AdminDashboardPage() {
             {resources.map((item) => <button key={item.id} onClick={() => editResource(item)} className="group flex w-full items-center justify-between gap-4 rounded-[1.2rem] border border-plum/10 bg-white/70 p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-plum/30 hover:bg-white"><span className="text-sm leading-6 text-ink/75 group-hover:text-ink">{item.title}</span><StatusPill value={item.status} /></button>)}
           </div>
         </PanelCard>
-        <PanelCard eyebrow="Archivo" title="Fotografias" description="Edita o borra imagenes de la galeria.">
+        <PanelCard id="archivo-fotografias" eyebrow="Archivo" title="Fotografias" description="Aqui aparecen las fotos ya subidas. Abre una foto para editarla o usa Borrar para eliminarla.">
           <div className="space-y-3">
+            {photos.length === 0 ? <p className="rounded-[1.2rem] border border-dashed border-plum/20 bg-lavenderMist/80 p-4 text-sm leading-6 text-ink/70">Todavia no hay fotografias subidas. Usa el boton Subir fotografia de arriba para crear la primera.</p> : null}
             {photos.map((item) => (
               <div key={item.id} className="group rounded-[1.25rem] border border-plum/10 bg-white/70 p-3 transition duration-300 hover:-translate-y-0.5 hover:border-plum/30 hover:bg-white">
                 <button onClick={() => editPhoto(item)} className="flex w-full items-center justify-between gap-3 text-left">
