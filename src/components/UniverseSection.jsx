@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { categories } from '../data/siteData';
 import { SectionHeading } from './SectionHeading';
 
@@ -16,9 +17,11 @@ export function UniverseSection() {
           {categories.map((category, index) => {
             const featured = index === 0;
             return (
-              <article
+              <Link
                 key={category.name}
-                className={`reveal-on-scroll group hover-lift relative overflow-hidden rounded-[2rem] border border-ink/10 p-7 md:p-8 ${featured ? 'bg-ink text-cloud lg:row-span-2' : 'bg-cloud/90 text-ink'}`}
+                to={category.path}
+                aria-label={category.cta}
+                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[2rem] border border-ink/10 p-7 transition duration-700 hover:border-ink/20 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:p-8 ${featured ? 'bg-ink text-cloud lg:row-span-2' : 'bg-cloud/90 text-ink'}`}
                 style={{ '--reveal-delay': `${index * 75}ms` }}
               >
                 <div className={`absolute right-0 top-0 h-28 w-28 rounded-full blur-3xl transition duration-700 group-hover:scale-125 ${featured ? 'bg-blush/25' : 'bg-pearl/60'}`} />
@@ -36,8 +39,16 @@ export function UniverseSection() {
                 <p className={`mt-5 max-w-sm leading-7 ${featured ? 'text-cloud/75' : 'text-ink/70'}`}>
                   {category.description}
                 </p>
-                <div className={`mt-10 h-px w-full origin-left ${featured ? 'bg-white/15' : 'bg-ink/10'} transition duration-700 group-hover:scale-x-90`} />
-              </article>
+                <div className="mt-10 flex items-center justify-between gap-5">
+                  <span className={`text-[10px] uppercase tracking-[0.3em] transition duration-500 group-hover:tracking-[0.34em] ${featured ? 'text-cloud/64' : 'text-ink/55'}`}>
+                    Explorar
+                  </span>
+                  <span className={`h-px flex-1 origin-left transition duration-700 group-hover:scale-x-90 ${featured ? 'bg-white/15' : 'bg-ink/10'}`} />
+                  <span className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-1 ${featured ? 'border-white/15 text-cloud/70 group-hover:bg-white/10' : 'border-ink/10 text-ink/55 group-hover:bg-white'}`}>
+                    →
+                  </span>
+                </div>
+              </Link>
             );
           })}
         </div>

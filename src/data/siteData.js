@@ -59,33 +59,95 @@ export const categories = [
     name: 'Hábitos',
     description: 'Rituales de 30 días, organización suave y hábitos que sostienen tu energía.',
     accent: 'Ritual',
+    path: '/habitos',
+    cta: 'Explorar hábitos',
   },
   {
     name: 'Moda',
     description: 'Estilo personal, cápsulas inteligentes y una estética coherente con tu esencia.',
     accent: 'Estilo',
+    path: '/moda',
+    cta: 'Explorar moda',
   },
   {
     name: 'Estética',
     description: 'Belleza consciente, autocuidado y pequeños gestos que elevan lo cotidiano.',
     accent: 'Belleza',
+    path: '/estetica',
+    cta: 'Explorar estética',
   },
   {
     name: 'Fotografía',
     description: 'Consejos visuales, poses, luz y narrativa para capturar tu universo.',
     accent: 'Visual',
+    path: '/fotografia',
+    cta: 'Explorar fotografía',
   },
   {
     name: 'Astrología',
     description: 'Reflexiones simbólicas y herramientas para leer tu energía con sensibilidad.',
     accent: 'Cosmos',
+    path: '/astrologia',
+    cta: 'Explorar astrología',
   },
   {
-    name: 'Estilo de vida',
+    name: 'Vida',
     description: 'Inspiración para vivir con más intención, placer, presencia y dirección.',
     accent: 'Vida',
+    path: '/vida',
+    cta: 'Explorar vida',
   },
 ];
+
+export const categoryPages = {
+  habitos: {
+    title: 'Hábitos',
+    eyebrow: 'Rituales y constancia suave',
+    subtitle: 'Una biblioteca editorial para crear rutinas bellas, sostenibles y alineadas con tu energía real.',
+    intro: 'Aquí vivirán guías de 30 días, prácticas de journaling, rituales de mañana y recursos descargables para volver a ti sin exigencia.',
+    comingSoon: ['Guías de hábitos de 30 días', 'Rituales de mañana y noche', 'Plantillas de seguimiento suave'],
+  },
+  moda: {
+    title: 'Moda',
+    eyebrow: 'Estilo personal y presencia',
+    subtitle: 'Un espacio para vestir con intención, construir una identidad visual y elevar tu armario desde la calma.',
+    intro: 'Próximamente reunirá cápsulas de estilo, ideas de combinaciones, recursos de color y notas sobre la ropa como lenguaje personal.',
+    comingSoon: ['Armario cápsula femenino', 'Guías de siluetas y texturas', 'Moodboards de estilo editorial'],
+  },
+  estetica: {
+    title: 'Estética',
+    eyebrow: 'Belleza consciente',
+    subtitle: 'Una colección de gestos pequeños, rituales de cuidado y detalles visuales para elevar lo cotidiano.',
+    intro: 'Este espacio se prepara para rutinas de autocuidado, inspiración visual y recursos para construir una estética propia sin exceso.',
+    comingSoon: ['Rutinas de autocuidado', 'Rituales de belleza suave', 'Notas de estética personal'],
+  },
+  fotografia: {
+    title: 'Fotografía',
+    eyebrow: 'Luz, pose y narrativa visual',
+    subtitle: 'Consejos editoriales para crear imágenes con intención, presencia y una atmósfera muy FabuRosa.',
+    intro: 'Próximamente habrá guías de luz, poses, composición y storytelling visual para capturar mejor tu universo personal.',
+    comingSoon: ['Guía de poses naturales', 'Luz y composición editorial', 'Ideas para sesiones personales'],
+  },
+  astrologia: {
+    title: 'Astrología',
+    eyebrow: 'Ciclos, símbolos y energía',
+    subtitle: 'Una entrada sensible a tu carta, tus ciclos y las recomendaciones que pueden acompañar tu momento vital.',
+    intro: 'Esta página queda preparada para una futura experiencia personalizada. Por ahora puedes ver la estructura visual del formulario y las recomendaciones editoriales.',
+    comingSoon: ['Lecturas por energía dominante', 'Rituales según tu luna', 'Recursos conectados con tu carta'],
+    recommendations: [
+      'Si tu energía pide calma: rituales de tierra, descanso y orden suave.',
+      'Si tu energía pide expresión: escritura, fotografía y color como lenguaje.',
+      'Si tu energía pide dirección: hábitos simples, foco y una guía de 30 días.',
+    ],
+  },
+  vida: {
+    title: 'Vida',
+    eyebrow: 'Lifestyle y crecimiento personal',
+    subtitle: 'Un archivo vivo para habitar tus días con más intención, belleza y placer cotidiano.',
+    intro: 'Aquí crecerán artículos, recursos y notas sobre organización suave, bienestar, decisiones conscientes y crecimiento personal con estética editorial.',
+    comingSoon: ['Notas de vida consciente', 'Rituales de organización suave', 'Recursos de crecimiento personal'],
+  },
+};
 
 export const resources = [
   {
