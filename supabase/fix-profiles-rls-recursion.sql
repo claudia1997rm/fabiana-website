@@ -22,7 +22,7 @@ as $$
   );
 $$;
 
--- Prevent users from escalating their own role via the browser/client.
+-- Prevent role changes from the browser/client. Promote admins from SQL Editor only.
 create or replace function public.prevent_profile_role_escalation()
 returns trigger
 language plpgsql
@@ -30,8 +30,8 @@ security definer
 set search_path = public
 as $$
 begin
-  if new.role is distinct from old.role and not public.is_admin() then
-    raise exception 'Only admins can change profile roles';
+  if new.role is distinct from old.role then
+    raise exception 'Profile roles cannot be changed from the client';
   end if;
 
   return new;
