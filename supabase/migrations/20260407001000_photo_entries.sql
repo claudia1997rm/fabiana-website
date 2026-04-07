@@ -20,6 +20,50 @@ begin
 end;
 $$;
 
+create or replace function public.is_admin()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.profiles
+    where id = auth.uid()
+      and lower(trim(role)) = 'admin'
+  );
+$$;
+
+insert into storage.buckets (id, name, public)
+values ('images', 'images', true)
+on conflict (id) do update set public = excluded.public;
+
+drop policy if exists "Public can read images" on storage.objects;
+create policy "Public can read images"
+on storage.objects
+for select
+using (bucket_id = 'images');
+
+drop policy if exists "Admins can upload images" on storage.objects;
+create policy "Admins can upload images"
+on storage.objects
+for insert
+with check (bucket_id = 'images' and public.is_admin());
+
+drop policy if exists "Admins can update content files" on storage.objects;
+create policy "Admins can update content files"
+on storage.objects
+for update
+using (bucket_id in ('images', 'pdfs') and public.is_admin())
+with check (bucket_id in ('images', 'pdfs') and public.is_admin());
+
+drop policy if exists "Admins can delete content files" on storage.objects;
+create policy "Admins can delete content files"
+on storage.objects
+for delete
+using (bucket_id in ('images', 'pdfs') and public.is_admin());
+
 drop trigger if exists set_photo_entries_updated_at on public.photo_entries;
 create trigger set_photo_entries_updated_at
 before update on public.photo_entries
