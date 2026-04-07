@@ -16,17 +16,18 @@ export const hero = {
   title: 'Fabiana',
   lead: 'Una revista íntima sobre belleza, ritual y magnetismo femenino.',
   subtitle:
-    'FabuRosa une la sensibilidad de una publicación editorial con la cercanía de una marca personal. Aquí conviven hábitos suaves, estilo, energía, fotografía y una forma más consciente de habitar tu vida.',
-  primaryCta: { label: 'Explorar recursos', href: '#recursos' },
-  secondaryCta: { label: 'Conóceme', href: '#sobre' },
+    'FabuRosa es un universo editorial para descubrir recursos, leer ideas con intención, descargar guías cuidadas y recibir cartas íntimas para acompañar tu estilo, tus ciclos y tu crecimiento personal.',
+  primaryCta: { label: 'Descubrir la colección', href: '#recursos' },
+  secondaryCta: { label: 'Entrar al universo', href: '#universo' },
   image: heroVisual,
   issue: 'Edición 01',
-  microNote: 'Para mujeres que quieren verse bellas, sentirse presentes y crear una vida con intención.',
+  microNote: 'Empieza por una guía, una lectura o una carta: elige el ritual que más se parezca a ti.',
   highlights: [
-    'Guías digitales y PDFs con estética de alta gama',
-    'Textos editoriales sobre rituales, estilo y energía',
-    'Base lista para ventas, boletín y futuro CMS',
+    'Descubre recursos digitales con estética de alta gama',
+    'Lee notas editoriales sobre rituales, estilo y energía',
+    'Suscríbete para recibir lanzamientos y cartas privadas',
   ],
+  journey: ['Descubrir', 'Leer', 'Descargar', 'Suscribirse'],
 };
 
 export const statement = {
@@ -92,30 +93,33 @@ export const resources = [
     description:
       'Una guía en PDF con prácticas simples para volver a ti, cuidar tu energía y crear constancia con suavidad.',
     type: 'PDF descargable',
-    cta: 'Ver recurso',
+    cta: 'Ver recurso exclusivo',
     href: '#',
     image: resourceCover,
     meta: 'Más descargado',
+    edition: 'Edición ritual',
   },
   {
     title: 'Guía de estilo femenino y moderno',
     description:
       'Ideas para construir un armario con personalidad, elegancia y una narrativa visual propia.',
     type: 'Mini libro digital',
-    cta: 'Próximamente',
+    cta: 'Explorar guía',
     href: '#',
     image: resourceCover,
-    meta: 'Moda y identidad visual',
+    meta: 'Nuevo',
+    edition: 'Moda consciente',
   },
   {
     title: 'Rituales de luna y energía personal',
     description:
       'Un recurso editorial para conectar con tus ciclos, registrar emociones y crear intención.',
     type: 'Cuaderno digital',
-    cta: 'Descargar',
+    cta: 'Descargar recurso',
     href: '#',
     image: resourceCover,
     meta: 'Astrología + escritura reflexiva',
+    edition: 'Colección lunar',
   },
 ];
 
@@ -143,11 +147,11 @@ export const journalPosts = [
 export const newsletter = {
   title: 'Una carta íntima para mujeres que quieren volver a sí mismas',
   description:
-    'Suscríbete para recibir notas editoriales, recursos exclusivos, inspiración visual y lanzamientos antes que nadie.',
-  placeholder: 'Tu correo',
-  buttonLabel: 'Quiero recibirla',
+    'Recibe notas editoriales, recursos privados, inspiración visual y lanzamientos antes que nadie. Una carta pausada para cuidar tu energía, tu estilo y tu forma de mirar la vida.',
+  placeholder: 'tu@correo.com',
+  buttonLabel: 'Recibir la carta',
   helper:
-    'Puedes conectar aquí MailerLite, ConvertKit, Substack o el proveedor que prefieras cuando quieras activar el formulario real.',
+    'Sin ruido ni exceso: solo contenido cuidado, lanzamientos y recursos seleccionados para el universo FabuRosa.',
 };
 
 export const footer = {

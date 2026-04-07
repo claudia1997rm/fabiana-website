@@ -24,7 +24,15 @@ export function HeroSection() {
             {hero.lead}
           </p>
 
-          <p className="mt-6 max-w-xl text-base leading-8 text-ink/66 md:text-lg">{hero.subtitle}</p>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-ink/70 md:text-lg">{hero.subtitle}</p>
+
+          <div className="mt-8 flex flex-wrap gap-2.5" aria-label="Recorrido sugerido">
+            {hero.journey.map((step, index) => (
+              <span key={step} className="rounded-full border border-ink/10 bg-white/55 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-ink/60 shadow-soft backdrop-blur-sm">
+                {String(index + 1).padStart(2, '0')} · {step}
+              </span>
+            ))}
+          </div>
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Button href={hero.primaryCta.href}>{hero.primaryCta.label}</Button>
@@ -34,10 +42,10 @@ export function HeroSection() {
           </div>
 
           <div className="mt-12 grid max-w-2xl gap-4 border-t border-ink/10 pt-6 md:grid-cols-3">
-            {hero.highlights.map((item) => (
-              <div key={item} className="space-y-2">
+            {hero.highlights.map((item, index) => (
+              <div key={item} className="reveal-on-scroll space-y-2 rounded-[1.25rem] p-1 transition duration-500 hover:bg-white/40" style={{ '--reveal-delay': `${index * 80}ms` }}>
                 <span className="text-[10px] uppercase tracking-[0.32em] text-taupe">FabuRosa</span>
-                <p className="text-sm leading-6 text-ink/68">{item}</p>
+                <p className="text-sm leading-6 text-ink/70">{item}</p>
               </div>
             ))}
           </div>
@@ -48,7 +56,7 @@ export function HeroSection() {
           <div className="absolute right-0 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-ink/10 to-transparent lg:block" />
 
           <div className="relative z-10 w-full max-w-[32rem]">
-            <div className="glass-panel rounded-[2.25rem] p-4 shadow-glow">
+            <div className="glass-panel rounded-[2.25rem] p-4 shadow-glow transition duration-700 hover:-translate-y-1 hover:shadow-card">
               <img
                 src={hero.image}
                 alt="Composición visual editorial para FabuRosa"
@@ -56,7 +64,7 @@ export function HeroSection() {
               />
             </div>
 
-            <div className="magazine-frame absolute -bottom-6 -left-4 max-w-[15rem] rounded-[1.6rem] p-5 md:-left-10">
+            <div className="magazine-frame absolute -bottom-6 -left-4 max-w-[15rem] rounded-[1.6rem] p-5 transition duration-500 hover:-translate-y-1 hover:shadow-card md:-left-10">
               <p className="text-[10px] uppercase tracking-[0.3em] text-taupe">Nota editorial</p>
               <p className="mt-3 font-serif text-xl leading-6 text-ink">{hero.microNote}</p>
             </div>
