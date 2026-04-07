@@ -1,82 +1,125 @@
-# FabuRosa Web
+# FabuRosa Content Platform
 
-Landing editorial y responsive para la marca personal de FabuRosa, creada con React, Vite y Tailwind CSS.
+FabuRosa is now a React + Vite + Tailwind content platform prepared for Supabase authentication, user profiles, newsletter preferences, admin publishing and Vercel deployment.
 
-## Ejecutar en local
-
-1. Instala dependencias:
+## Local development
 
 ```bash
 npm install
-```
-
-2. Inicia el entorno de desarrollo:
-
-```bash
 npm run dev
 ```
 
-3. Para generar build de producción:
+Production build:
 
 ```bash
 npm run build
 ```
 
-## Estructura del proyecto
+Vercel output directory: `dist`.
 
-```text
-src/
-  assets/placeholders/   # Imágenes SVG de ejemplo
-  components/            # Secciones y piezas reutilizables
-  data/siteData.js       # Textos, enlaces y contenido mock editable
-  App.jsx
-  index.css
-  main.jsx
+## Environment variables
+
+Create `.env.local` from `.env.example`:
+
+```bash
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=your-supabase-publishable-key
 ```
 
-## Cómo cambiar textos, imágenes y PDFs
+Legacy Supabase projects can use `VITE_SUPABASE_ANON_KEY` instead of `VITE_SUPABASE_PUBLISHABLE_KEY`; the app supports both.
 
-### Textos y enlaces
+Add the same variables in Vercel: Project Settings -> Environment Variables.
 
-- Edita [src/data/siteData.js](/C:/CLAUDIA/Proyectos/07_FabuRosa/src/data/siteData.js)
-- Ahí puedes cambiar:
-  - navegación
-  - hero
-  - texto de presentación
-  - categorías
-  - recursos digitales
-  - artículos del journal
-  - copy de newsletter
-  - footer y enlaces sociales
+## Supabase setup
 
-### Imágenes
+1. Create a Supabase project.
+2. Copy your project URL and publishable key into `.env.local` and Vercel.
+3. Open Supabase SQL Editor.
+4. Run the full SQL file at `supabase/schema.sql`.
+5. In Supabase Auth settings, configure Site URL for local and production:
+   - Local: `http://localhost:5173`
+   - Production: your Vercel URL
+6. Sign up with Fabiana's admin email in the app.
+7. Promote that profile to admin in the SQL editor:
 
-- Sustituye los SVG de ejemplo dentro de [src/assets/placeholders](/C:/CLAUDIA/Proyectos/07_FabuRosa/src/assets/placeholders)
-- O importa nuevas imágenes desde otra carpeta y actualiza sus referencias en [src/data/siteData.js](/C:/CLAUDIA/Proyectos/07_FabuRosa/src/data/siteData.js)
+```sql
+update public.profiles
+set role = 'admin'
+where email = 'fabiana@example.com';
+```
 
-### PDFs o productos descargables
+8. Visit `/admin` after logging in as that admin user.
 
-- En [src/data/siteData.js](/C:/CLAUDIA/Proyectos/07_FabuRosa/src/data/siteData.js), busca el array `resources`
-- Cambia:
-  - `title`
-  - `description`
-  - `type`
-  - `cta`
-  - `href`
-- Para enlazar un PDF local más adelante, puedes colocarlo en `public/` y usar una ruta como `/pdfs/mi-recurso.pdf`
-- Para enlazar un checkout externo, pega la URL de Gumroad, Stripe o Shopify Lite en `href`
+## Database models
 
-## Preparado para futuras integraciones
+The Supabase schema creates:
 
-- Pagos con Gumroad, Stripe Payment Links o Shopify Lite
-- Newsletter con Mailchimp, ConvertKit, Beehiiv o MailerLite
-- Blog/CMS con Sanity, Contentful, Notion API o similares
+- `profiles`: basic user profile data, role and newsletter preference.
+- `categories`: editable content categories.
+- `resources`: PDF resources with title, description, cover image path, PDF path, category, publish date and featured flag.
+- `posts`: journal/blog posts with title, excerpt, content, cover image, category, publish date and featured flag.
+- `push_subscriptions`: prepared for future browser push notifications.
 
-## Ideas para una versión 2
+## Storage organization
 
-1. Añadir páginas individuales para cada recurso y categoría
-2. Conectar un CMS para publicar artículos sin tocar código
-3. Crear filtros por temática en recursos y journal
-4. Integrar pasarela de pago y automatización de entregas
-5. Añadir animaciones scroll-based más ricas y transiciones de página
-6. Incluir testimonios, press kit y media kit para colaboraciones
+The SQL creates two public buckets:
+
+- `content-covers`: cover images for posts and resources.
+- `resource-pdfs`: uploaded PDF files.
+
+Admin uploads are organized by folder and user id, for example:
+
+```text
+resources/<admin-user-id>/<timestamp>-file.pdf
+posts/<admin-user-id>/<timestamp>-cover.jpg
+```
+
+## Security model
+
+Security is enforced in Supabase with Row Level Security policies:
+
+- Public users can read published posts/resources and categories.
+- Authenticated users can read and update their own profile.
+- Only users whose `profiles.role` is `admin` can create/update/delete categories, resources, posts and uploaded content files.
+- Push subscriptions are user-owned and prepared for future push notification support.
+
+The frontend also protects `/profile` and `/admin`, but Supabase RLS is the source of truth.
+
+## Notification architecture
+
+The current version supports email opt-in with `profiles.newsletter_email_opt_in`.
+
+Recommended next backend step:
+
+1. Create a Supabase Edge Function such as `notify-new-content`.
+2. Trigger it manually from the admin flow or with a database webhook when a resource/post becomes `published`.
+3. Query profiles where `newsletter_email_opt_in = true`.
+4. Send email through Resend, MailerLite, ConvertKit or another provider.
+5. Add browser push later with the existing `push_subscriptions` table.
+
+## Routes
+
+- `/`: public home.
+- `/login`: log in with Supabase Auth.
+- `/signup`: create account with Supabase Auth.
+- `/profile`: protected user profile and notification preferences.
+- `/admin`: protected admin content studio.
+- `/resources/:slug`: public resource detail.
+- `/journal/:slug`: public blog post detail.
+
+## Vercel deployment
+
+This repo includes `vercel.json`:
+
+```json
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+The rewrite supports direct visits to SPA routes such as `/profile`, `/admin`, `/resources/:slug` and `/journal/:slug`.

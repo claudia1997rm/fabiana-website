@@ -1,4 +1,5 @@
-﻿import { journalPosts } from '../data/siteData';
+import { journalPosts } from '../data/siteData';
+import { slugify } from '../lib/contentService';
 import { Button } from './Button';
 import { SectionHeading } from './SectionHeading';
 
@@ -21,8 +22,9 @@ export function JournalSection() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {journalPosts.map((post) => (
-            <article
+            <a
               key={post.title}
+              href={`/journal/${slugify(post.title)}`}
               className="group hover-lift overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06]"
             >
               <div className="overflow-hidden">
@@ -43,7 +45,7 @@ export function JournalSection() {
                   <span className="h-px w-12 bg-current" />
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>

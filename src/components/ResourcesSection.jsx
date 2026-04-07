@@ -1,4 +1,5 @@
-﻿import { resources } from '../data/siteData';
+import { resources } from '../data/siteData';
+import { slugify } from '../lib/contentService';
 import { Button } from './Button';
 import { SectionHeading } from './SectionHeading';
 
@@ -41,7 +42,7 @@ export function ResourcesSection() {
                 </h3>
                 <p className="mt-5 flex-1 leading-7 text-ink/66">{resource.description}</p>
                 <div className="mt-8 border-t border-ink/10 pt-6">
-                  <Button href={resource.href} variant={index === 0 ? 'primary' : 'secondary'}>
+                  <Button href={`/resources/${slugify(resource.title)}`} variant={index === 0 ? 'primary' : 'secondary'}>
                     {resource.cta}
                   </Button>
                 </div>
