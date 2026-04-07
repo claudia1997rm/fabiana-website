@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -59,6 +59,11 @@ body::before {
   color: #f5f3ef;
 }
 
+:focus-visible {
+  outline: 2px solid rgba(17, 17, 17, 0.28);
+  outline-offset: 4px;
+}
+
 @layer components {
   .section-shell {
     @apply relative overflow-hidden;
@@ -77,7 +82,39 @@ body::before {
   }
 
   .hover-lift {
-    @apply transition duration-500 ease-out hover:-translate-y-1.5 hover:shadow-card;
+    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:shadow-card;
+  }
+
+  .product-card {
+    @apply transition duration-700 ease-out hover:-translate-y-2 hover:border-ink/20 hover:bg-white/80 hover:shadow-card;
+  }
+
+  .nav-action {
+    @apply inline-flex rounded-full px-3 py-2 text-ink/70 transition duration-500 hover:-translate-y-0.5 hover:bg-white/70 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20;
+  }
+
+  .soft-link {
+    @apply relative text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/60 transition duration-500 hover:text-ink focus-visible:outline-none focus-visible:text-ink;
+  }
+
+  .soft-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0.35);
+    transform-origin: left;
+    background: currentColor;
+    opacity: 0.35;
+    transition: transform 500ms ease, opacity 500ms ease;
+  }
+
+  .soft-link:hover::after,
+  .soft-link:focus-visible::after {
+    transform: scaleX(1);
+    opacity: 0.75;
   }
 
   .orb {
@@ -85,5 +122,44 @@ body::before {
     border-radius: 9999px;
     filter: blur(40px);
     pointer-events: none;
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-on-scroll {
+  animation: revealUp 720ms ease-out both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@supports (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation-timeline: view();
+    animation-range: entry 8% cover 28%;
+    animation-delay: 0ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
   }
 }

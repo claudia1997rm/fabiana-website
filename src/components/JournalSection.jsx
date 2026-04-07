@@ -12,7 +12,7 @@ export function JournalSection() {
           <SectionHeading
             eyebrow="Diario"
             title="Textos para mirar la vida con más belleza y significado"
-            description="Una sección editorial pensada para crecer como revista digital, blog de alta gama o archivo vivo de ideas, rituales y estilo personal."
+            description="Una sección editorial pensada para leer con calma: ideas, rituales y estilo personal antes de guardar, descargar o volver a tu propia práctica."
             theme="dark"
           />
           <Button href="#newsletter" variant="secondary">
@@ -21,17 +21,18 @@ export function JournalSection() {
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {journalPosts.map((post) => (
+          {journalPosts.map((post, index) => (
             <a
               key={post.title}
               href={`/journal/${slugify(post.title)}`}
-              className="group hover-lift overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06]"
+              className="reveal-on-scroll group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] transition duration-700 hover:-translate-y-2 hover:border-white/20 hover:bg-white/[0.09] hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-4 focus-visible:ring-offset-midnight"
+              style={{ '--reveal-delay': `${index * 100}ms` }}
             >
               <div className="overflow-hidden">
                 <img
                   src={post.image}
                   alt={post.title}
-                  className="h-80 w-full object-cover opacity-92 transition duration-700 group-hover:scale-[1.04]"
+                  className="h-80 w-full object-cover opacity-92 transition duration-700 group-hover:scale-[1.045] group-hover:opacity-100"
                 />
               </div>
               <div className="p-6 md:p-7">
@@ -39,10 +40,10 @@ export function JournalSection() {
                 <h3 className="mt-4 font-display text-[2.25rem] leading-[0.95] tracking-[-0.03em] text-cloud">
                   {post.title}
                 </h3>
-                <p className="mt-4 leading-7 text-cloud/68">{post.excerpt}</p>
+                <p className="mt-4 leading-7 text-cloud/72">{post.excerpt}</p>
                 <div className="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-cloud/60 transition group-hover:text-cloud">
                   <span>Leer artículo</span>
-                  <span className="h-px w-12 bg-current" />
+                  <span className="h-px w-12 bg-current transition duration-500 group-hover:w-16" />
                 </div>
               </div>
             </a>
