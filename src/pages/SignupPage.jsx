@@ -38,7 +38,7 @@ export function SignupPage() {
   return (
     <section className="mx-auto max-w-lg px-6 py-24 md:px-10">
       <div className="magazine-frame rounded-[2rem] p-8">
-        <p className="editorial-kicker">Únete a FabuRosa</p>
+        <p className="editorial-kicker">Únete a FabuRose</p>
         <h1 className="mt-4 font-display text-5xl leading-none tracking-[-0.03em] text-ink">Crear cuenta</h1>
         <form onSubmit={handleSubmit} className="mt-8 space-y-4">
           <input className="w-full rounded-full border border-ink/10 bg-white px-5 py-4 outline-none focus:border-ink/40" placeholder="Nombre completo" value={fullName} onChange={(event) => setFullName(event.target.value)} required />

@@ -16,7 +16,7 @@ export function HeroSection() {
             <span>{hero.issue}</span>
           </div>
 
-          <h1 className="max-w-4xl font-display text-[4.7rem] leading-[0.82] tracking-[-0.05em] text-ink sm:text-[6rem] lg:text-[8.6rem] xl:text-[9.4rem]">
+          <h1 className="hero-title max-w-4xl text-[4.35rem] leading-[0.9] text-ink sm:text-[5.9rem] lg:text-[8.15rem] xl:text-[8.9rem]">
             {hero.title}
           </h1>
 
@@ -44,7 +44,7 @@ export function HeroSection() {
           <div className="mt-12 grid max-w-2xl gap-4 border-t border-ink/10 pt-6 md:grid-cols-3">
             {hero.highlights.map((item, index) => (
               <div key={item} className="reveal-on-scroll space-y-2 rounded-[1.25rem] p-1 transition duration-500 hover:bg-white/40" style={{ '--reveal-delay': `${index * 80}ms` }}>
-                <span className="text-[10px] uppercase tracking-[0.32em] text-taupe">FabuRosa</span>
+                <span className="text-[10px] uppercase tracking-[0.32em] text-taupe">FabuRose</span>
                 <p className="text-sm leading-6 text-ink/70">{item}</p>
               </div>
             ))}
@@ -59,7 +59,7 @@ export function HeroSection() {
             <div className="glass-panel rounded-[2.25rem] p-4 shadow-glow transition duration-700 hover:-translate-y-1 hover:shadow-card">
               <img
                 src={hero.image}
-                alt="Composición visual editorial para FabuRosa"
+                alt="Composición visual editorial para FabuRose"
                 className="h-[33rem] w-full rounded-[1.75rem] object-cover animate-float"
               />
             </div>

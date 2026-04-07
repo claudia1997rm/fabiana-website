@@ -1,11 +1,11 @@
-﻿import { footer, integrationNotes } from '../data/siteData';
+import { footer, integrationNotes } from '../data/siteData';
 
 export function Footer() {
   return (
     <footer className="border-t border-ink/10 bg-pearl/85">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:px-10 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:py-16">
         <div>
-          <p className="font-display text-5xl leading-none tracking-[0.04em] text-ink">FabuRosa</p>
+          <p className="font-display text-5xl leading-none tracking-[0.04em] text-ink">FabuRose</p>
           <p className="mt-5 max-w-md leading-7 text-ink/66">{footer.closing}</p>
         </div>
         <div>

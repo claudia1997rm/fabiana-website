@@ -7,14 +7,21 @@ export function NavBar() {
   const location = useLocation();
   const activeHref = location.hash || '#inicio';
 
+  function handleBrandClick(event) {
+    if (location.pathname === '/') {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-cloud/75 backdrop-blur-xl transition duration-500">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:px-10">
-        <Link to="/" className="group flex items-center gap-3 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud">
+        <Link to="/" onClick={handleBrandClick} className="group flex cursor-pointer items-center gap-3 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 bg-white/60 text-[10px] uppercase tracking-[0.3em] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-ink/25 group-hover:bg-white">
             FR
           </span>
-          <span className="font-display text-[1.8rem] tracking-[0.08em] transition duration-500 group-hover:tracking-[0.1em]">FabuRosa</span>
+          <span className="font-display text-[1.8rem] tracking-[0.08em] transition duration-500 group-hover:tracking-[0.1em]">FabuRose</span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Navegación principal">

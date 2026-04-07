@@ -16,7 +16,7 @@ export const hero = {
   title: 'Fabiana',
   lead: 'Una revista íntima sobre belleza, ritual y magnetismo femenino.',
   subtitle:
-    'FabuRosa es un universo editorial para descubrir recursos, leer ideas con intención, descargar guías cuidadas y recibir cartas íntimas para acompañar tu estilo, tus ciclos y tu crecimiento personal.',
+    'FabuRose es un universo editorial para descubrir recursos, leer ideas con intención, descargar guías cuidadas y recibir cartas íntimas para acompañar tu estilo, tus ciclos y tu crecimiento personal.',
   primaryCta: { label: 'Descubrir la colección', href: '#recursos' },
   secondaryCta: { label: 'Entrar al universo', href: '#universo' },
   image: heroVisual,
@@ -124,7 +124,7 @@ export const categoryPages = {
   fotografia: {
     title: 'Fotografía',
     eyebrow: 'Luz, pose y narrativa visual',
-    subtitle: 'Consejos editoriales para crear imágenes con intención, presencia y una atmósfera muy FabuRosa.',
+    subtitle: 'Consejos editoriales para crear imágenes con intención, presencia y una atmósfera muy FabuRose.',
     intro: 'Próximamente habrá guías de luz, poses, composición y storytelling visual para capturar mejor tu universo personal.',
     comingSoon: ['Guía de poses naturales', 'Luz y composición editorial', 'Ideas para sesiones personales'],
   },
@@ -213,7 +213,7 @@ export const newsletter = {
   placeholder: 'tu@correo.com',
   buttonLabel: 'Recibir la carta',
   helper:
-    'Sin ruido ni exceso: solo contenido cuidado, lanzamientos y recursos seleccionados para el universo FabuRosa.',
+    'Sin ruido ni exceso: solo contenido cuidado, lanzamientos y recursos seleccionados para el universo FabuRose.',
 };
 
 export const footer = {
@@ -223,7 +223,7 @@ export const footer = {
     { label: 'Pinterest', href: 'https://pinterest.com' },
     { label: 'TikTok', href: 'https://tiktok.com' },
   ],
-  contact: 'hola@faburosa.com',
+  contact: 'hola@faburose.com',
 };
 
 export const integrationNotes = [
