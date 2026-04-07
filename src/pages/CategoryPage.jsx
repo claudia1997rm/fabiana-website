@@ -45,14 +45,14 @@ function PhotographyGallery() {
         </p>
       </div>
 
-      {status ? <p className="mt-6 rounded-[1.2rem] bg-white/70 p-4 text-sm text-ink/65 shadow-soft">{status}</p> : null}
+      {status ? <p className="mt-6 rounded-[1.2rem] bg-white/70 p-4 text-sm text-ink/70 shadow-soft">{status}</p> : null}
 
       {photos.length ? (
         <div className="mt-10 columns-1 gap-5 md:columns-2 xl:columns-3">
           {photos.map((photo, index) => (
             <article
               key={photo.id}
-              className="reveal-on-scroll group mb-5 break-inside-avoid overflow-hidden rounded-[2rem] border border-plum/20 bg-lavenderMist/90 p-3 shadow-soft transition duration-700 hover:-translate-y-2 hover:border-plum/45 hover:shadow-lavender"
+              className="reveal-on-scroll group mb-5 break-inside-avoid overflow-hidden rounded-[2rem] border border-plum/20 bg-lavenderMist/90 p-3 shadow-soft transition duration-700 hover:-translate-y-2 hover:border-plum/50 hover:shadow-lavender"
               style={{ '--reveal-delay': `${index * 70}ms` }}
             >
               <div className="relative overflow-hidden rounded-[1.55rem] bg-deepPlum/10">
@@ -115,7 +115,7 @@ function AstrologyPreview({ page }) {
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <label className="text-[10px] uppercase tracking-[0.3em] text-taupe">Fecha de nacimiento<input className="mt-3 min-h-14 w-full rounded-full border border-ink/10 bg-white/80 px-5 text-sm text-ink outline-none transition focus:border-ink/50 focus:bg-white" type="date" value={birthDate} onChange={(event) => setBirthDate(event.target.value)} /></label>
           <label className="text-[10px] uppercase tracking-[0.3em] text-taupe">Hora<input className="mt-3 min-h-14 w-full rounded-full border border-ink/10 bg-white/80 px-5 text-sm text-ink outline-none transition focus:border-ink/50 focus:bg-white" type="time" value={birthTime} onChange={(event) => setBirthTime(event.target.value)} /></label>
-          <label className="text-[10px] uppercase tracking-[0.3em] text-taupe md:col-span-2">Lugar<input className="mt-3 min-h-14 w-full rounded-full border border-ink/10 bg-white/80 px-5 text-sm text-ink outline-none transition placeholder:text-ink/35 focus:border-ink/50 focus:bg-white" type="text" placeholder="Ciudad, pais" value={birthPlace} onChange={(event) => setBirthPlace(event.target.value)} /></label>
+          <label className="text-[10px] uppercase tracking-[0.3em] text-taupe md:col-span-2">Lugar<input className="mt-3 min-h-14 w-full rounded-full border border-ink/10 bg-white/80 px-5 text-sm text-ink outline-none transition placeholder:text-ink/40 focus:border-ink/50 focus:bg-white" type="text" placeholder="Ciudad, pais" value={birthPlace} onChange={(event) => setBirthPlace(event.target.value)} /></label>
         </div>
 
         {error ? <p className="mt-4 rounded-[1rem] bg-white/70 p-4 text-sm leading-6 text-ink/70">{error}</p> : null}

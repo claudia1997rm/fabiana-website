@@ -8,13 +8,13 @@ function ArrowIcon() {
 
 export function Button({ href, children, variant = 'primary' }) {
   const baseClasses =
-    'group inline-flex items-center justify-center gap-3 rounded-full border px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[0.34em] transition duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud';
+    'group inline-flex min-h-12 items-center justify-center gap-3 rounded-full border px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.28em] transition duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud sm:min-h-14 sm:px-6 sm:py-3.5 sm:text-[11px] sm:tracking-[0.34em]';
 
   const variants = {
     primary:
-      'border-plum bg-plum text-white shadow-lavender hover:-translate-y-1 hover:border-deepPlum hover:bg-deepPlum hover:text-white hover:shadow-lavender active:translate-y-0',
+      'border-plum bg-plum text-white shadow-[0_16px_34px_rgba(91,74,120,0.20)] hover:-translate-y-1 hover:border-deepPlum hover:bg-deepPlum hover:text-white hover:shadow-lavender active:translate-y-0',
     secondary:
-      'border-plum/45 bg-lavenderMist text-plum backdrop-blur-md hover:-translate-y-1 hover:border-plum hover:bg-plum hover:text-white hover:shadow-lavender active:translate-y-0',
+      'border-plum/40 bg-lavenderMist/90 text-plum backdrop-blur-md hover:-translate-y-1 hover:border-plum/60 hover:bg-lavender hover:text-deepPlum hover:shadow-soft active:translate-y-0',
     ghost:
       'border-transparent bg-transparent px-0 py-0 text-ink hover:text-plum focus-visible:ring-offset-transparent',
   };

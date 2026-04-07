@@ -40,11 +40,11 @@ export function ProfilePage() {
         <div className="magazine-frame rounded-[2rem] p-8">
           <p className="editorial-kicker">Perfil</p>
           <h1 className="mt-4 font-display text-5xl leading-none tracking-[-0.03em] text-ink">Tu espacio</h1>
-          <p className="mt-5 leading-7 text-ink/65">Sesion iniciada como {user.email}.</p>
-          <p className="mt-2 leading-7 text-ink/65">Rol desde public.profiles: {profileLoading ? 'cargando...' : roleLabel}.</p>
+          <p className="mt-5 leading-7 text-ink/70">Sesion iniciada como {user.email}.</p>
+          <p className="mt-2 leading-7 text-ink/70">Rol desde public.profiles: {profileLoading ? 'cargando...' : roleLabel}.</p>
           {profileError ? <p className="mt-4 rounded-[1rem] bg-white/70 p-4 text-sm leading-6 text-ink/70">Error al cargar el perfil: {profileError.message}</p> : null}
-          <button onClick={refreshProfile} className="mt-8 rounded-full border border-ink/15 bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-ink transition hover:border-ink/40">Actualizar perfil</button>
-          <button onClick={signOut} className="ml-3 mt-8 rounded-full border border-ink/15 bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-ink transition hover:border-ink/40">Cerrar sesion</button>
+          <button onClick={refreshProfile} className="mt-8 rounded-full border border-ink/20 bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-ink transition hover:border-ink/40">Actualizar perfil</button>
+          <button onClick={signOut} className="ml-3 mt-8 rounded-full border border-ink/20 bg-white px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-ink transition hover:border-ink/40">Cerrar sesion</button>
         </div>
 
         <form onSubmit={handleSave} className="magazine-frame rounded-[2rem] p-8">
@@ -56,11 +56,11 @@ export function ProfilePage() {
             Quiero recibir correos cuando Fabiana publique nuevos recursos o articulos del diario.
           </label>
           <button className="mt-6 rounded-full border border-ink bg-ink px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-cloud transition hover:bg-white hover:text-ink">Guardar preferencias</button>
-          {status ? <p className="mt-4 text-sm text-ink/65">{status}</p> : null}
+          {status ? <p className="mt-4 text-sm text-ink/70">{status}</p> : null}
           <div className="mt-8 border-t border-ink/10 pt-6">
             <p className="text-sm font-semibold text-ink">Arquitectura de notificaciones</p>
-            <p className="mt-2 text-sm text-ink/60">Correo: {preferences.email ? 'activado' : 'desactivado'} · Notificaciones push: preparadas para mas adelante</p>
-            {describeNotificationArchitecture().map((item) => <p key={item} className="mt-2 text-sm leading-6 text-ink/55">{item}</p>)}
+            <p className="mt-2 text-sm text-ink/60">Correo: {preferences.email ? 'activado' : 'desactivado'} - Notificaciones push: preparadas para mas adelante</p>
+            {describeNotificationArchitecture().map((item) => <p key={item} className="mt-2 text-sm leading-6 text-ink/60">{item}</p>)}
           </div>
         </form>
       </div>

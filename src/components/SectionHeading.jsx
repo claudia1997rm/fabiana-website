@@ -8,7 +8,7 @@ export function SectionHeading({
   const alignment = align === 'center' ? 'mx-auto text-center' : '';
   const eyebrowClass = theme === 'dark' ? 'text-lavender' : 'text-plum/75';
   const titleClass = theme === 'dark' ? 'text-cloud' : 'text-ink';
-  const descriptionClass = theme === 'dark' ? 'text-cloud/70' : 'text-ink/65';
+  const descriptionClass = theme === 'dark' ? 'text-cloud/70' : 'text-ink/70';
 
   return (
     <div className={`max-w-3xl ${alignment}`}>

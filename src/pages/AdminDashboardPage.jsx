@@ -18,8 +18,8 @@ const initialPost = { title: '', excerpt: '', content: '', category_id: '', feat
 const initialPhoto = { title: '', description: '', featured: false, status: 'draft', published_at: '', image_path: '' };
 const toDateTimeLocal = (value) => (value ? value.slice(0, 16) : '');
 const statusLabels = { draft: 'borrador', published: 'publicado' };
-const inputClass = 'rounded-full border border-ink/10 bg-white/90 px-5 py-4 outline-none transition focus:border-plum/45 focus:bg-white';
-const textareaClass = 'rounded-[1.5rem] border border-ink/10 bg-white/90 px-5 py-4 outline-none transition focus:border-plum/45 focus:bg-white';
+const inputClass = 'rounded-full border border-ink/10 bg-white/90 px-5 py-4 outline-none transition focus:border-plum/50 focus:bg-white';
+const textareaClass = 'rounded-[1.5rem] border border-ink/10 bg-white/90 px-5 py-4 outline-none transition focus:border-plum/50 focus:bg-white';
 const buttonClass = 'rounded-full border border-deepPlum bg-deepPlum px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-cloud transition duration-500 hover:-translate-y-1 hover:border-wine hover:bg-wine';
 
 export function AdminDashboardPage() {
@@ -141,7 +141,7 @@ export function AdminDashboardPage() {
         <div>
           <p className="editorial-kicker">Administracion Fabiana</p>
           <h1 className="mt-4 font-display text-6xl leading-none tracking-[-0.04em] text-ink">Estudio de contenido</h1>
-          <p className="mt-5 max-w-2xl leading-8 text-ink/65">Sube PDFs, portadas, fotos, crea categorias, publica recursos y edita articulos del diario desde un panel protegido.</p>
+          <p className="mt-5 max-w-2xl leading-8 text-ink/70">Sube PDFs, portadas, fotos, crea categorias, publica recursos y edita articulos del diario desde un panel protegido.</p>
         </div>
         {status ? <p className="rounded-full bg-white px-5 py-3 text-sm text-ink/70 shadow-soft">{status}</p> : null}
       </div>
@@ -160,11 +160,11 @@ export function AdminDashboardPage() {
             <input className={inputClass} placeholder="Titulo" value={resource.title} onChange={(event) => setResource({ ...resource, title: event.target.value })} required />
             <select className={inputClass} value={resource.category_id} onChange={(event) => setResource({ ...resource, category_id: event.target.value })}><option value="">Sin categoria</option>{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}</select>
             <textarea className={`${textareaClass} md:col-span-2`} placeholder="Descripcion" value={resource.description} onChange={(event) => setResource({ ...resource, description: event.target.value })} required />
-            <label className="text-sm leading-6 text-ink/65">Portada del recurso<input className="mt-2 block" type="file" accept="image/*" onChange={(event) => setResourceCover(event.target.files?.[0])} /></label>
-            <label className="text-sm leading-6 text-ink/65">Archivo PDF<input className="mt-2 block" type="file" accept="application/pdf" onChange={(event) => setResourcePdf(event.target.files?.[0])} /></label>
+            <label className="text-sm leading-6 text-ink/70">Portada del recurso<input className="mt-2 block" type="file" accept="image/*" onChange={(event) => setResourceCover(event.target.files?.[0])} /></label>
+            <label className="text-sm leading-6 text-ink/70">Archivo PDF<input className="mt-2 block" type="file" accept="application/pdf" onChange={(event) => setResourcePdf(event.target.files?.[0])} /></label>
             <input className={inputClass} type="datetime-local" value={resource.published_at} onChange={(event) => setResource({ ...resource, published_at: event.target.value })} />
             <select className={inputClass} value={resource.status} onChange={(event) => setResource({ ...resource, status: event.target.value })}><option value="draft">Borrador</option><option value="published">Publicado</option></select>
-            <label className="flex items-center gap-3 text-sm text-ink/65"><input type="checkbox" checked={resource.featured} onChange={(event) => setResource({ ...resource, featured: event.target.checked })} /> Recurso destacado</label>
+            <label className="flex items-center gap-3 text-sm text-ink/70"><input type="checkbox" checked={resource.featured} onChange={(event) => setResource({ ...resource, featured: event.target.checked })} /> Recurso destacado</label>
           </div>
           <button className={`mt-6 ${buttonClass}`}>{resource.id ? 'Actualizar recurso' : 'Crear recurso'}</button>
         </form>
@@ -172,7 +172,7 @@ export function AdminDashboardPage() {
 
       <form onSubmit={handleSavePhoto} className="magazine-frame mt-6 overflow-hidden rounded-[2rem] p-6">
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <div className="relative min-h-80 overflow-hidden rounded-[1.7rem] border border-plum/20 bg-[linear-gradient(135deg,#2A2235,#5E2F3F)] p-6 text-cloud shadow-card">
+          <div className="relative min-h-80 overflow-hidden rounded-[1.7rem] border border-plum/20 bg-[linear-gradient(135deg,#2A2235,#5B4A78)] p-6 text-cloud shadow-card">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(248,245,250,0.18),transparent_30%)]" />
             <div className="relative z-10 flex h-full flex-col justify-between">
               <p className="editorial-kicker text-blush">Fotografia</p>
@@ -188,9 +188,9 @@ export function AdminDashboardPage() {
               <input className={inputClass} placeholder="Titulo" value={photo.title} onChange={(event) => setPhoto({ ...photo, title: event.target.value })} required />
               <select className={inputClass} value={photo.status} onChange={(event) => setPhoto({ ...photo, status: event.target.value })}><option value="draft">Borrador</option><option value="published">Publicado</option></select>
               <textarea className={`${textareaClass} min-h-32 md:col-span-2`} placeholder="Descripcion visual" value={photo.description} onChange={(event) => setPhoto({ ...photo, description: event.target.value })} />
-              <label className="rounded-[1.4rem] border border-dashed border-plum/30 bg-white/55 p-5 text-sm leading-6 text-ink/65 transition hover:border-plum/55 hover:bg-white/75 md:col-span-2">Imagen de la galeria<input className="mt-3 block" type="file" accept="image/*" onChange={(event) => setPhotoFile(event.target.files?.[0])} /></label>
+              <label className="rounded-[1.4rem] border border-dashed border-plum/30 bg-white/60 p-5 text-sm leading-6 text-ink/70 transition hover:border-plum/60 hover:bg-white/75 md:col-span-2">Imagen de la galeria<input className="mt-3 block" type="file" accept="image/*" onChange={(event) => setPhotoFile(event.target.files?.[0])} /></label>
               <input className={inputClass} type="datetime-local" value={photo.published_at} onChange={(event) => setPhoto({ ...photo, published_at: event.target.value })} />
-              <label className="flex items-center gap-3 text-sm text-ink/65"><input type="checkbox" checked={photo.featured} onChange={(event) => setPhoto({ ...photo, featured: event.target.checked })} /> Fotografia destacada</label>
+              <label className="flex items-center gap-3 text-sm text-ink/70"><input type="checkbox" checked={photo.featured} onChange={(event) => setPhoto({ ...photo, featured: event.target.checked })} /> Fotografia destacada</label>
             </div>
             <button className={`mt-6 ${buttonClass}`}>{photo.id ? 'Actualizar fotografia' : 'Publicar fotografia'}</button>
           </div>
@@ -204,10 +204,10 @@ export function AdminDashboardPage() {
           <select className={inputClass} value={post.category_id} onChange={(event) => setPost({ ...post, category_id: event.target.value })}><option value="">Sin categoria</option>{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}</select>
           <textarea className={`${textareaClass} md:col-span-2`} placeholder="Extracto" value={post.excerpt} onChange={(event) => setPost({ ...post, excerpt: event.target.value })} />
           <textarea className={`${textareaClass} min-h-52 md:col-span-2`} placeholder="Contenido del articulo" value={post.content} onChange={(event) => setPost({ ...post, content: event.target.value })} required />
-          <label className="text-sm leading-6 text-ink/65">Portada del articulo<input className="mt-2 block" type="file" accept="image/*" onChange={(event) => setPostCover(event.target.files?.[0])} /></label>
+          <label className="text-sm leading-6 text-ink/70">Portada del articulo<input className="mt-2 block" type="file" accept="image/*" onChange={(event) => setPostCover(event.target.files?.[0])} /></label>
           <input className={inputClass} type="datetime-local" value={post.published_at} onChange={(event) => setPost({ ...post, published_at: event.target.value })} />
           <select className={inputClass} value={post.status} onChange={(event) => setPost({ ...post, status: event.target.value })}><option value="draft">Borrador</option><option value="published">Publicado</option></select>
-          <label className="flex items-center gap-3 text-sm text-ink/65"><input type="checkbox" checked={post.featured} onChange={(event) => setPost({ ...post, featured: event.target.checked })} /> Articulo destacado</label>
+          <label className="flex items-center gap-3 text-sm text-ink/70"><input type="checkbox" checked={post.featured} onChange={(event) => setPost({ ...post, featured: event.target.checked })} /> Articulo destacado</label>
         </div>
         <button className={`mt-6 ${buttonClass}`}>{post.id ? 'Actualizar articulo' : 'Crear articulo'}</button>
       </form>
