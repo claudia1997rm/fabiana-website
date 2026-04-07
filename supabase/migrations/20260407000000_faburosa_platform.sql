@@ -102,7 +102,7 @@ as $$
   select exists (
     select 1 from public.profiles
     where id = auth.uid()
-    and role = 'admin'
+    and lower(trim(role)) = 'admin'
   );
 $$;
 
@@ -129,14 +129,36 @@ alter table public.posts enable row level security;
 alter table public.push_subscriptions enable row level security;
 
 -- Profiles
+-- Important: do not call public.is_admin() inside SELECT policies on public.profiles.
+-- is_admin() reads public.profiles, so doing that creates infinite recursion.
+create or replace function public.prevent_profile_role_escalation()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if new.role is distinct from old.role and not public.is_admin() then
+    raise exception 'Only admins can change profile roles';
+  end if;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists prevent_profile_role_escalation on public.profiles;
+create trigger prevent_profile_role_escalation
+before update on public.profiles
+for each row execute procedure public.prevent_profile_role_escalation();
+
 drop policy if exists "Users can read their own profile" on public.profiles;
-create policy "Users can read their own profile" on public.profiles for select using (auth.uid() = id or public.is_admin());
+create policy "Users can read their own profile" on public.profiles for select using (auth.uid() = id);
 drop policy if exists "Users can insert their own user profile" on public.profiles;
 create policy "Users can insert their own user profile" on public.profiles for insert with check (auth.uid() = id and role = 'user');
 drop policy if exists "Users can update their own user profile" on public.profiles;
-create policy "Users can update their own user profile" on public.profiles for update using (auth.uid() = id and role = 'user') with check (auth.uid() = id and role = 'user');
+drop policy if exists "Users can update their own profile" on public.profiles;
+create policy "Users can update their own profile" on public.profiles for update using (auth.uid() = id) with check (auth.uid() = id);
 drop policy if exists "Admins can manage profiles" on public.profiles;
-create policy "Admins can manage profiles" on public.profiles for all using (public.is_admin()) with check (public.is_admin());
 
 -- Public content reads
 drop policy if exists "Anyone can read categories" on public.categories;
