@@ -2,11 +2,11 @@ import { footer, integrationNotes } from '../data/siteData';
 
 export function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-pearl/85">
+    <footer className="border-t border-plum/25 bg-[linear-gradient(180deg,#F8F5FA,#D4CBDC)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:px-10 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:py-16">
         <div>
           <p className="font-display text-5xl leading-none tracking-[0.04em] text-ink">FabuRose</p>
-          <p className="mt-5 max-w-md leading-7 text-ink/66">{footer.closing}</p>
+          <p className="mt-5 max-w-md leading-7 text-ink/70">{footer.closing}</p>
         </div>
         <div>
           <p className="editorial-kicker">Redes</p>
@@ -15,7 +15,7 @@ export function Footer() {
               <a
                 key={social.label}
                 href={social.href}
-                className="w-fit text-sm text-ink/72 transition duration-300 hover:translate-x-1 hover:text-ink"
+                className="w-fit text-sm text-ink/70 transition duration-300 hover:translate-x-1 hover:text-plum"
               >
                 {social.label}
               </a>
@@ -24,7 +24,7 @@ export function Footer() {
         </div>
         <div>
           <p className="editorial-kicker">Preparado para crecer</p>
-          <div className="mt-4 space-y-3 text-sm leading-6 text-ink/66">
+          <div className="mt-4 space-y-3 text-sm leading-6 text-ink/70">
             {integrationNotes.map((note) => (
               <p key={note}>{note}</p>
             ))}

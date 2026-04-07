@@ -66,7 +66,7 @@ create table if not exists public.push_subscriptions (
 create or replace function public.set_updated_at()
 returns trigger
 language plpgsql
-as $$
+as $$$
 begin
   new.updated_at = now();
   return new;
@@ -78,7 +78,7 @@ returns trigger
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $$$
 begin
   insert into public.profiles (id, email, full_name, newsletter_email_opt_in)
   values (
@@ -98,7 +98,7 @@ language sql
 stable
 security definer
 set search_path = public
-as $$
+as $$$
   select exists (
     select 1 from public.profiles
     where id = auth.uid()
@@ -136,7 +136,7 @@ returns trigger
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $$$
 begin
   if new.role is distinct from old.role then
     raise exception 'Profile roles cannot be changed from the client';
@@ -214,7 +214,7 @@ language sql
 stable
 security definer
 set search_path = public
-as $
+as $$
   select
     p.id,
     p.email,
@@ -224,7 +224,7 @@ as $
     p.updated_at
   from public.profiles p
   where p.id = auth.uid();
-$;
+$$;
 
 create or replace function public.update_my_profile(
   new_full_name text,
@@ -241,7 +241,7 @@ returns table (
 language plpgsql
 security definer
 set search_path = public
-as $
+as $$
 begin
   update public.profiles
   set
@@ -253,6 +253,39 @@ begin
   return query
   select * from public.get_my_profile();
 end;
-$;
+$$;
 -- After signing up Fabiana's account, promote it to admin by email:
 -- update public.profiles set role = 'admin' where email = 'fabiana@example.com';
+
+-- Photo gallery entries for the Fotografia category.
+create table if not exists public.photo_entries (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  description text,
+  image_path text not null,
+  published_at timestamptz,
+  featured boolean not null default false,
+  status text not null default 'draft' check (status in ('draft', 'published')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+drop trigger if exists set_photo_entries_updated_at on public.photo_entries;
+create trigger set_photo_entries_updated_at
+before update on public.photo_entries
+for each row execute procedure public.set_updated_at();
+
+alter table public.photo_entries enable row level security;
+
+drop policy if exists "Anyone can read published photos" on public.photo_entries;
+create policy "Anyone can read published photos"
+on public.photo_entries
+for select
+using (status = 'published' or public.is_admin());
+
+drop policy if exists "Admins can manage photos" on public.photo_entries;
+create policy "Admins can manage photos"
+on public.photo_entries
+for all
+using (public.is_admin())
+with check (public.is_admin());

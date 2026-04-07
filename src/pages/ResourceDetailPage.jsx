@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getResourceBySlug } from '../lib/contentService';
 
@@ -22,7 +22,7 @@ export function ResourceDetailPage() {
         <div>
           <p className="editorial-kicker">{resource.categories?.name || resource.type || 'Recurso'}</p>
           <h1 className="mt-5 font-display text-6xl leading-[0.9] tracking-[-0.04em] text-ink">{resource.title}</h1>
-          <p className="mt-6 text-lg leading-8 text-ink/66">{resource.description}</p>
+          <p className="mt-6 text-lg leading-8 text-ink/70">{resource.description}</p>
           {resource.published_at ? <p className="mt-4 text-sm text-ink/50">Publicado el {new Date(resource.published_at).toLocaleDateString('es-ES')}</p> : null}
           {resource.pdfUrl ? (
             <a href={resource.pdfUrl} className="mt-8 inline-flex rounded-full border border-ink bg-ink px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-cloud transition hover:bg-white hover:text-ink">

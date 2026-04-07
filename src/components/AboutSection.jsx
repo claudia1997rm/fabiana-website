@@ -1,4 +1,4 @@
-﻿import { about } from '../data/siteData';
+import { about } from '../data/siteData';
 import { SectionHeading } from './SectionHeading';
 
 export function AboutSection() {
@@ -20,10 +20,10 @@ export function AboutSection() {
           <SectionHeading
             eyebrow="Sobre Fabiana"
             title="Una marca personal construida como un universo visual, emocional y editorial"
-            description="El tono mezcla sofisticación, sensibilidad y una sensación de revista digital pensada para acompañar procesos reales."
+            description="El tono mezcla sofisticacion, sensibilidad y una sensacion de revista digital pensada para acompanar procesos reales."
           />
 
-          <div className="mt-8 space-y-5 text-lg leading-8 text-ink/68">
+          <div className="mt-8 space-y-5 text-lg leading-8 text-ink/70">
             {about.body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -31,14 +31,14 @@ export function AboutSection() {
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {about.notes.map((note) => (
-              <div key={note} className="rounded-[1.4rem] border border-ink/10 bg-white/55 px-4 py-5">
-                <p className="text-sm leading-6 text-ink/72">{note}</p>
+              <div key={note} className="rounded-[1.4rem] border border-ink/10 bg-white/60 px-4 py-5">
+                <p className="text-sm leading-6 text-ink/70">{note}</p>
               </div>
             ))}
           </div>
 
           <p className="mt-10 max-w-2xl border-l border-gold/50 pl-6 font-serif text-3xl italic leading-tight text-ink md:text-4xl">
-            “{about.quote}”
+            "{about.quote}"
           </p>
         </div>
       </div>

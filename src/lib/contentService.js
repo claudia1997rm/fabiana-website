@@ -26,6 +26,10 @@ function mapPost(post) {
   return post?.cover_image_path ? { ...post, image: getPublicUrl(STORAGE_BUCKETS.covers, post.cover_image_path) } : post;
 }
 
+function mapPhoto(photo) {
+  return photo?.image_path ? { ...photo, image: getPublicUrl(STORAGE_BUCKETS.covers, photo.image_path) } : photo;
+}
+
 export async function listPublishedResources() {
   if (!supabase) return mockResources.map((resource) => ({ ...resource, slug: slugify(resource.title) }));
   const { data, error } = await supabase.from('resources').select('*, categories(name, slug)').eq('status', 'published').order('published_at', { ascending: false });
@@ -60,6 +64,13 @@ export async function getPostBySlug(slug) {
   return mapPost(data);
 }
 
+export async function listPublishedPhotos() {
+  if (!supabase) return [];
+  const { data, error } = await supabase.from('photo_entries').select('*').eq('status', 'published').order('published_at', { ascending: false });
+  if (error) throw error;
+  return data.map(mapPhoto);
+}
+
 export async function listCategories() {
   if (!supabase) return [];
   const { data, error } = await supabase.from('categories').select('*').order('name');
@@ -79,11 +90,23 @@ export async function listAdminPosts() {
   return data;
 }
 
+export async function listAdminPhotos() {
+  const { data, error } = await supabase.from('photo_entries').select('*').order('updated_at', { ascending: false });
+  if (error) throw error;
+  return data.map(mapPhoto);
+}
+
 export async function uploadContentFile({ bucket, folder, file, ownerId }) {
   const path = buildStoragePath({ folder, file, ownerId });
   const { data, error } = await supabase.storage.from(bucket).upload(path, file, { cacheControl: '3600', upsert: false });
   if (error) throw error;
   return data.path;
+}
+
+export async function deleteContentFile({ bucket, path }) {
+  if (!path) return;
+  const { error } = await supabase.storage.from(bucket).remove([path]);
+  if (error) throw error;
 }
 
 export async function createCategory(payload) {
@@ -118,4 +141,22 @@ export async function savePost(payload) {
   const { data, error } = await query;
   if (error) throw error;
   return data;
+}
+
+export async function savePhoto(payload) {
+  const { image, ...record } = payload;
+  const query = record.id
+    ? supabase.from('photo_entries').update(record).eq('id', record.id).select().single()
+    : supabase.from('photo_entries').insert(record).select().single();
+  const { data, error } = await query;
+  if (error) throw error;
+  return data;
+}
+
+export async function deletePhoto(photo) {
+  if (photo.image_path) {
+    await deleteContentFile({ bucket: STORAGE_BUCKETS.covers, path: photo.image_path });
+  }
+  const { error } = await supabase.from('photo_entries').delete().eq('id', photo.id);
+  if (error) throw error;
 }

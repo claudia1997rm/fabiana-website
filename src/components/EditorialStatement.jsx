@@ -3,7 +3,7 @@ import { statement } from '../data/siteData';
 export function EditorialStatement() {
   return (
     <section className="section-shell mx-auto max-w-7xl px-6 pb-8 md:px-10 md:pb-16">
-      <div className="reveal-on-scroll magazine-frame rounded-[2.25rem] px-6 py-10 transition duration-700 hover:-translate-y-1 hover:shadow-card md:px-10 lg:px-14 lg:py-14">
+      <div className="reveal-on-scroll magazine-frame rounded-[2.25rem] px-6 py-10 transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:px-10 lg:px-14 lg:py-14">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="editorial-kicker">Firma editorial</p>
@@ -14,8 +14,8 @@ export function EditorialStatement() {
 
           <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-1">
             {statement.pillars.map((pillar, index) => (
-              <article key={pillar.title} className="reveal-on-scroll border-t border-ink/10 pt-4 transition duration-500 hover:border-ink/25" style={{ '--reveal-delay': `${index * 90}ms` }}>
-                <p className="text-[10px] uppercase tracking-[0.32em] text-taupe">{pillar.title}</p>
+              <article key={pillar.title} className="reveal-on-scroll border-t border-plum/25 pt-4 transition duration-500 hover:border-plum/60" style={{ '--reveal-delay': `${index * 90}ms` }}>
+                <p className="text-[10px] uppercase tracking-[0.32em] text-plum">{pillar.title}</p>
                 <p className="mt-3 text-sm leading-6 text-ink/70">{pillar.description}</p>
               </article>
             ))}
