@@ -12,8 +12,8 @@ export function ResourcesSection() {
           title="PDFs, guías y piezas descargables con alma editorial"
           description="Una boutique digital para descargar guías, guardar rituales y convertir la inspiración en una práctica real. Cada pieza está pensada como un pequeño objeto editorial."
         />
-        <div className="max-w-md rounded-[1.7rem] border border-plum/20 bg-lavenderMist/80 p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
-          <p className="text-[10px] uppercase tracking-[0.32em] text-plum/75">Recorrido sugerido</p>
+        <div className="max-w-md rounded-[1.7rem] border border-plum/30 bg-[linear-gradient(135deg,#F6F4FB,#ede7f7)] p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
+          <p className="text-[10px] uppercase tracking-[0.32em] text-plum">Recorrido sugerido</p>
           <p className="mt-3">Empieza por el recurso que más resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
         </div>
       </div>
@@ -26,7 +26,7 @@ export function ResourcesSection() {
             style={{ '--reveal-delay': `${index * 110}ms` }}
           >
             <div className={`grid gap-6 ${index === 0 ? 'lg:grid-cols-[0.95fr_1.05fr] lg:items-center' : ''}`}>
-              <div className="relative overflow-hidden rounded-[1.7rem] bg-lavenderMist">
+              <div className="relative overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#F6F4FB,#ede7f7)]">
                 <img
                   src={resource.image}
                   alt={`Portada del recurso ${resource.title}`}
@@ -36,14 +36,14 @@ export function ResourcesSection() {
                   <span className="rounded-full border border-white/50 bg-white/75 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-ink/70 backdrop-blur-md">
                     {resource.meta}
                   </span>
-                  <span className="rounded-full border border-white/40 bg-plum px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
+                  <span className="rounded-full border border-white/40 bg-wine px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
                     {resource.edition}
                   </span>
                 </div>
               </div>
               <div className="flex h-full flex-col px-2 pb-2 pt-2">
                 <div className="flex flex-wrap items-center gap-3">
-                  <p className="text-[10px] uppercase tracking-[0.32em] text-plum/75">{resource.type}</p>
+                  <p className="text-[10px] uppercase tracking-[0.32em] text-plum">{resource.type}</p>
                   <span className="h-px w-10 bg-ink/20 transition duration-500 group-hover:w-16 group-hover:bg-plum/60" />
                   <p className="text-[10px] uppercase tracking-[0.28em] text-plum">Producto editorial</p>
                 </div>
@@ -51,7 +51,7 @@ export function ResourcesSection() {
                   {resource.title}
                 </h3>
                 <p className="mt-5 flex-1 leading-7 text-ink/70">{resource.description}</p>
-                <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-plum/20 pt-6">
+                <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-plum/25 pt-6">
                   <Button href={`/resources/${slugify(resource.title)}`} variant={index === 0 ? 'primary' : 'secondary'}>
                     {resource.cta}
                   </Button>

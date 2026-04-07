@@ -14,7 +14,7 @@ export function Button({ href, children, variant = 'primary' }) {
     primary:
       'border-plum bg-plum text-white shadow-lavender hover:-translate-y-1 hover:border-deepPlum hover:bg-deepPlum hover:text-white hover:shadow-lavender active:translate-y-0',
     secondary:
-      'border-plum/35 bg-white/70 text-plum backdrop-blur-md hover:-translate-y-1 hover:border-plum/45 hover:bg-lavenderMist hover:text-plum hover:shadow-lavender active:translate-y-0',
+      'border-plum/45 bg-lavenderMist text-plum backdrop-blur-md hover:-translate-y-1 hover:border-plum hover:bg-plum hover:text-white hover:shadow-lavender active:translate-y-0',
     ghost:
       'border-transparent bg-transparent px-0 py-0 text-ink hover:text-plum focus-visible:ring-offset-transparent',
   };

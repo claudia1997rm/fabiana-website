@@ -5,8 +5,8 @@ import { SectionHeading } from './SectionHeading';
 
 export function JournalSection() {
   return (
-    <section id="journal" className="section-shell bg-deepPlum text-cloud">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(124,107,196,0.18),transparent_24%)]" />
+    <section id="journal" className="section-shell bg-[linear-gradient(135deg,#4C3F91,#6E2F45)] text-cloud">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(246,244,251,0.16),transparent_24%)]" />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 lg:py-32">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -25,7 +25,7 @@ export function JournalSection() {
             <a
               key={post.title}
               href={`/journal/${slugify(post.title)}`}
-              className="reveal-on-scroll group overflow-hidden rounded-[2rem] border border-lilac/25 bg-white/[0.07] transition duration-700 hover:-translate-y-2 hover:border-lilac/45 hover:bg-white/[0.10] hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-4 focus-visible:ring-offset-deepPlum"
+              className="reveal-on-scroll group overflow-hidden rounded-[2rem] border border-white/20 bg-white/[0.09] transition duration-700 hover:-translate-y-2 hover:border-white/35 hover:bg-white/[0.10] hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-4 focus-visible:ring-offset-deepPlum"
               style={{ '--reveal-delay': `${index * 100}ms` }}
             >
               <div className="overflow-hidden">
@@ -36,7 +36,7 @@ export function JournalSection() {
                 />
               </div>
               <div className="p-6 md:p-7">
-                <p className="text-[10px] uppercase tracking-[0.34em] text-lilac">{post.category}</p>
+                <p className="text-[10px] uppercase tracking-[0.34em] text-lavender">{post.category}</p>
                 <h3 className="mt-4 font-display text-[2.25rem] leading-[0.95] tracking-[-0.03em] text-cloud">
                   {post.title}
                 </h3>

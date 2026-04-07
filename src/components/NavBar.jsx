@@ -15,10 +15,10 @@ export function NavBar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-plum/20 bg-lavenderMist/90 backdrop-blur-xl transition duration-500">
+    <header className="sticky top-0 z-40 border-b border-plum/25 bg-white/70 backdrop-blur-xl transition duration-500">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:px-10">
-        <Link to="/" onClick={handleBrandClick} className="group flex cursor-pointer items-center gap-3 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-plum/20 bg-plum text-[10px] text-white uppercase tracking-[0.3em] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-deepPlum/55 group-hover:bg-deepPlum">
+        <Link to="/" onClick={handleBrandClick} className="group flex cursor-pointer items-center gap-3 text-deepPlum focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-plum bg-plum text-[10px] text-white shadow-lavender uppercase tracking-[0.3em] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-deepPlum/55 group-hover:bg-deepPlum">
             FR
           </span>
           <span className="font-display text-[1.8rem] tracking-[0.08em] transition duration-500 group-hover:tracking-[0.1em]">FabuRose</span>
@@ -40,7 +40,7 @@ export function NavBar() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2 rounded-full border border-plum/20 bg-white/60 px-2 py-1.5 text-[11px] uppercase tracking-[0.28em] backdrop-blur-md">
+        <div className="flex items-center gap-2 rounded-full border border-plum/25 bg-lavenderMist/85 px-2 py-1.5 text-[11px] uppercase tracking-[0.28em] backdrop-blur-md">
           {user ? (
             <>
               {isAdmin ? <Link className="nav-action hidden md:inline-flex" to="/admin">Panel</Link> : null}
