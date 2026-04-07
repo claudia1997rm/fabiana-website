@@ -15,10 +15,10 @@ export function NavBar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink/10 bg-cloud/75 backdrop-blur-xl transition duration-500">
+    <header className="sticky top-0 z-40 border-b border-lavender/35 bg-lavenderMist/80 backdrop-blur-xl transition duration-500">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:px-10">
         <Link to="/" onClick={handleBrandClick} className="group flex cursor-pointer items-center gap-3 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 bg-white/60 text-[10px] uppercase tracking-[0.3em] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-ink/25 group-hover:bg-white">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-plum/20 bg-plum text-[10px] text-cloud uppercase tracking-[0.3em] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-plum/45 group-hover:bg-deepPlum">
             FR
           </span>
           <span className="font-display text-[1.8rem] tracking-[0.08em] transition duration-500 group-hover:tracking-[0.1em]">FabuRose</span>
@@ -32,7 +32,7 @@ export function NavBar() {
                 key={item.href}
                 href={`/${item.href}`}
                 aria-current={isActive ? 'page' : undefined}
-                className={`relative text-[11px] uppercase tracking-[0.3em] transition duration-500 after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-ink after:transition-all after:duration-500 hover:text-ink focus-visible:outline-none focus-visible:text-ink ${isActive ? 'text-ink after:w-full' : 'text-ink/72 after:w-0 hover:after:w-full'}`}
+                className={`relative text-[11px] uppercase tracking-[0.3em] transition duration-500 after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-plum after:transition-all after:duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum ${isActive ? 'text-plum after:w-full' : 'text-ink/72 after:w-0 hover:after:w-full'}`}
               >
                 {item.label}
               </a>
@@ -40,7 +40,7 @@ export function NavBar() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2 rounded-full border border-ink/10 bg-white/40 px-2 py-1.5 text-[11px] uppercase tracking-[0.28em] backdrop-blur-md">
+        <div className="flex items-center gap-2 rounded-full border border-lavender/40 bg-white/55 px-2 py-1.5 text-[11px] uppercase tracking-[0.28em] backdrop-blur-md">
           {user ? (
             <>
               {isAdmin ? <Link className="nav-action hidden md:inline-flex" to="/admin">Panel</Link> : null}
@@ -50,7 +50,7 @@ export function NavBar() {
           ) : (
             <>
               <Link className="nav-action" to="/login">Entrar</Link>
-              <Link className="rounded-full border border-ink/15 bg-white/70 px-4 py-2 text-ink transition duration-500 hover:-translate-y-0.5 hover:border-ink/35 hover:bg-white hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20" to="/signup">Crear cuenta</Link>
+              <Link className="rounded-full border border-plum/25 bg-lavenderMist/85 px-4 py-2 text-plum transition duration-500 hover:-translate-y-0.5 hover:border-plum hover:bg-plum hover:text-cloud hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25" to="/signup">Crear cuenta</Link>
             </>
           )}
         </div>

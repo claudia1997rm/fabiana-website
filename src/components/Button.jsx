@@ -12,9 +12,9 @@ export function Button({ href, children, variant = 'primary' }) {
 
   const variants = {
     primary:
-      'border-ink bg-ink text-cloud shadow-glow hover:-translate-y-1 hover:border-plum hover:bg-plum hover:text-cloud hover:shadow-violetGlow active:translate-y-0',
+      'border-plum bg-plum text-cloud shadow-violetGlow hover:-translate-y-1 hover:border-deepPlum hover:bg-deepPlum hover:text-cloud hover:shadow-lavender active:translate-y-0',
     secondary:
-      'border-lavender/35 bg-white/65 text-ink backdrop-blur-md hover:-translate-y-1 hover:border-plum/45 hover:bg-lavenderMist/75 hover:text-plum hover:shadow-lavender active:translate-y-0',
+      'border-plum/30 bg-lavenderMist/80 text-plum backdrop-blur-md hover:-translate-y-1 hover:border-plum hover:bg-plum hover:text-cloud hover:shadow-violetGlow active:translate-y-0',
     ghost:
       'border-transparent bg-transparent px-0 py-0 text-ink hover:text-plum focus-visible:ring-offset-transparent',
   };
