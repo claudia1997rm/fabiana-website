@@ -10,6 +10,16 @@ create table if not exists public.photo_entries (
   updated_at timestamptz not null default now()
 );
 
+create or replace function public.set_updated_at()
+returns trigger
+language plpgsql
+as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
 drop trigger if exists set_photo_entries_updated_at on public.photo_entries;
 create trigger set_photo_entries_updated_at
 before update on public.photo_entries
