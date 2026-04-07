@@ -6,7 +6,7 @@
 
 :root {
   color: #111111;
-  background: #F3EFF7;
+  background: #EDE8F1;
   font-family: 'Manrope', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,10 +21,10 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.74), transparent 26%),
-    radial-gradient(circle at 82% 12%, rgba(95, 82, 125, 0.20), transparent 34%),
-    radial-gradient(circle at 12% 78%, rgba(106, 51, 70, 0.12), transparent 34%),
-    linear-gradient(180deg, #f3eff7 0%, #e8e1ef 46%, #ddd4e8 100%);
+    radial-gradient(circle at top left, rgba(248, 245, 250, 0.72), transparent 25%),
+    radial-gradient(circle at 78% 8%, rgba(85, 74, 104, 0.22), transparent 33%),
+    radial-gradient(circle at 12% 78%, rgba(94, 47, 63, 0.14), transparent 32%),
+    linear-gradient(180deg, #ede8f1 0%, #e2dbe7 48%, #d5ccdc 100%);
   color: #111111;
 }
 
@@ -53,13 +53,13 @@ img {
   overflow: hidden;
 }
 
-.brand-atmosphere__rose {
+.brand-atmosphere__line-rose {
   position: absolute;
-  right: clamp(-14rem, -12vw, -4rem);
-  top: clamp(5rem, 13vh, 11rem);
-  width: min(58rem, 86vw);
+  right: clamp(-16rem, -13vw, -5rem);
+  top: clamp(4rem, 12vh, 10rem);
+  width: min(56rem, 84vw);
   aspect-ratio: 1;
-  opacity: 0.23;
+  opacity: 0.18;
   background: url('/brand-background.svg') center / contain no-repeat;
   mix-blend-mode: multiply;
   transform: translate3d(var(--brand-shift-x, 0), var(--brand-shift-y, 0), 0) rotate(var(--brand-rotate, 0deg));
@@ -67,18 +67,17 @@ img {
   will-change: transform;
 }
 
-.brand-atmosphere__monogram {
+.brand-atmosphere__rose-mark {
   position: absolute;
-  left: clamp(-2rem, 5vw, 5rem);
-  bottom: clamp(5rem, 10vh, 9rem);
-  font-family: 'Marcellus', serif;
-  font-size: clamp(8rem, 22vw, 24rem);
-  line-height: 0.8;
-  letter-spacing: -0.08em;
-  color: rgba(47, 41, 64, 0.055);
+  left: clamp(-8rem, 2vw, 3rem);
+  bottom: clamp(2rem, 6vh, 7rem);
+  width: min(34rem, 64vw);
+  aspect-ratio: 1;
+  opacity: 0.085;
+  background: url('/rose-silhouette.svg') center / contain no-repeat;
+  mix-blend-mode: multiply;
   transform: translate3d(var(--brand-shift-x-soft, 0), var(--brand-shift-y-soft, 0), 0);
   transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
-  user-select: none;
   will-change: transform;
 }
 body::before {
@@ -88,19 +87,19 @@ body::before {
   pointer-events: none;
   opacity: 0.28;
   background-image:
-    linear-gradient(rgba(95, 82, 125, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(95, 82, 125, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(85, 74, 104, 0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(85, 74, 104, 0.034) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(circle at center, black 42%, transparent 100%);
 }
 
 ::selection {
-  background: #5F527D;
+  background: #554A68;
   color: #f5f3ef;
 }
 
 :focus-visible {
-  outline: 2px solid rgba(95, 82, 125, 0.42);
+  outline: 2px solid rgba(85, 74, 104, 0.44);
   outline-offset: 4px;
 }
 
@@ -136,7 +135,7 @@ body::before {
   }
 
   .nav-action {
-    @apply inline-flex rounded-full px-3 py-2 text-deepPlum/75 transition duration-500 hover:-translate-y-0.5 hover:bg-plum hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/30;
+    @apply inline-flex rounded-full px-3 py-2 text-cloud/75 transition duration-500 hover:-translate-y-0.5 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30;
   }
 
   .soft-link {

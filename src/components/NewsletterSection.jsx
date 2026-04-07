@@ -4,7 +4,7 @@ import { SectionHeading } from './SectionHeading';
 export function NewsletterSection() {
   return (
     <section id="newsletter" className="section-shell mx-auto max-w-6xl px-6 py-24 md:px-10 lg:py-32">
-      <div className="reveal-on-scroll relative overflow-hidden rounded-[2.4rem] border border-plum/25 bg-[linear-gradient(135deg,rgba(245,240,255,0.98),rgba(220,204,255,0.92)_34%,rgba(95,82,125,0.24)_100%)] px-6 py-12 shadow-card transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:px-12 lg:px-16 lg:py-16">
+      <div className="reveal-on-scroll relative overflow-hidden rounded-[2.4rem] border border-plum/25 bg-[linear-gradient(135deg,rgba(248,245,250,0.96),rgba(212,203,220,0.92)_42%,rgba(85,74,104,0.28)_100%)] px-6 py-12 shadow-card transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:px-12 lg:px-16 lg:py-16">
         <div className="orb -right-10 top-8 h-44 w-44 bg-lavenderMist/70" />
         <div className="orb -left-10 bottom-0 h-52 w-52 bg-wine/25" />
         <div className="relative z-10 grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
@@ -16,7 +16,7 @@ export function NewsletterSection() {
             />
             <div className="mt-8 flex flex-wrap gap-2.5">
               {['Notas privadas', 'Recursos seleccionados', 'Lanzamientos primero'].map((item) => (
-                <span key={item} className="rounded-full border border-plum/35 bg-lavenderMist/85 px-4 py-2 text-[10px] uppercase tracking-[0.26em] text-ink/60 backdrop-blur-sm">
+                <span key={item} className="rounded-full border border-plum/35 bg-lavenderMist/90 px-4 py-2 text-[10px] uppercase tracking-[0.26em] text-ink/60 backdrop-blur-sm">
                   {item}
                 </span>
               ))}
@@ -30,7 +30,7 @@ export function NewsletterSection() {
                 id="newsletter-email"
                 type="email"
                 placeholder={newsletter.placeholder}
-                className="min-h-14 rounded-full border border-ink/12 bg-lavenderMist/85 px-6 text-sm tracking-[0.06em] text-ink outline-none transition duration-300 placeholder:text-ink/35 focus:border-plum/50 focus:bg-white focus:shadow-soft"
+                className="min-h-14 rounded-full border border-ink/12 bg-lavenderMist/90 px-6 text-sm tracking-[0.06em] text-ink outline-none transition duration-300 placeholder:text-ink/35 focus:border-plum/50 focus:bg-white focus:shadow-soft"
               />
               <button
                 type="submit"

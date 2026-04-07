@@ -4,8 +4,8 @@ import { Button } from './Button';
 export function HeroSection() {
   return (
     <section className="section-shell pt-8 md:pt-10">
-      <div className="orb left-[-120px] top-16 h-72 w-72 bg-lilac/35 animate-pulseSoft" />
-      <div className="orb right-[-120px] top-20 h-80 w-80 bg-wine/30 animate-drift" />
+      <div className="orb left-[-120px] top-16 h-72 w-72 bg-plum/25 animate-pulseSoft" />
+      <div className="orb right-[-120px] top-20 h-80 w-80 bg-wine/20 animate-drift" />
       <div className="absolute inset-0 bg-grain opacity-80" aria-hidden="true" />
 
       <div className="mx-auto grid max-w-7xl gap-14 px-6 pb-24 pt-14 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-32 lg:pt-20">
@@ -29,7 +29,7 @@ export function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-2.5" aria-label="Recorrido sugerido">
             {hero.journey.map((step, index) => (
               <span key={step} className="rounded-full border border-plum/35 bg-lavenderMist/90 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-ink/60 shadow-lavender backdrop-blur-sm">
-                {String(index + 1).padStart(2, '0')} · {step}
+                {String(index + 1).padStart(2, '0')} Â· {step}
               </span>
             ))}
           </div>
@@ -59,7 +59,7 @@ export function HeroSection() {
             <div className="glass-panel rounded-[2.25rem] p-4 shadow-glow transition duration-700 hover:-translate-y-1 hover:shadow-lavender">
               <img
                 src={hero.image}
-                alt="Composición visual editorial para FabuRose"
+                alt="ComposiciÃ³n visual editorial para FabuRose"
                 className="h-[33rem] w-full rounded-[1.75rem] object-cover animate-float"
               />
             </div>

@@ -2,7 +2,7 @@ import { footer, integrationNotes } from '../data/siteData';
 
 export function Footer() {
   return (
-    <footer className="border-t border-plum/25 bg-[linear-gradient(180deg,#F3EFF7,#D9CFEF)]">
+    <footer className="border-t border-plum/25 bg-[linear-gradient(180deg,#F8F5FA,#D4CBDC)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:px-10 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:py-16">
         <div>
           <p className="font-display text-5xl leading-none tracking-[0.04em] text-ink">FabuRose</p>

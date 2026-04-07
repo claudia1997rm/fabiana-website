@@ -10,13 +10,13 @@ export function InteractiveBrandBackground() {
       }
 
       frameId = window.requestAnimationFrame(() => {
-        const x = (event.clientX / window.innerWidth - 0.5) * 28;
-        const y = (event.clientY / window.innerHeight - 0.5) * 28;
+        const x = (event.clientX / window.innerWidth - 0.5) * 24;
+        const y = (event.clientY / window.innerHeight - 0.5) * 24;
         document.documentElement.style.setProperty('--brand-shift-x', `${x.toFixed(2)}px`);
         document.documentElement.style.setProperty('--brand-shift-y', `${y.toFixed(2)}px`);
         document.documentElement.style.setProperty('--brand-shift-x-soft', `${(-x * 0.55).toFixed(2)}px`);
         document.documentElement.style.setProperty('--brand-shift-y-soft', `${(-y * 0.45).toFixed(2)}px`);
-        document.documentElement.style.setProperty('--brand-rotate', `${(x * 0.08).toFixed(2)}deg`);
+        document.documentElement.style.setProperty('--brand-rotate', `${(x * 0.06).toFixed(2)}deg`);
       });
     };
 
@@ -37,8 +37,8 @@ export function InteractiveBrandBackground() {
 
   return (
     <div className="brand-atmosphere" aria-hidden="true">
-      <div className="brand-atmosphere__rose" />
-      <div className="brand-atmosphere__monogram">FR</div>
+      <div className="brand-atmosphere__line-rose" />
+      <div className="brand-atmosphere__rose-mark" />
     </div>
   );
 }

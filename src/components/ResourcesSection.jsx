@@ -9,12 +9,12 @@ export function ResourcesSection() {
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeading
           eyebrow="Recursos digitales"
-          title="PDFs, guías y piezas descargables con alma editorial"
-          description="Una boutique digital para descargar guías, guardar rituales y convertir la inspiración en una práctica real. Cada pieza está pensada como un pequeño objeto editorial."
+          title="PDFs, guÃ­as y piezas descargables con alma editorial"
+          description="Una boutique digital para descargar guÃ­as, guardar rituales y convertir la inspiraciÃ³n en una prÃ¡ctica real. Cada pieza estÃ¡ pensada como un pequeÃ±o objeto editorial."
         />
-        <div className="max-w-md rounded-[1.7rem] border border-plum/35 bg-[linear-gradient(135deg,#F3EFF7,#D9CFEF)] p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
+        <div className="max-w-md rounded-[1.7rem] border border-plum/35 bg-[linear-gradient(135deg,#F8F5FA,#D4CBDC)] p-5 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm">
           <p className="text-[10px] uppercase tracking-[0.32em] text-plum">Recorrido sugerido</p>
-          <p className="mt-3">Empieza por el recurso que más resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
+          <p className="mt-3">Empieza por el recurso que mÃ¡s resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
         </div>
       </div>
 
@@ -26,7 +26,7 @@ export function ResourcesSection() {
             style={{ '--reveal-delay': `${index * 110}ms` }}
           >
             <div className={`grid gap-6 ${index === 0 ? 'lg:grid-cols-[0.95fr_1.05fr] lg:items-center' : ''}`}>
-              <div className="relative overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#F3EFF7,#D9CFEF)]">
+              <div className="relative overflow-hidden rounded-[1.7rem] bg-[linear-gradient(135deg,#F8F5FA,#D4CBDC)]">
                 <img
                   src={resource.image}
                   alt={`Portada del recurso ${resource.title}`}
@@ -36,7 +36,7 @@ export function ResourcesSection() {
                   <span className="rounded-full border border-white/50 bg-lavenderMist/80 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-ink/70 backdrop-blur-md">
                     {resource.meta}
                   </span>
-                  <span className="rounded-full border border-white/40 bg-[linear-gradient(135deg,#4A3F61,#6A3346)] px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
+                  <span className="rounded-full border border-white/40 bg-[linear-gradient(135deg,#2A2235,#5E2F3F)] px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-cloud backdrop-blur-md">
                     {resource.edition}
                   </span>
                 </div>

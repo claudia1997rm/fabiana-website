@@ -5,14 +5,14 @@ import { SectionHeading } from './SectionHeading';
 
 export function JournalSection() {
   return (
-    <section id="journal" className="section-shell bg-[linear-gradient(135deg,#2F2940_0%,#4A3F61_58%,#6A3346_100%)] text-cloud">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(246,244,251,0.16),transparent_24%)]" />
+    <section id="journal" className="section-shell bg-[linear-gradient(135deg,#201A28_0%,#2A2235_56%,#5E2F3F_100%)] text-cloud">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,245,250,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(248,245,250,0.14),transparent_24%)]" />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 lg:py-32">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             eyebrow="Diario"
-            title="Textos para mirar la vida con más belleza y significado"
-            description="Una sección editorial pensada para leer con calma: ideas, rituales y estilo personal antes de guardar, descargar o volver a tu propia práctica."
+            title="Textos para mirar la vida con mÃ¡s belleza y significado"
+            description="Una secciÃ³n editorial pensada para leer con calma: ideas, rituales y estilo personal antes de guardar, descargar o volver a tu propia prÃ¡ctica."
             theme="dark"
           />
           <Button href="#newsletter" variant="secondary">
@@ -42,7 +42,7 @@ export function JournalSection() {
                 </h3>
                 <p className="mt-4 leading-7 text-cloud/70">{post.excerpt}</p>
                 <div className="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-cloud/60 transition group-hover:text-cloud">
-                  <span>Leer artículo</span>
+                  <span>Leer artÃ­culo</span>
                   <span className="h-px w-12 bg-current transition duration-500 group-hover:w-16" />
                 </div>
               </div>
