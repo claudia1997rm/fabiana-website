@@ -11,11 +11,8 @@ export const siteImageGroups = [
   },
   {
     title: 'Sobre Fabiana',
-    description: 'Retrato y detalle del bloque personal.',
-    items: [
-      { key: 'aboutPrimary', label: 'Imagen principal de Sobre Fabiana', fallback: about.image },
-      { key: 'aboutSecondary', label: 'Imagen secundaria de Sobre Fabiana', fallback: about.secondaryImage },
-    ],
+    description: 'Retrato principal del bloque personal.',
+    items: [{ key: 'aboutPrimary', label: 'Imagen principal de Sobre Fabiana', fallback: about.image }],
   },
   {
     title: 'Lookbook',
@@ -68,7 +65,6 @@ export function buildHomepageContent(imageOverrides = {}) {
     about: {
       ...about,
       image: imageOverrides.aboutPrimary || about.image,
-      secondaryImage: imageOverrides.aboutSecondary || about.secondaryImage,
     },
     editorialGallery: editorialGallery.map((item, index) => ({
       ...item,

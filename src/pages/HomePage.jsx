@@ -38,8 +38,8 @@ export function HomePage() {
   return (
     <>
       <HeroSection heroData={homepageContent.hero} />
-      <EditorialGallerySection galleryItems={homepageContent.editorialGallery} />
       <EditorialStatement />
+      <EditorialGallerySection galleryItems={homepageContent.editorialGallery} />
       <AboutSection aboutData={homepageContent.about} />
       <UniverseSection categoryCards={homepageContent.categories} />
       <ResourcesSection resourceItems={homepageContent.resources} />

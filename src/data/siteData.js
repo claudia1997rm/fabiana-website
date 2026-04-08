@@ -7,8 +7,8 @@ const editorialImages = {
   heroPrimary: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
   heroSecondary: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80',
   aboutPrimary: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
-  aboutSecondary: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
   habits: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1200&q=80',
+  habitsSkin: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80',
   fashion: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
   beauty: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
   photography: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80',
@@ -55,7 +55,7 @@ export const hero = {
 };
 
 export const statement = {
-  quote: 'Una estetica suave. Una mente clara. Un universo donde la belleza tambien guia.',
+  quote: '"Vivir en belleza es un acto diario, un estilo que se siente y se respira. El autoconocimiento es la brujula que lo hace posible."',
   lookbookTitle: 'Un archivo visual para vestir, cuidar y narrar tu energia.',
   pillars: [
     { title: 'Moda con intencion', description: 'Estilo personal, armario capsula y presencia visual con identidad.' },
@@ -79,7 +79,6 @@ export const about = {
   quote: 'La transformacion tambien puede verse delicada, femenina y absolutamente tuya.',
   image: editorialImages.aboutPrimary,
   imageFallback: aboutPortrait,
-  secondaryImage: editorialImages.aboutSecondary,
   notes: ['Mirada editorial y aspiracional', 'Contenido digital facil de escalar', 'Base visual lista para marca personal de alta gama'],
 };
 
@@ -96,8 +95,85 @@ export const categoryPages = {
   habitos: {
     title: 'Habitos',
     eyebrow: 'Rituales y constancia suave',
-    subtitle: 'Una biblioteca editorial para crear rutinas bellas, sostenibles y alineadas con tu energia real.',
-    intro: 'Aqui viviran guias de 30 dias, practicas de journaling, rituales de manana y recursos descargables para volver a ti sin exigencia.',
+    subtitle: 'Pequenos rituales que transforman tu dia.',
+    introTitle: 'Habitos: pequenos rituales que transforman tu dia',
+    introParagraphs: [
+      'Un habito no es solo repetir algo mecanicamente; es un gesto que despierta tu cuerpo, activa tu energia y armoniza tu mente. Es como encender un pequeno fuego cada manana que te recuerda que estas viva, que tu dia empieza contigo y para ti.',
+      'Cuando lo haces con atencion, un habito se convierte en ritual: un momento sagrado donde tu cuerpo responde, tu respiracion se alinea y tu mente se aclara. Saltos, movimientos, jugos y respiraciones: cada gesto tiene su propia melodia y efecto. Algunos habitos aceleran tu corazon, otros te llenan de calma; unos despiertan endorfinas, otros te regalan serotonina. Lo magico es sentirlo en ti.',
+      'No todos los habitos seran tuyos. Escuchar tu cuerpo es clave: observa como reacciona, que sensaciones surgen, que emociones despierta. Si algo no resuena, no es tu estilo, y esta perfecto. La belleza esta en probar, sentir y quedarte con lo que realmente te eleva.',
+      'Cada habito consciente que incorporas es un pequeno ritual que te recuerda: tu vida, tu energia y tu bienestar merecen ser celebrados, cada dia, a tu manera.',
+    ],
+    image: editorialImages.habits,
+    imageAlt: 'Paisaje luminoso para la seccion de habitos',
+    habits: [
+      {
+        id: 'saltos-al-despertar',
+        name: 'Hacer 100 saltos al levantarse',
+        duration: '2-4 minutos',
+        category: 'Diurnos',
+        tags: ['Diurnos', 'Rituales'],
+        description:
+          'Realiza 100 saltos o saltos de tijera al despertar para activar el cuerpo, mover la circulacion y darle a la manana un inicio dinamico, vital y consciente.',
+        physicalBenefits: [
+          'Mejora la circulacion sanguinea.',
+          'Activa el metabolismo desde el inicio del dia.',
+          'Fortalece piernas, gluteos y core.',
+          'Incrementa la coordinacion y el equilibrio.',
+          'Ayuda a quemar calorias desde la manana.',
+        ],
+        mentalEmotionalBenefits: [
+          'Aumenta la sensacion de energia y alerta.',
+          'Reduce el estres acumulado.',
+          'Mejora el animo.',
+          'Favorece la claridad mental.',
+        ],
+        hormones: [
+          { name: 'Endorfinas', effect: 'sensacion de bienestar.' },
+          { name: 'Adrenalina', effect: 'energia inmediata.' },
+          { name: 'Dopamina', effect: 'motivacion y recompensa.' },
+        ],
+        sensations: [
+          'Aumento de energia.',
+          'Calor corporal.',
+          'Sensacion de activacion.',
+          'Vitalidad al comenzar el dia.',
+        ],
+      },
+      {
+        id: 'limon-aceite-oliva-12-dias',
+        name: 'Cuidado de piel por 12 dias: zumo de limon con aceite de oliva',
+        duration: '12 dias',
+        category: 'Diurnos',
+        tags: ['Diurnos', 'Rituales'],
+        image: editorialImages.habitsSkin,
+        imageAlt: 'Ritual de autocuidado para la piel',
+        description:
+          'Prepara una mezcla de jugo de limon con aceite de oliva y aplicala sobre la piel diariamente durante 12 dias para acompanar una rutina enfocada en textura, luminosidad y cuidado personal consciente.',
+        physicalBenefits: [
+          'La vitamina C del limon estimula la produccion de colageno.',
+          'Ayuda a iluminar la piel.',
+          'Puede contribuir a reducir manchas visibles.',
+          'El aceite de oliva hidrata profundamente.',
+          'Aporta antioxidantes y protege la barrera cutanea.',
+        ],
+        mentalEmotionalBenefits: [
+          'Genera sensacion de frescura y limpieza.',
+          'Funciona como rutina relajante que ayuda a reducir estres.',
+          'Aumenta la autoestima.',
+          'Refuerza la sensacion de cuidado personal.',
+        ],
+        hormones: [
+          { name: 'Cortisol', effect: 'puede disminuir al convertirlo en un gesto calmante de autocuidado.' },
+          { name: 'Serotonina', effect: 'puede aumentar la sensacion de satisfaccion al cuidar la piel.' },
+        ],
+        sensations: [
+          'Piel mas suave e iluminada.',
+          'Sensacion de frescura.',
+          'Rutina calmante.',
+          'Energia suave al cuidarte.',
+        ],
+      },
+    ],
     comingSoon: ['Guias de habitos de 30 dias', 'Rituales de manana y noche', 'Plantillas de seguimiento suave'],
   },
   moda: {
