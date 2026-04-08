@@ -164,10 +164,14 @@ export async function savePhoto(payload) {
 }
 
 export async function saveSiteSettings(payload) {
-  const record = cleanWritePayload({ key: 'home', ...payload });
-  const { data, error } = await supabase.from('site_settings').upsert(record).select().single();
+  const { data, error } = await supabase.rpc('upsert_site_settings', {
+    new_hero_primary_image_path: payload.hero_primary_image_path || null,
+    new_hero_secondary_image_path: payload.hero_secondary_image_path || null,
+    new_home_images: payload.home_images || {},
+  });
   if (error) throw error;
-  return mapSiteSettings(data);
+  const record = Array.isArray(data) ? data[0] : data;
+  return mapSiteSettings(record);
 }
 
 export async function deletePhoto(photo) {

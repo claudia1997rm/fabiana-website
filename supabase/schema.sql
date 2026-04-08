@@ -323,3 +323,44 @@ on public.site_settings
 for all
 using (public.is_admin())
 with check (public.is_admin());
+
+create or replace function public.upsert_site_settings(
+  new_hero_primary_image_path text,
+  new_hero_secondary_image_path text,
+  new_home_images jsonb
+)
+returns setof public.site_settings
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if not public.is_admin() then
+    raise exception 'Only admins can update site settings';
+  end if;
+
+  insert into public.site_settings (
+    key,
+    hero_primary_image_path,
+    hero_secondary_image_path,
+    home_images
+  )
+  values (
+    'home',
+    new_hero_primary_image_path,
+    new_hero_secondary_image_path,
+    coalesce(new_home_images, '{}'::jsonb)
+  )
+  on conflict (key)
+  do update set
+    hero_primary_image_path = excluded.hero_primary_image_path,
+    hero_secondary_image_path = excluded.hero_secondary_image_path,
+    home_images = coalesce(excluded.home_images, '{}'::jsonb),
+    updated_at = now();
+
+  return query
+  select * from public.site_settings where key = 'home';
+end;
+$$;
+
+grant execute on function public.upsert_site_settings(text, text, jsonb) to authenticated;
