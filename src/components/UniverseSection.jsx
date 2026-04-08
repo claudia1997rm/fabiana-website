@@ -17,18 +17,34 @@ export function UniverseSection() {
           {categories.map((category, index) => {
             const featured = index === 0;
             return (
-              <Link key={category.name} to={category.path} aria-label={category.cta} className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[1.55rem] border border-ink/10 p-5 transition duration-700 hover:border-plum/25 hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:rounded-[2rem] md:p-8 ${featured ? 'bg-[linear-gradient(135deg,#2A2235,#5B4A78)] text-white lg:row-span-2' : 'bg-lavenderMist/92 text-ink'}`} style={{ '--reveal-delay': `${index * 75}ms` }}>
+              <Link
+                key={category.name}
+                to={category.path}
+                aria-label={category.cta}
+                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[1.55rem] border border-ink/10 transition duration-700 hover:border-plum/25 hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:rounded-[2rem] ${featured ? 'lg:row-span-2' : ''}`}
+                style={{ '--reveal-delay': `${index * 75}ms` }}
+              >
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className={`absolute inset-0 h-full w-full object-cover transition duration-1000 group-hover:scale-[1.03] ${featured ? 'opacity-90' : 'opacity-82'}`}
+                />
+                <div className={`absolute inset-0 ${featured ? 'bg-[linear-gradient(180deg,rgba(32,26,40,0.22),rgba(32,26,40,0.74))]' : 'bg-[linear-gradient(180deg,rgba(255,253,248,0.18),rgba(42,34,53,0.68))]'}`} />
                 <div className={`absolute right-0 top-0 h-24 w-24 rounded-full blur-3xl transition duration-700 group-hover:scale-125 ${featured ? 'bg-lavender/20' : 'bg-lavender/50'}`} />
-                <p className={`text-[9px] uppercase tracking-[0.28em] md:text-[10px] md:tracking-[0.32em] ${featured ? 'text-white/75' : 'text-plum'}`}>{category.accent}</p>
-                <div className="mt-6 flex items-start justify-between gap-4 md:mt-8">
-                  <h3 className={`font-display text-3xl leading-none tracking-[-0.03em] transition duration-500 group-hover:tracking-[-0.04em] md:text-[2.7rem] ${featured ? 'lg:text-6xl' : ''}`}>{category.name}</h3>
-                  <span className={`text-[10px] uppercase tracking-[0.24em] md:text-[11px] md:tracking-[0.28em] ${featured ? 'text-cloud/50' : 'text-ink/40'}`}>0{index + 1}</span>
-                </div>
-                <p className={`mt-4 max-w-sm text-sm leading-6 md:mt-5 md:text-base md:leading-7 ${featured ? 'text-cloud/75' : 'text-ink/70'}`}>{category.description}</p>
-                <div className="mt-7 flex items-center justify-between gap-4 md:mt-10 md:gap-5">
-                  <span className={`text-[9px] uppercase tracking-[0.26em] transition duration-500 group-hover:tracking-[0.3em] md:text-[10px] ${featured ? 'text-cloud/70' : 'text-ink/60'}`}>Explorar</span>
-                  <span className={`h-px flex-1 origin-left transition duration-700 group-hover:scale-x-90 ${featured ? 'bg-white/20' : 'bg-plum/25'}`} />
-                  <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full border text-sm transition duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-1 md:h-9 md:w-9 ${featured ? 'border-lavender/25 text-lavender group-hover:bg-lavender/10' : 'border-plum/30 text-plum group-hover:bg-lavender'}`}>{"->"}</span>
+                <div className={`relative z-10 flex h-full flex-col justify-between p-5 text-white md:p-8 ${featured ? 'min-h-[32rem]' : 'min-h-[20rem]'}`}>
+                  <div>
+                    <p className="text-[9px] uppercase tracking-[0.28em] md:text-[10px] md:tracking-[0.32em] text-white/80">{category.accent}</p>
+                    <div className="mt-6 flex items-start justify-between gap-4 md:mt-8">
+                      <h3 className={`font-display text-3xl leading-none tracking-[-0.03em] transition duration-500 group-hover:tracking-[-0.04em] md:text-[2.7rem] ${featured ? 'lg:text-6xl' : ''}`}>{category.name}</h3>
+                      <span className="text-[10px] uppercase tracking-[0.24em] text-white/55 md:text-[11px] md:tracking-[0.28em]">0{index + 1}</span>
+                    </div>
+                    <p className={`mt-4 max-w-sm text-sm leading-6 text-white/80 md:mt-5 md:text-base md:leading-7 ${featured ? 'lg:max-w-md' : ''}`}>{category.description}</p>
+                  </div>
+                  <div className="mt-7 flex items-center justify-between gap-4 md:mt-10 md:gap-5">
+                    <span className="text-[9px] uppercase tracking-[0.26em] text-white/80 transition duration-500 group-hover:tracking-[0.3em] md:text-[10px]">Explorar</span>
+                    <span className="h-px flex-1 origin-left bg-white/25 transition duration-700 group-hover:scale-x-90" />
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-sm text-white transition duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-1 group-hover:bg-white/10 md:h-9 md:w-9">{'->'}</span>
+                  </div>
                 </div>
               </Link>
             );

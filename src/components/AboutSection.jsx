@@ -11,7 +11,14 @@ export function AboutSection() {
             <img
               src={about.image}
               alt="Retrato editorial de Fabiana"
-              className="w-full rounded-[1.9rem] object-cover"
+              className="h-[28rem] w-full rounded-[1.9rem] object-cover md:h-[38rem]"
+            />
+          </div>
+          <div className="absolute -bottom-6 right-4 hidden w-44 overflow-hidden rounded-[1.6rem] border border-white/60 bg-white/75 p-2 shadow-soft backdrop-blur-sm transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:block lg:-right-8 lg:w-52">
+            <img
+              src={about.secondaryImage}
+              alt="Detalle lifestyle del universo FabuRose"
+              className="h-52 w-full rounded-[1.2rem] object-cover lg:h-64"
             />
           </div>
         </div>
