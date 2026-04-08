@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  color: #15111B;
-  background: #FAF8FC;
+  color: #221A2F;
+  background: #FBF6FF;
   font-family: 'Manrope', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,11 +21,11 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(255, 253, 248, 0.96), transparent 28%),
-    radial-gradient(circle at 86% 12%, rgba(91, 74, 120, 0.10), transparent 30%),
-    radial-gradient(circle at 12% 80%, rgba(216, 206, 223, 0.22), transparent 34%),
-    linear-gradient(180deg, #fffdf8 0%, #faf8fc 46%, #f2edf7 100%);
-  color: #15111B;
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.96), transparent 26%),
+    radial-gradient(circle at 86% 12%, rgba(222, 191, 215, 0.22), transparent 30%),
+    radial-gradient(circle at 12% 80%, rgba(199, 166, 196, 0.18), transparent 32%),
+    linear-gradient(180deg, #fdf8ff 0%, #f5eef8 52%, #efe3f1 100%);
+  color: #221A2F;
 }
 
 * {
@@ -56,7 +56,7 @@ img {
   top: clamp(5rem, 15vh, 12rem);
   width: min(54rem, 80vw);
   aspect-ratio: 1;
-  opacity: 0.11;
+  opacity: 0.085;
   background: url('/brand-background.svg') center / contain no-repeat;
   mix-blend-mode: multiply;
   transform: translate3d(var(--brand-shift-x, 0), var(--brand-shift-y, 0), 0) rotate(var(--brand-rotate, 0deg));
@@ -70,7 +70,7 @@ img {
   bottom: clamp(1rem, 5vh, 7rem);
   width: min(32rem, 62vw);
   aspect-ratio: 1;
-  opacity: 0.045;
+  opacity: 0.04;
   background: url('/rose-silhouette.svg') center / contain no-repeat;
   mix-blend-mode: multiply;
   transform: translate3d(var(--brand-shift-x-soft, 0), var(--brand-shift-y-soft, 0), 0);
@@ -83,21 +83,21 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.15;
   background-image:
-    linear-gradient(rgba(91, 74, 120, 0.026) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 74, 120, 0.022) 1px, transparent 1px);
+    linear-gradient(rgba(95, 59, 109, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(95, 59, 109, 0.02) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(circle at center, black 44%, transparent 100%);
 }
 
 ::selection {
-  background: #5B4A78;
-  color: #FFFDF8;
+  background: #5F3B6D;
+  color: #FBF6FF;
 }
 
 :focus-visible {
-  outline: 2px solid rgba(91, 74, 120, 0.42);
+  outline: 2px solid rgba(95, 59, 109, 0.32);
   outline-offset: 4px;
 }
 
@@ -107,7 +107,7 @@ body::before {
   }
 
   .editorial-kicker {
-    @apply text-[10px] uppercase tracking-[0.36em] text-plum md:text-[11px] md:tracking-[0.42em];
+    @apply text-[10px] uppercase tracking-[0.36em] text-taupe md:text-[11px] md:tracking-[0.42em];
   }
 
   .hero-title {
@@ -117,27 +117,27 @@ body::before {
   }
 
   .glass-panel {
-    @apply border border-plum/20 bg-lavenderMist/80 backdrop-blur-xl;
+    @apply border border-white/50 bg-white/60 backdrop-blur-xl;
   }
 
   .magazine-frame {
-    @apply border border-plum/20 bg-lavenderMist/90 shadow-soft backdrop-blur-sm;
+    @apply border border-plum/10 bg-white/75 shadow-soft backdrop-blur-sm;
   }
 
   .hover-lift {
-    @apply transition duration-700 ease-out hover:-translate-y-1 hover:border-plum/30 hover:shadow-lavender;
+    @apply transition duration-700 ease-out hover:-translate-y-1 hover:border-plum/20 hover:shadow-lavender;
   }
 
   .product-card {
-    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:border-plum/40 hover:bg-lavenderMist hover:shadow-lavender;
+    @apply transition duration-700 ease-out hover:-translate-y-1.5 hover:border-plum/30 hover:bg-white/90 hover:shadow-lavender;
   }
 
   .nav-action {
-    @apply inline-flex rounded-full px-3 py-2 text-deepPlum/70 transition duration-500 hover:-translate-y-0.5 hover:bg-lavender hover:text-plum focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25;
+    @apply inline-flex rounded-full px-3 py-2 text-ink/70 transition duration-500 hover:-translate-y-0.5 hover:bg-lilac/70 hover:text-plum focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/20;
   }
 
   .soft-link {
-    @apply relative text-[11px] font-semibold uppercase tracking-[0.28em] text-deepPlum/70 transition duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum;
+    @apply relative text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/70 transition duration-500 hover:text-plum focus-visible:outline-none focus-visible:text-plum;
   }
 
   .soft-link::after {
@@ -197,14 +197,14 @@ body::before {
     right: -18rem;
     top: 10rem;
     width: 34rem;
-    opacity: 0.07;
+    opacity: 0.06;
   }
 
   .brand-atmosphere__rose-mark {
     left: -12rem;
     bottom: 8rem;
     width: 24rem;
-    opacity: 0.035;
+    opacity: 0.03;
   }
 
   .orb {

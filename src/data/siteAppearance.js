@@ -11,11 +11,8 @@ export const siteImageGroups = [
   },
   {
     title: 'Sobre Fabiana',
-    description: 'Retrato y detalle del bloque personal.',
-    items: [
-      { key: 'aboutPrimary', label: 'Imagen principal de Sobre Fabiana', fallback: about.image },
-      { key: 'aboutSecondary', label: 'Imagen secundaria de Sobre Fabiana', fallback: about.secondaryImage },
-    ],
+    description: 'Retrato principal del bloque personal.',
+    items: [{ key: 'aboutPrimary', label: 'Imagen principal de Sobre Fabiana', fallback: about.image }],
   },
   {
     title: 'Lookbook',
@@ -30,11 +27,11 @@ export const siteImageGroups = [
     title: 'Universo',
     description: 'Imagenes de las cards de categorias.',
     items: [
-      { key: 'categoryHabits', label: 'Habitos', fallback: categories[0].image },
+      { key: 'categoryHabits', label: 'H?bitos', fallback: categories[0].image },
       { key: 'categoryFashion', label: 'Moda', fallback: categories[1].image },
       { key: 'categoryBeauty', label: 'Estetica', fallback: categories[2].image },
-      { key: 'categoryPhotography', label: 'Fotografia', fallback: categories[3].image },
-      { key: 'categoryAstrology', label: 'Astrologia', fallback: categories[4].image },
+      { key: 'categoryPhotography', label: 'Fotograf?a', fallback: categories[3].image },
+      { key: 'categoryAstrology', label: 'Astrolog?a', fallback: categories[4].image },
       { key: 'categoryLifestyle', label: 'Vida', fallback: categories[5].image },
     ],
   },
@@ -68,7 +65,6 @@ export function buildHomepageContent(imageOverrides = {}) {
     about: {
       ...about,
       image: imageOverrides.aboutPrimary || about.image,
-      secondaryImage: imageOverrides.aboutSecondary || about.secondaryImage,
     },
     editorialGallery: editorialGallery.map((item, index) => ({
       ...item,

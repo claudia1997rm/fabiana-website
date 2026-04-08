@@ -8,8 +8,8 @@ export function JournalSection({ posts = defaultJournalPosts }) {
       <div className="relative z-10 mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-24 lg:py-32">
         <SectionHeading
           eyebrow="Diario"
-          title="Textos para mirar la vida con mas belleza y significado"
-          description="Una seccion editorial pensada para leer con calma: ideas, rituales y estilo personal antes de guardar, descargar o volver a tu propia practica."
+          title="Textos para mirar la vida con m?s belleza y significado"
+          description="Una secci?n editorial pensada para leer con calma: ideas, rituales y estilo personal antes de guardar, descargar o volver a tu propia pr?ctica."
           theme="dark"
         />
 
@@ -24,7 +24,7 @@ export function JournalSection({ posts = defaultJournalPosts }) {
                 <h3 className="mt-4 font-display text-[2rem] leading-none tracking-[-0.03em] md:text-4xl">{post.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-cloud/70">{post.excerpt}</p>
                 <div className="mt-7 flex items-center gap-3 text-[9px] uppercase tracking-[0.28em] text-cloud/75 md:mt-8 md:text-[10px] md:tracking-[0.3em]">
-                  <span>Leer articulo</span>
+                  <span>Leer art?culo</span>
                   <span className="h-px flex-1 bg-white/20 transition duration-500 group-hover:bg-white/40" />
                 </div>
               </div>
