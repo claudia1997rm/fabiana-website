@@ -1,9 +1,9 @@
-import { resources } from '../data/siteData';
+import { resources as defaultResources } from '../data/siteData';
 import { Button } from './Button';
 import { SectionHeading } from './SectionHeading';
 import { slugify } from '../lib/contentService';
 
-export function ResourcesSection() {
+export function ResourcesSection({ resourceItems = defaultResources }) {
   return (
     <section id="recursos" className="section-shell mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-24 lg:py-32">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -19,7 +19,7 @@ export function ResourcesSection() {
       </div>
 
       <div className="mt-10 grid gap-5 md:mt-14 lg:grid-cols-3 lg:gap-6">
-        {resources.map((resource, index) => (
+        {resourceItems.map((resource, index) => (
           <article key={resource.title} className="product-card group overflow-hidden rounded-[1.65rem] border border-ink/10 bg-white/80 p-3 shadow-soft md:rounded-[2rem] md:p-4" style={{ '--reveal-delay': `${index * 85}ms` }}>
             <div className="relative overflow-hidden rounded-[1.35rem] bg-[linear-gradient(135deg,#FFFDF8,#F2EDF7)] md:rounded-[1.7rem]">
               <img src={resource.image} alt="" className="h-56 w-full object-cover transition duration-1000 group-hover:scale-105 sm:h-72 md:h-80" />

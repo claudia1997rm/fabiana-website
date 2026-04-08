@@ -295,6 +295,7 @@ create table if not exists public.site_settings (
   key text primary key default 'home',
   hero_primary_image_path text,
   hero_secondary_image_path text,
+  home_images jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );

@@ -7,7 +7,7 @@ import { JournalSection } from '../components/JournalSection';
 import { NewsletterSection } from '../components/NewsletterSection';
 import { ResourcesSection } from '../components/ResourcesSection';
 import { UniverseSection } from '../components/UniverseSection';
-import { hero } from '../data/siteData';
+import { buildHomepageContent } from '../data/siteAppearance';
 import { getSiteSettings } from '../lib/contentService';
 
 export function HomePage() {
@@ -33,21 +33,17 @@ export function HomePage() {
     };
   }, []);
 
-  const heroData = useMemo(() => ({
-    ...hero,
-    image: siteSettings?.heroPrimaryImageUrl || hero.image,
-    imageSecondary: siteSettings?.heroSecondaryImageUrl || hero.imageSecondary,
-  }), [siteSettings]);
+  const homepageContent = useMemo(() => buildHomepageContent(siteSettings?.homeImages || {}), [siteSettings]);
 
   return (
     <>
-      <HeroSection heroData={heroData} />
-      <EditorialGallerySection />
+      <HeroSection heroData={homepageContent.hero} />
+      <EditorialGallerySection galleryItems={homepageContent.editorialGallery} />
       <EditorialStatement />
-      <AboutSection />
-      <UniverseSection />
-      <ResourcesSection />
-      <JournalSection />
+      <AboutSection aboutData={homepageContent.about} />
+      <UniverseSection categoryCards={homepageContent.categories} />
+      <ResourcesSection resourceItems={homepageContent.resources} />
+      <JournalSection posts={homepageContent.journalPosts} />
       <NewsletterSection />
     </>
   );

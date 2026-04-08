@@ -2,9 +2,17 @@ create table if not exists public.site_settings (
   key text primary key default 'home',
   hero_primary_image_path text,
   hero_secondary_image_path text,
+  home_images jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.site_settings
+  add column if not exists hero_primary_image_path text,
+  add column if not exists hero_secondary_image_path text,
+  add column if not exists home_images jsonb not null default '{}'::jsonb,
+  add column if not exists created_at timestamptz not null default now(),
+  add column if not exists updated_at timestamptz not null default now();
 
 insert into public.site_settings (key)
 values ('home')

@@ -1,7 +1,7 @@
-import { about } from '../data/siteData';
+import { about as defaultAbout } from '../data/siteData';
 import { SectionHeading } from './SectionHeading';
 
-export function AboutSection() {
+export function AboutSection({ aboutData = defaultAbout }) {
   return (
     <section id="sobre" className="section-shell mx-auto max-w-7xl px-6 py-24 md:px-10 lg:py-32">
       <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
@@ -9,14 +9,14 @@ export function AboutSection() {
           <div className="absolute -right-6 -top-6 hidden h-32 w-32 rounded-full border border-ink/10 md:block" />
           <div className="magazine-frame rounded-[2.3rem] p-4">
             <img
-              src={about.image}
+              src={aboutData.image}
               alt="Retrato editorial de Fabiana"
               className="h-[28rem] w-full rounded-[1.9rem] object-cover md:h-[38rem]"
             />
           </div>
           <div className="absolute -bottom-6 right-4 hidden w-44 overflow-hidden rounded-[1.6rem] border border-white/60 bg-white/75 p-2 shadow-soft backdrop-blur-sm transition duration-700 hover:-translate-y-1 hover:shadow-lavender md:block lg:-right-8 lg:w-52">
             <img
-              src={about.secondaryImage}
+              src={aboutData.secondaryImage}
               alt="Detalle lifestyle del universo FabuRose"
               className="h-52 w-full rounded-[1.2rem] object-cover lg:h-64"
             />
@@ -31,13 +31,13 @@ export function AboutSection() {
           />
 
           <div className="mt-8 space-y-5 text-lg leading-8 text-ink/70">
-            {about.body.map((paragraph) => (
+            {aboutData.body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {about.notes.map((note) => (
+            {aboutData.notes.map((note) => (
               <div key={note} className="rounded-[1.4rem] border border-ink/10 bg-white/60 px-4 py-5">
                 <p className="text-sm leading-6 text-ink/70">{note}</p>
               </div>
@@ -45,7 +45,7 @@ export function AboutSection() {
           </div>
 
           <p className="mt-10 max-w-2xl border-l border-gold/50 pl-6 font-serif text-3xl italic leading-tight text-ink md:text-4xl">
-            "{about.quote}"
+            "{aboutData.quote}"
           </p>
         </div>
       </div>

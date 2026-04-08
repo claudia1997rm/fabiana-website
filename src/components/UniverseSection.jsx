@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { categories } from '../data/siteData';
+import { categories as defaultCategories } from '../data/siteData';
 import { SectionHeading } from './SectionHeading';
 
-export function UniverseSection() {
+export function UniverseSection({ categoryCards = defaultCategories }) {
   return (
     <section id="universo" className="section-shell border-y border-plum/20 bg-[linear-gradient(135deg,rgba(255,253,248,0.94),rgba(242,237,247,0.78))]">
       <div className="orb left-[-90px] top-24 hidden h-64 w-64 bg-blush/25 md:block" />
@@ -13,15 +13,16 @@ export function UniverseSection() {
           description="Elige una puerta de entrada: habitos, estilo, estetica, fotografia, astrologia o vida consciente. Desde ahi puedes leer, descargar y volver a tu propio ritual."
         />
 
-        <div className="mt-10 grid gap-4 md:mt-14 lg:grid-cols-3 lg:grid-rows-[repeat(2,minmax(0,1fr))]">
-          {categories.map((category, index) => {
+        <div className="mt-10 grid gap-4 md:mt-14 lg:grid-cols-3 lg:grid-rows-[repeat(3,minmax(0,1fr))]">
+          {categoryCards.map((category, index) => {
             const featured = index === 0;
+            const trailing = index === categoryCards.length - 1;
             return (
               <Link
                 key={category.name}
                 to={category.path}
                 aria-label={category.cta}
-                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[1.55rem] border border-ink/10 transition duration-700 hover:border-plum/25 hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:rounded-[2rem] ${featured ? 'lg:row-span-2' : ''}`}
+                className={`reveal-on-scroll group hover-lift relative block cursor-pointer overflow-hidden rounded-[1.55rem] border border-ink/10 transition duration-700 hover:border-plum/25 hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plum/25 focus-visible:ring-offset-4 focus-visible:ring-offset-cloud md:rounded-[2rem] ${featured ? 'lg:row-span-2' : ''} ${trailing ? 'lg:col-span-2' : ''}`}
                 style={{ '--reveal-delay': `${index * 75}ms` }}
               >
                 <img
