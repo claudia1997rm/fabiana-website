@@ -38,7 +38,7 @@ function getReadableError(message) {
   if (message.includes('row-level security')) return 'Supabase ha bloqueado la accion por permisos. Revisa que tu usuario tenga rol admin y que las policies de Storage y del contenido esten aplicadas.';
   if (message.includes('bucket') || message.includes('Storage')) return 'No se pudo subir o borrar el archivo. Revisa que el bucket images exista y permita acciones para admin.';
   if (message.includes('photo_entries')) return 'Falta configurar la tabla de fotografia. Ejecuta el SQL de photo_entries en Supabase.';
-  if (message.includes('categories')) return 'La tabla de categor?as no est? disponible y ya no es necesaria para este panel. Recarga la p?gina con la versi?n actualizada.';
+  if (message.includes('categories')) return 'La tabla de categorías no está disponible y ya no es necesaria para este panel. Recarga la página con la versión actualizada.';
   return message;
 }
 
@@ -169,9 +169,9 @@ export function AdminDashboardPage() {
   const [appearanceFormKey, setAppearanceFormKey] = useState(0);
 
   const stats = useMemo(() => [
-    { label: 'Recursos', value: resources.length, detail: 'Gu?as, descargables y piezas premium.' },
-    { label: 'Fotograf?as', value: photos.length, detail: 'Galer?a visual para la secci?n editorial.' },
-    { label: 'Art?culos', value: posts.length, detail: 'Entradas para el diario y contenidos largos.' },
+    { label: 'Recursos', value: resources.length, detail: 'Guías, descargables y piezas premium.' },
+    { label: 'Fotografías', value: photos.length, detail: 'Galería visual para la sección editorial.' },
+    { label: 'Artículos', value: posts.length, detail: 'Entradas para el diario y contenidos largos.' },
   ], [photos.length, posts.length, resources.length]);
 
   async function refreshAdminData() {
@@ -250,7 +250,7 @@ export function AdminDashboardPage() {
       setPhotoFile(null);
       setPhotoFormKey((value) => value + 1);
       await refreshAdminData();
-      setStatus(wasEditing ? 'Fotograf?a actualizada.' : 'Fotograf?a creada.');
+      setStatus(wasEditing ? 'Fotografía actualizada.' : 'Fotografía creada.');
       setActiveSection('library');
       setLibraryTab('photos');
     } catch (error) {
@@ -300,7 +300,7 @@ export function AdminDashboardPage() {
         setPhotoFormKey((value) => value + 1);
       }
       await refreshAdminData();
-      setStatus('Fotograf?a borrada.');
+      setStatus('Fotografía borrada.');
     } catch (error) {
       setStatus(error.message);
     }
@@ -317,7 +317,7 @@ export function AdminDashboardPage() {
     setPost({ ...item, published_at: toDateTimeLocal(item.published_at) });
     setActiveSection('create');
     setCreateTab('post');
-    setStatus(`Editando art?culo: ${item.title}`);
+    setStatus(`Editando artículo: ${item.title}`);
   }
 
   function editPhoto(item) {
@@ -325,7 +325,7 @@ export function AdminDashboardPage() {
     setPhotoFile(null);
     setActiveSection('create');
     setCreateTab('photo');
-    setStatus(`Editando fotograf?a: ${item.title}`);
+    setStatus(`Editando fotografía: ${item.title}`);
   }
 
   function resetResourceDraft() {
@@ -340,7 +340,7 @@ export function AdminDashboardPage() {
     setPost(initialPost);
     setPostCover(null);
     setPostFormKey((value) => value + 1);
-    setStatus('Formulario de art?culo limpio.');
+    setStatus('Formulario de artículo limpio.');
   }
 
   function resetPhotoDraft() {
@@ -356,21 +356,21 @@ export function AdminDashboardPage() {
 
   function renderCreatePanel() {
     return (
-      <PanelCard eyebrow="Crear contenido" title="Mesa editorial" description="Abre solo el formato que quieras crear: recurso, fotograf?a o art?culo. Cada flujo queda mas limpio y enfocado.">
+      <PanelCard eyebrow="Crear contenido" title="Mesa editorial" description="Abre solo el formato que quieras crear: recurso, fotografía o artículo. Cada flujo queda mas limpio y enfocado.">
         <div className="flex flex-wrap gap-3 border-b border-plum/14 pb-6">
           <TabButton active={createTab === 'resource'} onClick={() => setCreateTab('resource')}>Recurso PDF</TabButton>
-          <TabButton active={createTab === 'photo'} onClick={() => setCreateTab('photo')}>Fotograf?a</TabButton>
+          <TabButton active={createTab === 'photo'} onClick={() => setCreateTab('photo')}>Fotografía</TabButton>
           <TabButton active={createTab === 'post'} onClick={() => setCreateTab('post')}>Articulo</TabButton>
         </div>
 
         {createTab === 'resource' ? (
           <form key={resourceFormKey} onSubmit={handleSaveResource} className="mt-6 grid gap-5 md:grid-cols-2">
-            <label className={labelClass}>Titulo<input className={`mt-3 w-full ${inputClass}`} placeholder="Titulo del recurso" value={resource.title} onChange={(event) => setResource({ ...resource, title: event.target.value })} required /></label>
+            <label className={labelClass}>Título<input className={`mt-3 w-full ${inputClass}`} placeholder="Titulo del recurso" value={resource.title} onChange={(event) => setResource({ ...resource, title: event.target.value })} required /></label>
             <label className={labelClass}>Estado<select className={`mt-3 w-full ${inputClass}`} value={resource.status} onChange={(event) => setResource({ ...resource, status: event.target.value })}><option value="draft">Borrador</option><option value="published">Publicado</option></select></label>
-            <label className={`${labelClass} md:col-span-2`}>Descripci?n<textarea className={`mt-3 min-h-28 w-full ${textareaClass}`} placeholder="Descripci?n breve y editorial" value={resource.description} onChange={(event) => setResource({ ...resource, description: event.target.value })} required /></label>
+            <label className={`${labelClass} md:col-span-2`}>Descripción<textarea className={`mt-3 min-h-28 w-full ${textareaClass}`} placeholder="Descripción breve y editorial" value={resource.description} onChange={(event) => setResource({ ...resource, description: event.target.value })} required /></label>
             <label className={labelClass}>Portada del recurso<input className={fileClass} type="file" accept="image/*" onChange={(event) => setResourceCover(event.target.files?.[0] || null)} /></label>
             <label className={labelClass}>Archivo PDF<input className={fileClass} type="file" accept="application/pdf" onChange={(event) => setResourcePdf(event.target.files?.[0] || null)} /></label>
-            <label className={labelClass}>Fecha de publicaci?n<input className={`mt-3 w-full ${inputClass}`} type="datetime-local" value={resource.published_at} onChange={(event) => setResource({ ...resource, published_at: event.target.value })} /></label>
+            <label className={labelClass}>Fecha de publicación<input className={`mt-3 w-full ${inputClass}`} type="datetime-local" value={resource.published_at} onChange={(event) => setResource({ ...resource, published_at: event.target.value })} /></label>
             <label className="flex items-center gap-3 rounded-[1.2rem] border border-plum/18 bg-lavenderMist/80 p-4 text-sm text-ink/70"><input type="checkbox" checked={resource.featured} onChange={(event) => setResource({ ...resource, featured: event.target.checked })} /> Recurso destacado</label>
             <div className="flex flex-wrap gap-3 md:col-span-2">
               <button className={primaryButtonClass}>{resource.id ? 'Actualizar recurso' : 'Crear recurso'}</button>
@@ -384,24 +384,24 @@ export function AdminDashboardPage() {
             <div className="relative overflow-hidden rounded-[1.7rem] border border-plum/18 bg-[linear-gradient(135deg,#2A2235,#5B4A78)] p-6 text-cloud shadow-card">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,253,248,0.20),transparent_32%)]" />
               <div className="relative z-10 flex h-full min-h-72 flex-col justify-between gap-8">
-                <p className="editorial-kicker text-blush">Fotograf?a</p>
+                <p className="editorial-kicker text-blush">Fotografía</p>
                 <div>
                   <h3 className="font-display text-5xl leading-none tracking-[-0.04em]">Curar una imagen</h3>
-                  <p className="mt-5 text-sm leading-7 text-cloud/72">Sube una imagen, escribe una descripci?n con intencion y decide si entra como borrador o como pieza publicada.</p>
+                  <p className="mt-5 text-sm leading-7 text-cloud/72">Sube una imagen, escribe una descripción con intención y decide si entra como borrador o como pieza publicada.</p>
                 </div>
                 <p className="text-[10px] uppercase tracking-[0.24em] text-cloud/60">Archivo visual FabuRose</p>
               </div>
             </div>
             <form key={photoFormKey} onSubmit={handleSavePhoto} className="grid gap-5 md:grid-cols-2">
-              <label className={labelClass}>Titulo<input className={`mt-3 w-full ${inputClass}`} placeholder="Titulo de la foto" value={photo.title} onChange={(event) => setPhoto({ ...photo, title: event.target.value })} required /></label>
+              <label className={labelClass}>Título<input className={`mt-3 w-full ${inputClass}`} placeholder="Titulo de la foto" value={photo.title} onChange={(event) => setPhoto({ ...photo, title: event.target.value })} required /></label>
               <label className={labelClass}>Estado<select className={`mt-3 w-full ${inputClass}`} value={photo.status} onChange={(event) => setPhoto({ ...photo, status: event.target.value })}><option value="draft">Borrador</option><option value="published">Publicado</option></select></label>
-              <label className={`${labelClass} md:col-span-2`}>Descripci?n<textarea className={`mt-3 min-h-32 w-full ${textareaClass}`} placeholder="Una l?nea editorial para acompa?ar la imagen" value={photo.description} onChange={(event) => setPhoto({ ...photo, description: event.target.value })} /></label>
-              <label className={`${labelClass} md:col-span-2`}>Imagen de la galer?a<input className={fileClass} type="file" accept="image/*" onChange={(event) => setPhotoFile(event.target.files?.[0] || null)} /></label>
+              <label className={`${labelClass} md:col-span-2`}>Descripción<textarea className={`mt-3 min-h-32 w-full ${textareaClass}`} placeholder="Una línea editorial para acompañar la imagen" value={photo.description} onChange={(event) => setPhoto({ ...photo, description: event.target.value })} /></label>
+              <label className={`${labelClass} md:col-span-2`}>Imagen de la galería<input className={fileClass} type="file" accept="image/*" onChange={(event) => setPhotoFile(event.target.files?.[0] || null)} /></label>
               <label className={labelClass}>Fecha<input className={`mt-3 w-full ${inputClass}`} type="datetime-local" value={photo.published_at} onChange={(event) => setPhoto({ ...photo, published_at: event.target.value })} /></label>
-              <label className="flex items-center gap-3 rounded-[1.2rem] border border-plum/18 bg-lavenderMist/80 p-4 text-sm text-ink/70"><input type="checkbox" checked={photo.featured} onChange={(event) => setPhoto({ ...photo, featured: event.target.checked })} /> Fotograf?a destacada</label>
+              <label className="flex items-center gap-3 rounded-[1.2rem] border border-plum/18 bg-lavenderMist/80 p-4 text-sm text-ink/70"><input type="checkbox" checked={photo.featured} onChange={(event) => setPhoto({ ...photo, featured: event.target.checked })} /> Fotografía destacada</label>
               <div className="flex flex-wrap gap-3 md:col-span-2">
-                <button className={primaryButtonClass}>{photo.id ? 'Actualizar fotografia' : 'Publicar fotografia'}</button>
-                <button type="button" onClick={resetPhotoDraft} className={secondaryButtonClass}>{photo.id ? 'Cancelar edici?n' : 'Limpiar formulario'}</button>
+                <button className={primaryButtonClass}>{photo.id ? 'Actualizar fotografía' : 'Publicar fotografía'}</button>
+                <button type="button" onClick={resetPhotoDraft} className={secondaryButtonClass}>{photo.id ? 'Cancelar edición' : 'Limpiar formulario'}</button>
               </div>
             </form>
           </div>
@@ -409,15 +409,15 @@ export function AdminDashboardPage() {
 
         {createTab === 'post' ? (
           <form key={postFormKey} onSubmit={handleSavePost} className="mt-6 grid gap-5 md:grid-cols-2">
-            <label className={labelClass}>Titulo<input className={`mt-3 w-full ${inputClass}`} placeholder="T?tulo del art?culo" value={post.title} onChange={(event) => setPost({ ...post, title: event.target.value })} required /></label>
+            <label className={labelClass}>Título<input className={`mt-3 w-full ${inputClass}`} placeholder="Título del artículo" value={post.title} onChange={(event) => setPost({ ...post, title: event.target.value })} required /></label>
             <label className={labelClass}>Estado<select className={`mt-3 w-full ${inputClass}`} value={post.status} onChange={(event) => setPost({ ...post, status: event.target.value })}><option value="draft">Borrador</option><option value="published">Publicado</option></select></label>
             <label className={`${labelClass} md:col-span-2`}>Extracto<textarea className={`mt-3 min-h-24 w-full ${textareaClass}`} placeholder="Resumen breve" value={post.excerpt} onChange={(event) => setPost({ ...post, excerpt: event.target.value })} /></label>
-            <label className={`${labelClass} md:col-span-2`}>Contenido<textarea className={`mt-3 min-h-52 w-full ${textareaClass}`} placeholder="Contenido del art?culo" value={post.content} onChange={(event) => setPost({ ...post, content: event.target.value })} required /></label>
-            <label className={labelClass}>Portada del art?culo<input className={fileClass} type="file" accept="image/*" onChange={(event) => setPostCover(event.target.files?.[0] || null)} /></label>
+            <label className={`${labelClass} md:col-span-2`}>Contenido<textarea className={`mt-3 min-h-52 w-full ${textareaClass}`} placeholder="Contenido del artículo" value={post.content} onChange={(event) => setPost({ ...post, content: event.target.value })} required /></label>
+            <label className={labelClass}>Portada del artículo<input className={fileClass} type="file" accept="image/*" onChange={(event) => setPostCover(event.target.files?.[0] || null)} /></label>
             <label className={labelClass}>Fecha<input className={`mt-3 w-full ${inputClass}`} type="datetime-local" value={post.published_at} onChange={(event) => setPost({ ...post, published_at: event.target.value })} /></label>
-            <label className="flex items-center gap-3 rounded-[1.2rem] border border-plum/18 bg-lavenderMist/80 p-4 text-sm text-ink/70"><input type="checkbox" checked={post.featured} onChange={(event) => setPost({ ...post, featured: event.target.checked })} /> Articulo destacado</label>
+            <label className="flex items-center gap-3 rounded-[1.2rem] border border-plum/18 bg-lavenderMist/80 p-4 text-sm text-ink/70"><input type="checkbox" checked={post.featured} onChange={(event) => setPost({ ...post, featured: event.target.checked })} /> Artículo destacado</label>
             <div className="flex flex-wrap gap-3 md:col-span-2">
-              <button className={primaryButtonClass}>{post.id ? 'Actualizar art?culo' : 'Crear art?culo'}</button>
+              <button className={primaryButtonClass}>{post.id ? 'Actualizar artículo' : 'Crear artículo'}</button>
               <button type="button" onClick={resetPostDraft} className={secondaryButtonClass}>Limpiar formulario</button>
             </div>
           </form>
@@ -432,7 +432,7 @@ export function AdminDashboardPage() {
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {siteCategories.map((category) => (
             <div key={category.name} className="rounded-[1.25rem] border border-plum/14 bg-white/78 p-4 shadow-soft">
-              <p className="editorial-kicker">Secci?n fija</p>
+              <p className="editorial-kicker">Sección fija</p>
               <p className="mt-3 font-display text-3xl leading-none tracking-[-0.04em] text-ink">{category.name}</p>
               <p className="mt-3 text-sm leading-6 text-ink/60">{category.description}</p>
             </div>
@@ -447,7 +447,7 @@ export function AdminDashboardPage() {
       <PanelCard eyebrow="Gestionar" title="Biblioteca de contenido" description="Edita lo ya publicado o en borrador sin tener todos los formularios abiertos al mismo tiempo.">
         <div className="flex flex-wrap gap-3 border-b border-plum/14 pb-6">
           <TabButton active={libraryTab === 'resources'} onClick={() => setLibraryTab('resources')}>Recursos</TabButton>
-          <TabButton active={libraryTab === 'photos'} onClick={() => setLibraryTab('photos')}>Fotograf?as</TabButton>
+          <TabButton active={libraryTab === 'photos'} onClick={() => setLibraryTab('photos')}>Fotografías</TabButton>
           <TabButton active={libraryTab === 'posts'} onClick={() => setLibraryTab('posts')}>Diario</TabButton>
         </div>
 
@@ -459,13 +459,13 @@ export function AdminDashboardPage() {
           ) : null}
 
           {libraryTab === 'photos' ? (
-            photos.length === 0 ? <EmptyLibraryState>No hay fotograf?as todav?a. Usa Crear contenido para alimentar la galer?a editorial.</EmptyLibraryState> : photos.map((item) => (
+            photos.length === 0 ? <EmptyLibraryState>No hay fotografías todavía. Usa Crear contenido para alimentar la galería editorial.</EmptyLibraryState> : photos.map((item) => (
               <LibraryRow key={item.id} title={item.title} meta={item.description} status={item.status} image={item.image} onEdit={() => editPhoto(item)} onDelete={() => handleDeletePhoto(item)} />
             ))
           ) : null}
 
           {libraryTab === 'posts' ? (
-            posts.length === 0 ? <EmptyLibraryState>No hay art?culos en el diario todav?a. Crea una pieza nueva desde Crear contenido.</EmptyLibraryState> : posts.map((item) => (
+            posts.length === 0 ? <EmptyLibraryState>No hay artículos en el diario todavía. Crea una pieza nueva desde Crear contenido.</EmptyLibraryState> : posts.map((item) => (
               <LibraryRow key={item.id} title={item.title} meta={item.excerpt} status={item.status} image={item.image} onEdit={() => editPost(item)} />
             ))
           ) : null}
@@ -476,7 +476,7 @@ export function AdminDashboardPage() {
 
   function renderAppearancePanel() {
     return (
-      <PanelCard eyebrow="Apariencia" title="Imagenes del sitio" description="Aqu? puedes sustituir los visuales del hero, sobre, lookbook, universo, recursos y diario. Si dejas un campo sin subir, la web conserva su imagen actual.">
+      <PanelCard eyebrow="Apariencia" title="Imágenes del sitio" description="Aquí puedes sustituir los visuales del hero, sobre, lookbook, universo, recursos y diario. Si dejas un campo sin subir, la web conserva su imagen actual.">
         <form key={appearanceFormKey} onSubmit={handleSaveAppearance} className="space-y-8">
           {siteImageGroups.map((group) => (
             <div key={group.title} className="space-y-4 border-b border-plum/12 pb-8 last:border-b-0 last:pb-0">
@@ -512,7 +512,7 @@ export function AdminDashboardPage() {
         <div className="absolute right-[-5rem] top-[-6rem] h-56 w-56 rounded-full bg-lavender/70 blur-3xl" />
         <div className="relative z-10 grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-end">
           <div>
-            <p className="editorial-kicker">Administraci?n FabuRose</p>
+            <p className="editorial-kicker">Administración FabuRose</p>
             <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[0.92] tracking-[-0.05em] text-ink sm:text-6xl md:text-7xl">Estudio editorial de contenido</h1>
             <p className="mt-5 max-w-2xl text-base leading-8 text-ink/70">Organiza tu trabajo por etapas: crear, revisar la estructura fija del sitio, gestionar la biblioteca y actualizar la capa visual completa.</p>
           </div>
@@ -528,7 +528,7 @@ export function AdminDashboardPage() {
         <SectionSwitch value="Crear" label="Flujo 01" description="Abre un solo formulario a la vez para trabajar con foco." active={activeSection === 'create'} onClick={() => setActiveSection('create')} />
         <SectionSwitch value="Organizar" label="Flujo 02" description="Revisa las secciones fijas que estructuran la home." active={activeSection === 'organize'} onClick={() => setActiveSection('organize')} />
         <SectionSwitch value="Biblioteca" label="Flujo 03" description="Edita o revisa lo que ya existe sin perder contexto." active={activeSection === 'library'} onClick={() => setActiveSection('library')} />
-        <SectionSwitch value="Apariencia" label="Flujo 04" description="Actualiza todas las im?genes clave del sitio desde un solo panel." active={activeSection === 'appearance'} onClick={() => setActiveSection('appearance')} />
+        <SectionSwitch value="Apariencia" label="Flujo 04" description="Actualiza todas las imágenes clave del sitio desde un solo panel." active={activeSection === 'appearance'} onClick={() => setActiveSection('appearance')} />
       </div>
 
       <div className="mt-8 space-y-6">

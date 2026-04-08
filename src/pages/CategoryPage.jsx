@@ -14,7 +14,7 @@ function ComingSoonGrid({ items }) {
           className="reveal-on-scroll magazine-frame rounded-[1.6rem] p-6 transition duration-700 hover:-translate-y-1 hover:shadow-card"
           style={{ '--reveal-delay': `${index * 90}ms` }}
         >
-          <p className="text-[10px] uppercase tracking-[0.32em] text-taupe">Pr?ximamente</p>
+          <p className="text-[10px] uppercase tracking-[0.32em] text-taupe">Próximamente</p>
           <h3 className="mt-4 font-display text-3xl leading-none tracking-[-0.03em] text-ink">{item}</h3>
         </article>
       ))}
@@ -36,11 +36,11 @@ function HabitsShowcase({ habits }) {
     <section className="mt-12">
       <div className="flex flex-col gap-3 border-t border-plum/16 pt-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="editorial-kicker">H?bitos iniciales</p>
+          <p className="editorial-kicker">Hábitos iniciales</p>
           <h2 className="mt-4 font-display text-4xl leading-none tracking-[-0.03em] text-ink md:text-5xl">Rituales diarios</h2>
         </div>
         <p className="max-w-md text-sm leading-7 text-ink/60">
-          Elige cu?l abrir para explorar el detalle. As? podremos seguir sumando m?s rituales sin que la p?gina se sienta pesada.
+          Elige cuál abrir para explorar el detalle. Así podremos seguir sumando más rituales sin que la página se sienta pesada.
         </p>
       </div>
 
@@ -88,7 +88,7 @@ function HabitsShowcase({ habits }) {
               </div>
               <div className="flex items-center gap-3 self-start md:self-end">
                 <div className="rounded-full border border-plum/10 bg-white/65 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-plum">
-                  Duraci?n: {habit.duration}
+                  Duración: {habit.duration}
                 </div>
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-plum/10 bg-lilac/55 text-xl text-plum transition duration-300">
                   {openHabitId === habit.id ? '-' : '+'}
@@ -110,7 +110,7 @@ function HabitsShowcase({ habits }) {
 
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
                   <section className="rounded-[1.6rem] bg-white/78 p-5">
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-taupe">Beneficios f?sicos</p>
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-taupe">Beneficios físicos</p>
                     <ul className="mt-4 space-y-3 text-sm leading-7 text-ink/72">
                       {habit.physicalBenefits.map((item) => (
                         <li key={item}>{item}</li>
@@ -177,14 +177,14 @@ function PhotographyGallery() {
   }, []);
 
   async function handleDeletePhoto(photo) {
-    const confirmed = window.confirm(`Quieres borrar la fotograf?a "${photo.title}"? Esta acci?n no se puede deshacer.`);
+    const confirmed = window.confirm(`¿Quieres borrar la fotografía "${photo.title}"? Esta acción no se puede deshacer.`);
     if (!confirmed) return;
 
     setStatus('');
     try {
       await deletePhoto(photo);
       await refreshPhotos();
-      setStatus('Fotograf?a borrada.');
+      setStatus('Fotografía borrada.');
     } catch (error) {
       setStatus(error.message);
     }
@@ -194,19 +194,19 @@ function PhotographyGallery() {
     <section className="mt-12 border-t border-plum/16 pt-10">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="editorial-kicker">Galer?a visual</p>
+          <p className="editorial-kicker">Galería visual</p>
           <h2 className="mt-4 font-display text-4xl leading-none tracking-[-0.03em] text-ink md:text-5xl">
-            Fotograf?as publicadas por Fabiana
+            Fotografías publicadas por Fabiana
           </h2>
         </div>
         <p className="max-w-md text-sm leading-7 text-ink/60">
-          Un archivo visual para sesiones, detalles, atm?sfera y composiciones que construyen el universo FabuRose.
+          Un archivo visual para sesiones, detalles, atmósfera y composiciones que construyen el universo FabuRose.
         </p>
       </div>
 
       {isAdmin ? (
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link to="/admin#admin-fotografia" className="rounded-full border border-plum bg-plum px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-cloud shadow-lavender transition duration-500 hover:-translate-y-1 hover:bg-deepPlum">Subir fotograf?a</Link>
+          <Link to="/admin#admin-fotografia" className="rounded-full border border-plum bg-plum px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-cloud shadow-lavender transition duration-500 hover:-translate-y-1 hover:bg-deepPlum">Subir fotografía</Link>
           <Link to="/admin#archivo-fotografias" className="rounded-full border border-plum/20 bg-lilac/60 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-plum transition duration-500 hover:-translate-y-0.5 hover:bg-white">Gestionar en admin</Link>
         </div>
       ) : null}
@@ -246,10 +246,10 @@ function PhotographyGallery() {
         </div>
       ) : (
         <div className="magazine-frame mt-10 rounded-[2rem] p-8 text-center">
-          <p className="editorial-kicker">Galer?a en preparaci?n</p>
-          <h3 className="mt-4 font-display text-4xl leading-none text-ink">Pronto habr? fotograf?as aqu?</h3>
+          <p className="editorial-kicker">Galería en preparación</p>
+          <h3 className="mt-4 font-display text-4xl leading-none text-ink">Pronto habrá fotografías aquí</h3>
           <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-ink/60">
-            Cuando Fabiana publique fotos desde el panel admin, aparecer?n en esta p?gina con un formato m?s inmersivo y comentarios editoriales sobre la propia imagen.
+            Cuando Fabiana publique fotos desde el panel admin, aparecerán en esta página con un formato más inmersivo y comentarios editoriales sobre la propia imagen.
           </p>
         </div>
       )}
@@ -269,7 +269,7 @@ function AstrologyPreview({ page }) {
     const nextSummary = buildAstrologySummary({ birthDate, birthTime, birthPlace });
 
     if (!nextSummary) {
-      setError('A?ade tu fecha de nacimiento para descubrir tu signo solar.');
+      setError('Añade tu fecha de nacimiento para descubrir tu signo solar.');
       setSummary(null);
       return;
     }
@@ -286,13 +286,13 @@ function AstrologyPreview({ page }) {
         <p className="editorial-kicker">Carta natal</p>
         <h2 className="mt-4 font-display text-4xl leading-none tracking-[-0.03em] text-ink md:text-5xl">Descubre tu signo solar</h2>
         <p className="mt-5 leading-7 text-ink/70">
-          Introduce tu fecha para generar una primera carta astral editorial: signo solar, elemento, modalidad y recomendaciones iniciales. La hora y el lugar quedan preparados para ampliar la lectura m?s adelante.
+          Introduce tu fecha para generar una primera carta astral editorial: signo solar, elemento, modalidad y recomendaciones iniciales. La hora y el lugar quedan preparados para ampliar la lectura más adelante.
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <label className="text-[10px] uppercase tracking-[0.3em] text-taupe">Fecha de nacimiento<input className="mt-3 min-h-14 w-full rounded-full border border-plum/14 bg-white/84 px-5 text-sm text-ink outline-none transition focus:border-plum/45 focus:bg-white" type="date" value={birthDate} onChange={(event) => setBirthDate(event.target.value)} /></label>
           <label className="text-[10px] uppercase tracking-[0.3em] text-taupe">Hora<input className="mt-3 min-h-14 w-full rounded-full border border-plum/14 bg-white/84 px-5 text-sm text-ink outline-none transition focus:border-plum/45 focus:bg-white" type="time" value={birthTime} onChange={(event) => setBirthTime(event.target.value)} /></label>
-          <label className="text-[10px] uppercase tracking-[0.3em] text-taupe md:col-span-2">Lugar<input className="mt-3 min-h-14 w-full rounded-full border border-plum/14 bg-white/84 px-5 text-sm text-ink outline-none transition placeholder:text-ink/40 focus:border-plum/45 focus:bg-white" type="text" placeholder="Ciudad, pa?s" value={birthPlace} onChange={(event) => setBirthPlace(event.target.value)} /></label>
+          <label className="text-[10px] uppercase tracking-[0.3em] text-taupe md:col-span-2">Lugar<input className="mt-3 min-h-14 w-full rounded-full border border-plum/14 bg-white/84 px-5 text-sm text-ink outline-none transition placeholder:text-ink/40 focus:border-plum/45 focus:bg-white" type="text" placeholder="Ciudad, país" value={birthPlace} onChange={(event) => setBirthPlace(event.target.value)} /></label>
         </div>
 
         {error ? <p className="mt-4 rounded-[1rem] bg-white/78 p-4 text-sm leading-6 text-ink/70">{error}</p> : null}
@@ -315,9 +315,9 @@ function AstrologyPreview({ page }) {
       </form>
 
       <section className="rounded-[2rem] border border-plum/14 bg-plum p-6 text-cloud shadow-card md:p-8">
-        <p className="editorial-kicker text-lilac">Recomendaciones seg?n tu energ?a</p>
-        <h2 className="mt-4 font-display text-4xl leading-none tracking-[-0.03em] md:text-5xl">{summary ? `Para una energ?a ${summary.sign.name}` : 'Un primer mapa para elegir recursos'}</h2>
-        <p className="mt-5 leading-7 text-cloud/72">{summary ? 'Estas recomendaciones se actualizan con tu signo solar. En una versi?n futura podr?n combinarse con ascendente, luna y casas.' : 'A?ade tu fecha de nacimiento para personalizar este bloque con tu signo solar.'}</p>
+        <p className="editorial-kicker text-lilac">Recomendaciones según tu energía</p>
+        <h2 className="mt-4 font-display text-4xl leading-none tracking-[-0.03em] md:text-5xl">{summary ? `Para una energía ${summary.sign.name}` : 'Un primer mapa para elegir recursos'}</h2>
+        <p className="mt-5 leading-7 text-cloud/72">{summary ? 'Estas recomendaciones se actualizan con tu signo solar. En una versión futura podrán combinarse con ascendente, luna y casas.' : 'Añade tu fecha de nacimiento para personalizar este bloque con tu signo solar.'}</p>
         <div className="mt-8 space-y-4">
           {recommendations.map((item) => (
             <article key={item} className="rounded-[1.4rem] border border-white/10 bg-white/[0.08] p-5 transition duration-500 hover:-translate-y-1 hover:bg-white/[0.12]">
@@ -338,7 +338,7 @@ export function CategoryPage({ categoryKey }) {
     return (
       <section className="mx-auto max-w-5xl px-6 py-24 md:px-10">
         <p className="editorial-kicker">Universo Fabiana</p>
-        <h1 className="mt-5 font-display text-6xl leading-none tracking-[-0.04em] text-ink">Categor?a no encontrada</h1>
+        <h1 className="mt-5 font-display text-6xl leading-none tracking-[-0.04em] text-ink">Categoría no encontrada</h1>
         <Link className="soft-link mt-8 inline-flex" to="/#universo">Volver al universo</Link>
       </section>
     );
@@ -405,7 +405,7 @@ export function CategoryPage({ categoryKey }) {
                 <p className="editorial-kicker">Archivo editorial</p>
                 <h2 className="mt-4 font-display text-4xl leading-none tracking-[-0.03em] text-ink md:text-5xl">Contenido preparado para crecer</h2>
               </div>
-              <p className="max-w-md text-sm leading-7 text-ink/60">Esta p?gina queda lista para conectar recursos, art?culos, colecciones y productos digitales en una futura versi?n de la plataforma.</p>
+              <p className="max-w-md text-sm leading-7 text-ink/60">Esta página queda lista para conectar recursos, artículos, colecciones y productos digitales en una futura versión de la plataforma.</p>
             </div>
             <ComingSoonGrid items={page.comingSoon} />
           </section>

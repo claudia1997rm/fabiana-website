@@ -9,12 +9,12 @@ export function ResourcesSection({ resourceItems = defaultResources }) {
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeading
           eyebrow="Recursos / PDFs"
-          title="PDFs, gu?as y piezas descargables con alma editorial"
-          description="Una boutique digital para descargar gu?as, guardar rituales y convertir la inspiraci?n en una pr?ctica real. Cada pieza est? pensada como un peque?o objeto editorial."
+          title="PDFs, guías y piezas descargables con alma editorial"
+          description="Una boutique digital para descargar guías, guardar rituales y convertir la inspiración en una práctica real. Cada pieza está pensada como un pequeño objeto editorial."
         />
         <div className="max-w-md rounded-[1.35rem] border border-plum/25 bg-[linear-gradient(135deg,#FFFDF8,#F2EDF7)] p-4 text-sm leading-7 text-ink/70 shadow-soft backdrop-blur-sm md:rounded-[1.7rem] md:p-5">
           <p className="text-[10px] uppercase tracking-[0.32em] text-plum">Recorrido sugerido</p>
-          <p className="mt-3">Empieza por el recurso que m?s resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
+          <p className="mt-3">Empieza por el recurso que más resuene contigo, lee su detalle y vuelve cuando quieras a la carta para recibir nuevas ediciones.</p>
         </div>
       </div>
 

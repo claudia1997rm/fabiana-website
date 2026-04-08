@@ -9,8 +9,8 @@ export function UniverseSection({ categoryCards = defaultCategories }) {
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:px-10 md:py-24 lg:py-28">
         <SectionHeading
           eyebrow="Universo Fabiana"
-          title="Seis l?neas editoriales para una vida m?s bella, consciente y magn?tica"
-          description="Elige una puerta de entrada: h?bitos, estilo, est?tica, fotograf?a, astrolog?a o vida consciente. Desde ah? puedes leer, descargar y volver a tu propio ritual."
+          title="Seis líneas editoriales para una vida más bella, consciente y magnética"
+          description="Elige una puerta de entrada: hábitos, estilo, estética, fotografía, astrología o vida consciente. Desde ahí puedes leer, descargar y volver a tu propio ritual."
         />
 
         <div className="mt-10 grid gap-4 md:mt-14 lg:grid-cols-3 lg:grid-rows-[repeat(3,minmax(0,1fr))]">
