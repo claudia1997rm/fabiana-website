@@ -1,7 +1,7 @@
-import { journalPosts } from '../data/siteData';
+import { journalPosts as defaultJournalPosts } from '../data/siteData';
 import { SectionHeading } from './SectionHeading';
 
-export function JournalSection() {
+export function JournalSection({ posts = defaultJournalPosts }) {
   return (
     <section id="journal" className="section-shell bg-[linear-gradient(135deg,#201A28_0%,#2A2235_62%,#4E425F_100%)] text-cloud">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,245,250,0.08),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(242,237,247,0.12),transparent_24%)]" />
@@ -14,7 +14,7 @@ export function JournalSection() {
         />
 
         <div className="mt-10 grid gap-5 md:mt-14 md:grid-cols-3 md:gap-6">
-          {journalPosts.map((post, index) => (
+          {posts.map((post, index) => (
             <article key={post.title} className="reveal-on-scroll group overflow-hidden rounded-[1.65rem] border border-white/20 bg-white/[0.07] transition duration-700 hover:-translate-y-1.5 hover:border-white/30 hover:bg-white/[0.10] hover:shadow-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-4 focus-visible:ring-offset-deepPlum md:rounded-[2rem]" style={{ '--reveal-delay': `${index * 85}ms` }}>
               <div className="overflow-hidden">
                 <img src={post.image} alt="" className="h-52 w-full object-cover opacity-90 transition duration-1000 group-hover:scale-105 group-hover:opacity-100 sm:h-64 md:h-72" />

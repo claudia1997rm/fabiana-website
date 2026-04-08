@@ -30,9 +30,26 @@ function mapPhoto(photo) {
   return photo?.image_path ? { ...photo, image: getPublicUrl(STORAGE_BUCKETS.covers, photo.image_path) } : photo;
 }
 
+function mapSiteSettings(settings) {
+  if (!settings) return null;
+
+  const rawHomeImages = settings.home_images && typeof settings.home_images === 'object' ? settings.home_images : {};
+  const homeImages = Object.fromEntries(
+    Object.entries(rawHomeImages).map(([key, path]) => [key, getPublicUrl(STORAGE_BUCKETS.covers, path)]),
+  );
+
+  return {
+    ...settings,
+    homeImages,
+    homeImagePaths: rawHomeImages,
+    heroPrimaryImageUrl: getPublicUrl(STORAGE_BUCKETS.covers, settings.hero_primary_image_path),
+    heroSecondaryImageUrl: getPublicUrl(STORAGE_BUCKETS.covers, settings.hero_secondary_image_path),
+  };
+}
+
 export async function listPublishedResources() {
   if (!supabase) return mockResources.map((resource) => ({ ...resource, slug: slugify(resource.title) }));
-  const { data, error } = await supabase.from('resources').select('*, categories(name, slug)').eq('status', 'published').order('published_at', { ascending: false });
+  const { data, error } = await supabase.from('resources').select('*').eq('status', 'published').order('published_at', { ascending: false });
   if (error) throw error;
   return data.map(mapResource);
 }
@@ -42,14 +59,14 @@ export async function getResourceBySlug(slug) {
     const resource = mockResources.find((item) => slugify(item.title) === slug);
     return resource ? { ...resource, slug } : null;
   }
-  const { data, error } = await supabase.from('resources').select('*, categories(name, slug)').eq('slug', slug).eq('status', 'published').single();
+  const { data, error } = await supabase.from('resources').select('*').eq('slug', slug).eq('status', 'published').single();
   if (error) return null;
   return mapResource(data);
 }
 
 export async function listPublishedPosts() {
   if (!supabase) return journalPosts.map((post) => ({ ...post, slug: slugify(post.title), content: post.excerpt }));
-  const { data, error } = await supabase.from('posts').select('*, categories(name, slug)').eq('status', 'published').order('published_at', { ascending: false });
+  const { data, error } = await supabase.from('posts').select('*').eq('status', 'published').order('published_at', { ascending: false });
   if (error) throw error;
   return data.map(mapPost);
 }
@@ -59,7 +76,7 @@ export async function getPostBySlug(slug) {
     const post = journalPosts.find((item) => slugify(item.title) === slug);
     return post ? { ...post, slug, content: post.excerpt } : null;
   }
-  const { data, error } = await supabase.from('posts').select('*, categories(name, slug)').eq('slug', slug).eq('status', 'published').single();
+  const { data, error } = await supabase.from('posts').select('*').eq('slug', slug).eq('status', 'published').single();
   if (error) return null;
   return mapPost(data);
 }
@@ -71,29 +88,29 @@ export async function listPublishedPhotos() {
   return data.map(mapPhoto);
 }
 
-export async function listCategories() {
-  if (!supabase) return [];
-  const { data, error } = await supabase.from('categories').select('*').order('name');
-  if (error) throw error;
-  return data;
-}
-
 export async function listAdminResources() {
-  const { data, error } = await supabase.from('resources').select('*, categories(name, slug)').order('updated_at', { ascending: false });
+  const { data, error } = await supabase.from('resources').select('*').order('updated_at', { ascending: false });
   if (error) throw error;
-  return data;
+  return data.map(mapResource);
 }
 
 export async function listAdminPosts() {
-  const { data, error } = await supabase.from('posts').select('*, categories(name, slug)').order('updated_at', { ascending: false });
+  const { data, error } = await supabase.from('posts').select('*').order('updated_at', { ascending: false });
   if (error) throw error;
-  return data;
+  return data.map(mapPost);
 }
 
 export async function listAdminPhotos() {
   const { data, error } = await supabase.from('photo_entries').select('*').order('updated_at', { ascending: false });
   if (error) throw error;
   return data.map(mapPhoto);
+}
+
+export async function getSiteSettings() {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('site_settings').select('*').eq('key', 'home').maybeSingle();
+  if (error) throw error;
+  return mapSiteSettings(data);
 }
 
 export async function uploadContentFile({ bucket, folder, file, ownerId }) {
@@ -109,15 +126,8 @@ export async function deleteContentFile({ bucket, path }) {
   if (error) throw error;
 }
 
-export async function createCategory(payload) {
-  const slug = payload.slug || slugify(payload.name);
-  const { data, error } = await supabase.from('categories').insert({ ...payload, slug }).select().single();
-  if (error) throw error;
-  return data;
-}
-
 function cleanWritePayload(payload) {
-  const { categories, image, pdfUrl, ...record } = payload;
+  const { image, pdfUrl, heroPrimaryImageUrl, heroSecondaryImageUrl, homeImages, homeImagePaths, ...record } = payload;
   return { ...record, category_id: record.category_id || null };
 }
 
@@ -151,6 +161,17 @@ export async function savePhoto(payload) {
   const { data, error } = await query;
   if (error) throw error;
   return data;
+}
+
+export async function saveSiteSettings(payload) {
+  const { data, error } = await supabase.rpc('upsert_site_settings', {
+    new_hero_primary_image_path: payload.hero_primary_image_path || null,
+    new_hero_secondary_image_path: payload.hero_secondary_image_path || null,
+    new_home_images: payload.home_images || {},
+  });
+  if (error) throw error;
+  const record = Array.isArray(data) ? data[0] : data;
+  return mapSiteSettings(record);
 }
 
 export async function deletePhoto(photo) {

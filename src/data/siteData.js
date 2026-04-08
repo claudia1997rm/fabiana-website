@@ -3,6 +3,28 @@ import heroVisual from '../assets/placeholders/hero-visual.svg';
 import journalImage from '../assets/placeholders/journal-cover.svg';
 import resourceCover from '../assets/placeholders/resource-cover.svg';
 
+const editorialImages = {
+  heroPrimary: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
+  heroSecondary: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80',
+  aboutPrimary: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
+  aboutSecondary: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+  habits: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1200&q=80',
+  fashion: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+  beauty: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
+  photography: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80',
+  astrology: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+  lifestyle: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
+  galleryOne: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1000&q=80',
+  galleryTwo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=80',
+  galleryThree: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1000&q=80',
+  resourceHabits: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1000&q=80',
+  resourceFashion: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80',
+  resourceAstro: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1000&q=80',
+  journalMorning: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=80',
+  journalWardrobe: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=80',
+  journalAstro: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80',
+};
+
 export const navigation = [
   { label: 'Sobre Fabiana', href: '#sobre' },
   { label: 'Universo', href: '#universo' },
@@ -19,7 +41,9 @@ export const hero = {
     'FabuRose es un universo editorial para descubrir recursos, leer ideas con intencion, descargar guias cuidadas y recibir cartas intimas para acompanar tu estilo, tus ciclos y tu crecimiento personal.',
   primaryCta: { label: 'Descubrir la coleccion', href: '#recursos' },
   secondaryCta: { label: 'Entrar al universo', href: '#universo' },
-  image: heroVisual,
+  image: editorialImages.heroPrimary,
+  imageSecondary: editorialImages.heroSecondary,
+  imageFallback: heroVisual,
   issue: 'Edicion 01',
   microNote: 'Empieza por una guia, una lectura o una carta: elige el ritual que mas se parezca a ti.',
   highlights: [
@@ -32,12 +56,19 @@ export const hero = {
 
 export const statement = {
   quote: 'Una estetica suave. Una mente clara. Un universo donde la belleza tambien guia.',
+  lookbookTitle: 'Un archivo visual para vestir, cuidar y narrar tu energia.',
   pillars: [
     { title: 'Moda con intencion', description: 'Estilo personal, armario capsula y presencia visual con identidad.' },
     { title: 'Astrologia sensible', description: 'Luna, ciclos y simbolos como espejo emocional y creativo.' },
     { title: 'Crecimiento elegante', description: 'Habitos, escritura reflexiva y rituales disenados para sostener tu energia.' },
   ],
 };
+
+export const editorialGallery = [
+  { title: 'Ritual matinal', note: 'Luz suave, piel limpia y una energia que empieza lento.', image: editorialImages.galleryOne },
+  { title: 'Uniforme personal', note: 'Texturas, silueta y actitud en una misma escena.', image: editorialImages.galleryTwo },
+  { title: 'Belleza en detalle', note: 'Objetos, gesto y atmosfera como parte del lenguaje visual.', image: editorialImages.galleryThree },
+];
 
 export const about = {
   title: 'Sobre Fabiana',
@@ -46,17 +77,19 @@ export const about = {
     'Su universo mezcla moda, bienestar, fotografia, astrologia y crecimiento personal con una mirada editorial: cercana, refinada y emocionalmente honesta. Cada recurso esta pensado para acompanar procesos reales, no para sumar ruido.',
   ],
   quote: 'La transformacion tambien puede verse delicada, femenina y absolutamente tuya.',
-  image: aboutPortrait,
+  image: editorialImages.aboutPrimary,
+  imageFallback: aboutPortrait,
+  secondaryImage: editorialImages.aboutSecondary,
   notes: ['Mirada editorial y aspiracional', 'Contenido digital facil de escalar', 'Base visual lista para marca personal de alta gama'],
 };
 
 export const categories = [
-  { name: 'Habitos', description: 'Rituales de 30 dias, organizacion suave y habitos que sostienen tu energia.', accent: 'Ritual', path: '/habitos', cta: 'Explorar habitos' },
-  { name: 'Moda', description: 'Estilo personal, capsulas inteligentes y una estetica coherente con tu esencia.', accent: 'Estilo', path: '/moda', cta: 'Explorar moda' },
-  { name: 'Estetica', description: 'Belleza consciente, autocuidado y pequenos gestos que elevan lo cotidiano.', accent: 'Belleza', path: '/estetica', cta: 'Explorar estetica' },
-  { name: 'Fotografia', description: 'Consejos visuales, poses, luz y narrativa para capturar tu universo.', accent: 'Visual', path: '/fotografia', cta: 'Explorar fotografia' },
-  { name: 'Astrologia', description: 'Reflexiones simbolicas y herramientas para leer tu energia con sensibilidad.', accent: 'Cosmos', path: '/astrologia', cta: 'Explorar astrologia' },
-  { name: 'Vida', description: 'Inspiracion para vivir con mas intencion, placer, presencia y direccion.', accent: 'Vida', path: '/vida', cta: 'Explorar vida' },
+  { name: 'Habitos', description: 'Rituales de 30 dias, organizacion suave y habitos que sostienen tu energia.', accent: 'Ritual', path: '/habitos', cta: 'Explorar habitos', image: editorialImages.habits },
+  { name: 'Moda', description: 'Estilo personal, capsulas inteligentes y una estetica coherente con tu esencia.', accent: 'Estilo', path: '/moda', cta: 'Explorar moda', image: editorialImages.fashion },
+  { name: 'Estetica', description: 'Belleza consciente, autocuidado y pequenos gestos que elevan lo cotidiano.', accent: 'Belleza', path: '/estetica', cta: 'Explorar estetica', image: editorialImages.beauty },
+  { name: 'Fotografia', description: 'Consejos visuales, poses, luz y narrativa para capturar tu universo.', accent: 'Visual', path: '/fotografia', cta: 'Explorar fotografia', image: editorialImages.photography },
+  { name: 'Astrologia', description: 'Reflexiones simbolicas y herramientas para leer tu energia con sensibilidad.', accent: 'Cosmos', path: '/astrologia', cta: 'Explorar astrologia', image: editorialImages.astrology },
+  { name: 'Vida', description: 'Inspiracion para vivir con mas intencion, placer, presencia y direccion.', accent: 'Vida', path: '/vida', cta: 'Explorar vida', image: editorialImages.lifestyle },
 ];
 
 export const categoryPages = {
@@ -110,15 +143,15 @@ export const categoryPages = {
 };
 
 export const resources = [
-  { title: '30 dias de habitos para mujeres', description: 'Una guia en PDF con practicas simples para volver a ti, cuidar tu energia y crear constancia con suavidad.', type: 'PDF descargable', cta: 'Ver recurso exclusivo', href: '#', image: resourceCover, meta: 'Mas descargado', edition: 'Edicion ritual' },
-  { title: 'Guia de estilo femenino y moderno', description: 'Ideas para construir un armario con personalidad, elegancia y una narrativa visual propia.', type: 'Mini libro digital', cta: 'Explorar guia', href: '#', image: resourceCover, meta: 'Nuevo', edition: 'Moda consciente' },
-  { title: 'Rituales de luna y energia personal', description: 'Un recurso editorial para conectar con tus ciclos, registrar emociones y crear intencion.', type: 'Cuaderno digital', cta: 'Descargar recurso', href: '#', image: resourceCover, meta: 'Astrologia + escritura reflexiva', edition: 'Coleccion lunar' },
+  { title: '30 dias de habitos para mujeres', description: 'Una guia en PDF con practicas simples para volver a ti, cuidar tu energia y crear constancia con suavidad.', type: 'PDF descargable', cta: 'Ver recurso exclusivo', href: '#', image: editorialImages.resourceHabits, fallbackImage: resourceCover, meta: 'Mas descargado', edition: 'Edicion ritual' },
+  { title: 'Guia de estilo femenino y moderno', description: 'Ideas para construir un armario con personalidad, elegancia y una narrativa visual propia.', type: 'Mini libro digital', cta: 'Explorar guia', href: '#', image: editorialImages.resourceFashion, fallbackImage: resourceCover, meta: 'Nuevo', edition: 'Moda consciente' },
+  { title: 'Rituales de luna y energia personal', description: 'Un recurso editorial para conectar con tus ciclos, registrar emociones y crear intencion.', type: 'Cuaderno digital', cta: 'Descargar recurso', href: '#', image: editorialImages.resourceAstro, fallbackImage: resourceCover, meta: 'Astrologia + escritura reflexiva', edition: 'Coleccion lunar' },
 ];
 
 export const journalPosts = [
-  { category: 'Estilo de vida', title: 'Como crear mananas mas suaves sin perder enfoque', excerpt: 'Pequenos rituales, luz natural y decisiones minimas para empezar el dia con presencia.', image: journalImage },
-  { category: 'Moda', title: 'Vestirte como la mujer que ya estas construyendo', excerpt: 'La ropa como lenguaje: silueta, textura y repeticion estetica al servicio de tu identidad.', image: journalImage },
-  { category: 'Astrologia', title: 'La carta natal como espejo creativo y emocional', excerpt: 'Una mirada accesible a la astrologia como herramienta de narrativa personal.', image: journalImage },
+  { category: 'Estilo de vida', title: 'Como crear mananas mas suaves sin perder enfoque', excerpt: 'Pequenos rituales, luz natural y decisiones minimas para empezar el dia con presencia.', image: editorialImages.journalMorning, fallbackImage: journalImage },
+  { category: 'Moda', title: 'Vestirte como la mujer que ya estas construyendo', excerpt: 'La ropa como lenguaje: silueta, textura y repeticion estetica al servicio de tu identidad.', image: editorialImages.journalWardrobe, fallbackImage: journalImage },
+  { category: 'Astrologia', title: 'La carta natal como espejo creativo y emocional', excerpt: 'Una mirada accesible a la astrologia como herramienta de narrativa personal.', image: editorialImages.journalAstro, fallbackImage: journalImage },
 ];
 
 export const newsletter = {

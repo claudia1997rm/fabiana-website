@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { InteractiveBrandBackground } from './components/InteractiveBrandBackground';
 import { NavBar } from './components/NavBar';
+import { ScrollToTop } from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthContext';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { BlogPostDetailPage } from './pages/BlogPostDetailPage';
@@ -17,6 +18,7 @@ import { ProtectedRoute } from './routes/ProtectedRoute';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AuthProvider>
         <div className="relative isolate min-h-screen bg-cloud text-ink">
           <InteractiveBrandBackground />
