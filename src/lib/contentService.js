@@ -30,6 +30,15 @@ function mapPhoto(photo) {
   return photo?.image_path ? { ...photo, image: getPublicUrl(STORAGE_BUCKETS.covers, photo.image_path) } : photo;
 }
 
+function mapSiteSettings(settings) {
+  if (!settings) return null;
+  return {
+    ...settings,
+    heroPrimaryImageUrl: getPublicUrl(STORAGE_BUCKETS.covers, settings.hero_primary_image_path),
+    heroSecondaryImageUrl: getPublicUrl(STORAGE_BUCKETS.covers, settings.hero_secondary_image_path),
+  };
+}
+
 export async function listPublishedResources() {
   if (!supabase) return mockResources.map((resource) => ({ ...resource, slug: slugify(resource.title) }));
   const { data, error } = await supabase.from('resources').select('*, categories(name, slug)').eq('status', 'published').order('published_at', { ascending: false });
@@ -81,19 +90,26 @@ export async function listCategories() {
 export async function listAdminResources() {
   const { data, error } = await supabase.from('resources').select('*, categories(name, slug)').order('updated_at', { ascending: false });
   if (error) throw error;
-  return data;
+  return data.map(mapResource);
 }
 
 export async function listAdminPosts() {
   const { data, error } = await supabase.from('posts').select('*, categories(name, slug)').order('updated_at', { ascending: false });
   if (error) throw error;
-  return data;
+  return data.map(mapPost);
 }
 
 export async function listAdminPhotos() {
   const { data, error } = await supabase.from('photo_entries').select('*').order('updated_at', { ascending: false });
   if (error) throw error;
   return data.map(mapPhoto);
+}
+
+export async function getSiteSettings() {
+  if (!supabase) return null;
+  const { data, error } = await supabase.from('site_settings').select('*').eq('key', 'home').maybeSingle();
+  if (error) throw error;
+  return mapSiteSettings(data);
 }
 
 export async function uploadContentFile({ bucket, folder, file, ownerId }) {
@@ -117,7 +133,7 @@ export async function createCategory(payload) {
 }
 
 function cleanWritePayload(payload) {
-  const { categories, image, pdfUrl, ...record } = payload;
+  const { categories, image, pdfUrl, heroPrimaryImageUrl, heroSecondaryImageUrl, ...record } = payload;
   return { ...record, category_id: record.category_id || null };
 }
 
@@ -153,6 +169,13 @@ export async function savePhoto(payload) {
   return data;
 }
 
+export async function saveSiteSettings(payload) {
+  const record = cleanWritePayload({ key: 'home', ...payload });
+  const { data, error } = await supabase.from('site_settings').upsert(record).select().single();
+  if (error) throw error;
+  return mapSiteSettings(data);
+}
+
 export async function deletePhoto(photo) {
   if (photo.image_path) {
     await deleteContentFile({ bucket: STORAGE_BUCKETS.covers, path: photo.image_path });
@@ -160,3 +183,4 @@ export async function deletePhoto(photo) {
   const { error } = await supabase.from('photo_entries').delete().eq('id', photo.id);
   if (error) throw error;
 }
+
