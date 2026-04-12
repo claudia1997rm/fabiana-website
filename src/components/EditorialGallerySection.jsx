@@ -2,51 +2,41 @@ import { editorialGallery as defaultEditorialGallery, statement } from '../data/
 
 export function EditorialGallerySection({ galleryItems = defaultEditorialGallery }) {
   return (
-    <section className="section-shell mx-auto max-w-7xl px-5 py-8 sm:px-6 md:px-10 md:py-14">
-      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-        <div className="max-w-xl">
+    <section className="section-shell mx-auto max-w-[92rem] px-5 py-10 sm:px-6 md:px-10 md:py-18">
+      <div className="template-showcase-grid">
+        <div className="relative overflow-hidden rounded-[2rem] border border-plum/16 bg-[linear-gradient(140deg,rgba(255,253,248,0.9),rgba(242,237,247,0.74))] p-6 shadow-soft md:rounded-[2.6rem] md:p-10 lg:row-span-2">
+          <div className="absolute -left-24 bottom-[-7rem] h-72 w-72 rounded-full border border-plum/10" aria-hidden="true" />
           <p className="editorial-kicker">Lookbook FabuRose</p>
-          <h2 className="mt-4 font-display text-4xl leading-[0.96] tracking-[-0.04em] text-ink md:text-5xl">
+          <h2 className="mt-5 max-w-xl font-display text-5xl leading-[0.9] tracking-[-0.05em] text-ink md:text-6xl lg:text-7xl">
             {statement.lookbookTitle}
           </h2>
-          <p className="mt-5 text-sm leading-7 text-ink/70 md:text-base">
-            Una capa visual mas viva para que la web respire como revista: imagen, textura y atmosfera acompanando el contenido.
+          <p className="mt-6 max-w-md text-sm leading-7 text-ink/68 md:text-base">
+            Una capa visual más viva para que la web respire como revista: imagen, textura y atmósfera acompañando el contenido.
           </p>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
-          <article className="group overflow-hidden rounded-[1.9rem] border border-plum/20 bg-white/70 p-3 shadow-soft transition duration-700 hover:-translate-y-1 hover:shadow-lavender">
-            <div className="overflow-hidden rounded-[1.45rem]">
-              <img
-                src={galleryItems[0].image}
-                alt={galleryItems[0].title}
-                className="h-[19rem] w-full object-cover transition duration-1000 group-hover:scale-[1.03] md:h-[26rem]"
-              />
-            </div>
-            <div className="p-3 md:p-4">
-              <p className="text-[10px] uppercase tracking-[0.28em] text-plum">{galleryItems[0].title}</p>
-              <p className="mt-3 text-sm leading-6 text-ink/70">{galleryItems[0].note}</p>
-            </div>
-          </article>
-
-          <div className="grid gap-4">
-            {galleryItems.slice(1).map((item) => (
-              <article key={item.title} className="group overflow-hidden rounded-[1.7rem] border border-plum/20 bg-white/70 p-3 shadow-soft transition duration-700 hover:-translate-y-1 hover:shadow-lavender">
-                <div className="overflow-hidden rounded-[1.3rem]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-44 w-full object-cover transition duration-1000 group-hover:scale-[1.03] md:h-[12.25rem]"
-                  />
-                </div>
-                <div className="p-3 md:p-4">
-                  <p className="text-[10px] uppercase tracking-[0.28em] text-plum">{item.title}</p>
-                  <p className="mt-2 text-sm leading-6 text-ink/70">{item.note}</p>
-                </div>
-              </article>
-            ))}
+          <div className="mt-10 flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] text-plum">
+            <span>Editorial index</span>
+            <span className="h-px flex-1 bg-plum/18" />
           </div>
         </div>
+
+        {galleryItems.map((item, index) => (
+          <article key={item.title} className={`template-photo-card group ${index === 0 ? 'lg:row-span-2' : ''}`}>
+            <img
+              src={item.image}
+              alt={item.title}
+              className={`h-full min-h-[20rem] w-full object-cover transition duration-1000 group-hover:scale-[1.035] ${index === 0 ? 'lg:min-h-[34rem]' : 'lg:min-h-[16rem]'}`}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(34,26,47,0.02),rgba(34,26,47,0.54))]" />
+            <div className="absolute left-5 right-5 top-5 flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/72">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <span>Ver edición</span>
+            </div>
+            <div className="absolute bottom-5 left-5 right-5 rounded-[1.35rem] border border-white/16 bg-white/14 p-4 text-white backdrop-blur-md transition duration-700 group-hover:-translate-y-1 group-hover:bg-white/18">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-white/72">{item.title}</p>
+              <p className="mt-3 text-sm leading-6 text-white/82">{item.note}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
